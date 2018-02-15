@@ -1,3 +1,5 @@
-iamglynnsmith.com - Version 5 - [View website](https://www.iamglynnsmith.com)
+# iamglynnsmith.com - v5 
+
+[View live website](https://www.iamglynnsmith.com)
 
 [Link to Kirby CMS](https://getkirby.com/)
