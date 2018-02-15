@@ -1,0 +1,48 @@
+// ========================
+// Return to Top Button ===
+// ========================
+
+.to-top-button {
+	outline: 0;
+	position: fixed;
+	right: $air / 2;
+	bottom: $air / 2;
+	border-radius: 30px;
+	overflow: hidden;
+	padding: 0;
+	border: none;
+	z-index: 5;
+	vertical-align: middle;
+	background-color: $color__primary;
+	transform: translateY(60px);
+	transition: transform $duration-out $quart-in,
+							opacity $duration-out $quart-in;
+
+	&:hover {
+		background-color: $color__primary--light;
+		transition: $time__med $quart-out;
+	}
+
+	&:active {
+		background-color: $color__primary;
+	}
+}
+
+	.button-icon {
+		display: inline-block;
+		fill: $grey__xlight;
+		vertical-align: top;
+		padding: 9px;
+		padding-top: 10px;
+		// background-color: $color__primary;
+		width: $button-size;
+		height: $button-size;
+		vertical-align: middle;
+		transition: transition();
+		box-shadow: 0 3px 4px rgba(0,0,0,0.175);
+	}
+
+	.show {
+		transform: translateY(0px);
+		transition: transform $duration-in $quart-out, opacity $duration-in $quart-out;
+	}

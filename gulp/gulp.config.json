@@ -1,0 +1,44 @@
+{
+	"paths": {
+		"src": "src/",
+		"srcTemplate": "src/01_templates/",
+		"srcComponent": "src/02_components/",
+		"srcSCSS": "src/scss/",
+		"srcJS": "src/js/",
+		"srcImg": "src/img/",
+		"destPHP": "build/site/",
+		"destTemplate": "build/site/templates/",
+		"destComponent": "build/site/snippets/",
+		"destCSS": "build/assets/css/",
+		"destJS": "build/assets/js/",
+		"destImg": "build/assets/img/"
+	},
+	"concatPaths": {
+		"home": {
+			"name": "home.js",
+			"src": [
+				"src/js/greensock/TimelineLite.js",
+				"src/js/greensock/CSSPlugin.js",
+				"src/js/greensock/CustomEase.js",
+				"src/js/greensock/TweenLite.js",
+				"src/js/hero/canvas_circle_constructor.js",
+				"src/js/hero/canvas_spark_constructor.js",
+				"src/js/hero/canvas_controller.js",
+				"src/js/hero/hero_animation.js",
+				"src/js/info/greeting.js",
+				"src/js/nav/nav.js"
+			]
+		},
+		"info": {
+			"name": "info.js",
+			"src": ["src/js/info/greeting.js", "src/js/top/top.js", "src/js/nav/nav.js"]
+		},
+		"top": {
+			"name": "top.js",
+			"src": ["src/js/top/top.js", "src/js/nav/nav.js"]
+		}
+	},
+	"browsersync": {
+		"proxy": "localhost:3000/portfolio/build"
+	}
+}

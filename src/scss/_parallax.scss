@@ -1,0 +1,98 @@
+.parallax {
+  perspective: 1px;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.parallax__layer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.parallax__layer-back03 {
+  transform: translateZ(-14px) scale(0.1);
+  visibility: hidden;
+
+  &--in {
+    transform: translateZ(-14px) scale(15);
+    visibility: visible;
+  }
+}
+
+.parallax__layer-back02 {
+  transform: translateZ(-9px) scale(0.2);
+  visibility: hidden;
+
+  &--in {
+    transform: translateZ(-9px) scale(10);
+    visibility: visible;
+  }
+}
+
+.parallax__layer-back01 {
+  transform: translateZ(-6px) scale(0.3);
+  visibility: hidden;
+
+  &--in {
+    transform: translateZ(-6px) scale(7);
+    visibility: visible;
+  }
+}
+
+.parallax__layer-logo {
+  transform: translate3D(0, -200%, -3px) scale(0.2);
+  opacity: 0;
+
+  &--down {
+    transform: translate3D(0, -15%, -3px) scale(0.2);
+    opacity: 1;
+  }
+
+  &--in {
+    transform: translate3D(0, -15%, -3px) scale(2);
+  }
+}
+
+.parallax__layer-mid {
+  transform: translateZ(-4px) scale(5);
+  visibility: hidden;
+
+  &--in {
+    transform: translateZ(-4px) scale(5);
+    visibility: visible;
+  }
+}
+
+.parallax__layer-front01 {
+  transform: translateZ(-3px) scale(5);
+  // visibility: hidden;
+
+  &--in {
+    transform: translateZ(-3px) scale(4);
+    // visibility: visible;
+  }
+}
+
+.parallax__layer-front02 {
+  transform: translateZ(-1px) scale(7);
+  // visibility: hidden;
+
+  &--in {
+    transform: translateZ(-1px) scale(2);
+    // visibility: visible;
+  }
+}
+
+.parallax__layer-front03 {
+  transform: translateZ(0px) scale(9);
+  // visibility: hidden;
+
+  &--in {
+    transform: translateZ(0px) scale(1);
+    // visibility: visible;
+  }
+}

@@ -1,0 +1,119 @@
+// ==========
+// SUBNAV ===
+// ==========
+
+.section__subnav {
+  padding-top: $baseline / 2 - 2;
+  padding-bottom: $baseline / 2 - 1;
+  @include section-separator--bottom();
+}
+
+  .section__subnav--bottom {
+    margin-top: $baseline;
+  }
+
+  // Prev / Next subnav links for sides of pages with children
+  .wrapper__subnav {
+    display: block;
+    position: relative;
+    fill: $grey__dark;
+    color: $grey__dark;
+    width: 50%;
+
+    .subnav__icon {
+      position: absolute;
+      height: 100%;
+      top: 0;
+    }
+  }
+
+    .subnav__left {
+      float: left;
+      left: 0;
+      text-align: left;
+
+      .subnav__text-wrapper {
+        margin-left: 20px;
+      }
+
+      .subnav__icon {
+        left: 0;
+      }
+    }
+
+    .subnav__right {
+      float: right;
+      right: 0;
+      text-align: right;
+
+      .subnav__text-wrapper {
+        margin-right: 20px;
+      }
+
+      .subnav__icon {
+        right: 0;
+      }
+    }
+
+  .subnav__link {
+    display: flex;
+    height: 100%;
+
+    &:link,
+    &:hover,
+    &:link:before,
+    &:link:after,
+    &:hover:before,
+    &:hover:after, {
+      transition: transition();
+    }
+
+    &:active:before,
+    &:active:after {
+      transition: none;
+    }
+
+    &:hover {
+      fill: $color__primary;
+      color: $color__primary;
+
+      .subnav__text-wrapper {
+        opacity: 1;
+      }
+    }
+
+    &:active {
+      color: $color__primary;
+      fill: $color__primary;
+      transition: none;
+
+      .subnav__text-wrapper {
+        transition: inherit;
+      }
+    }
+  }
+
+
+  // Idle styles
+  .subnav__icon {
+    width: 11px;
+    fill: inherit;
+  }
+
+  .subnav__text-wrapper {
+    display: inline-block;
+    color: inherit;
+    font-size: $fontsize__xsmall;
+    vertical-align: middle;
+  }
+
+  .subnav__text-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    z-index: 2;
+  }
+
+    .subnav__title {
+      font-weight: 600;
+    }

@@ -1,0 +1,53 @@
+// ============
+// BASELINE ===
+// ============
+
+// Variables
+$baseline_div_color: rgb(0, 0, 0);
+$baseline_div_alpha: 0.3;
+$baseline_subdiv_color: rgb(0, 0, 0);
+$baseline_subdiv_alpha: 0.125;
+$baseline_top-offset: 0px;
+$baseline_top-offset: 25px;
+
+// Baseline Grid
+body {
+  position: relative;
+
+  &:after {
+    content: '';
+    z-index: 99999999; // Well...
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: $baseline_top-offset;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    pointer-events: none;
+    background-repeat: repeat;
+    background-image: repeating-linear-gradient(
+      180deg,
+      rgba($baseline_div_color, $baseline_div_alpha) 0px,
+      rgba(0, 0, 0, 0) 1px,
+      rgba(0, 0, 0, 0) ($baseline / 2 - 0.15),
+      rgba($baseline_subdiv_color, $baseline_subdiv_alpha) $baseline / 2,
+      rgba(0, 0, 0, 0) ($baseline / 2 + 1),
+      rgba(0, 0, 0, 0) $baseline
+    );
+  }
+
+  &:active:after {
+    background-image: repeating-linear-gradient(
+      180deg,
+      rgba($baseline_div_color, $baseline_div_alpha) 0px,
+      rgba(0, 0, 0, 0) 1px,
+      rgba(0, 0, 0, 0) ($baseline / 2 - 0.15),
+      rgba($baseline_subdiv_color, $baseline_subdiv_alpha) $baseline / 2,
+      rgba(0, 0, 0, 0) ($baseline / 2 + 1),
+      rgba(0, 0, 0, 0) $baseline
+    );
+    background: none;
+  }
+}

@@ -1,0 +1,122 @@
+.section__hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  max-width: $width__content;
+  height: 100vh;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.anim__actor {
+  z-index: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.section__hero__background {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0 auto;
+
+  &::selection {
+    background: transparent;
+  }
+}
+
+.hero__canvas--bg,
+.hero__canvas--mg,
+.hero__canvas--fg {
+  pointer-events: none;
+
+  &::selection {
+    background: transparent;
+  }
+}
+
+.hero__background--fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $color__primary;
+
+  &::selection {
+    background: transparent;
+  }
+}
+
+.hero__linear-gradient--top {
+  height: 150px;
+  background: linear-gradient(to bottom, rgba($grey__xlight, 1) 20%, rgba($grey__xlight, 0) 99%);
+}
+
+.hero__linear-gradient--bottom {
+  height: 150px;
+  top: auto;
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba($grey__xlight, 0) 1%, rgba($grey__xlight, 1) 80%);
+}
+
+.hero__logo {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.hero__logo--main {
+  fill: white;
+}
+
+.hero__logo--main-red {
+  fill: $color__primary;
+}
+
+.hero__logo__shadow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 100%;
+  width: 100%;
+  background-image: url('../img/logo_drop_shadow_small.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  transform: translate(-50%, -38%) scale(1.12);
+  pointer-events: none;
+}
+
+.hero__text {
+  font: 600 $fontsize__xlarge $typeface__secondary;
+  width: 80vw;
+  height: auto;
+  color: lighten($grey__xlight, 8%);
+  fill: currentcolor;
+  display: none;
+}
+
+.section__hero__footer {
+  width: 100%;
+  max-width: 1200px + ($air * 4);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.hero__footer__link {
+  margin-left: $air / 2;
+
+  &:first-child {
+    margin-left: 0;
+  }
+}

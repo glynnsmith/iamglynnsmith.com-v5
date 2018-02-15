@@ -1,0 +1,130 @@
+// =============
+// VARIABLES ===
+// =============
+
+// COLOUR VALUES
+// =============
+$color__primary: hsl(350, 100%, 58%);
+$color__primary--light: lighten($color__primary, 19%);
+$color__primary--dark: darken($color__primary, 32%);
+
+$grey__xlight: hsl(210, 12%, 86%); // For page BG
+$grey__light: saturate(darken($grey__xlight, 8%), 1%); // Underlines
+$grey__mid: desaturate(darken($grey__xlight, 20%), 5%);
+$grey__dark: saturate(darken($grey__xlight, 52%), 2%); // Text color
+$grey__xdark: saturate(darken($grey__xlight, 65%), 12%);
+
+// TYPOGRAPHY
+// ==========
+$typeface__primary: 'fira-sans', 'Verdana', sans-serif;
+$typeface__secondary: 'acumin-pro-extra-condensed', 'Arial', sans-serif;
+
+$fontsize__base: 137.5%; // 22px
+$baseline: 36px;
+
+$fontsize__xsmall: 0.55rem;
+$fontsize__xsmall--mobile: 0.5rem;
+$fontsize__small: 0.85rem;
+$fontsize__reg: 1rem;
+$fontsize__med: 2.4rem;
+$fontsize__large: 3.3rem;
+$fontsize__xlarge: 7rem;
+
+@mixin flex--inline {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+// BUTTON STYLES
+// =============
+$border__opacity--light: 0.12;
+$border__opacity--dark: 0.875;
+
+@mixin button--idle(
+  $outline: 2px,
+  $radius: 0,
+  $button__bg-color: $color__primary,
+  $button__fg-color: $grey__xlight) {
+  background-color: $button__bg-color;
+  color: $button__fg-color;
+  fill: $button__fg-color;
+  border-radius: $radius;
+  transition: transition($time__slow, $ease__in-out);
+}
+
+@mixin button--hover(
+  $button__bg-color: $color__primary--light,
+  $button__fg-color: $grey__xlight) {
+  background-color: $button__bg-color;
+  color: $button__fg-color;
+  fill: $button__fg-color;
+  box-shadow: none;
+  transition: transition($time__quick, $ease__in-out);
+}
+
+@mixin button--active(
+  $button__bg-color: $color__primary,
+  $button__fg-color: $grey__xlight) {
+  background-color: $button__bg-color;
+  color: $button__fg-color;
+  fill: $button__fg-color;
+  box-shadow: none;
+  transition: none;
+}
+
+// WIDTHS & SPACING
+// ================
+$air: 24px;
+$line-thickness: 1px;
+$button-size: $air * 1.6;
+
+$width__max: 1824px;
+$width__content: 1200px;
+$width__full: 100%;
+
+@mixin section-separator ($color: rgba($grey__light, 0.85)) {
+  content: '';
+  display: block;
+  max-width: $width__content;
+  border-top: $line-thickness solid $color;
+}
+
+@mixin section-separator--bottom ($color: rgba($grey__light, 1)) {
+  content: '';
+  display: block;
+  max-width: $width__content;
+  border-bottom: $line-thickness solid $color;
+}
+
+// MOTION
+// ======
+@function transition($transition-time: 400ms,
+$ease-type: cubic-bezier(0.2, 0.7, 0.2, 1)) {
+  @return color $transition-time $ease-type,
+    fill $transition-time $ease-type,
+    background-color $transition-time $ease-type,
+    background $transition-time $ease-type,
+    background-image $transition-time $ease-type,
+    box-shadow $transition-time $ease-type,
+    transform $transition-time $ease-type,
+    opacity $transition-time $ease-type,
+    box-shadow $transition-time $ease-type;
+}
+
+$time__quick: 80ms;
+$time__med: 170ms;
+$time__slow: 450ms;
+
+$duration-in: $time__slow * 2;
+$duration-out: $time__slow;
+
+$ease__in-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+$ease__in-out--expo: cubic-bezier(1, 0, 0, 1);
+$quart-in: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+$quart-out: cubic-bezier(0.23, 1, 0.32, 1);
+$ease__linear: linear;
+
+$intro__anim-duration: 0.4s;
+$intro__pre-scale: 0.2;
+$intro__post-scale: 2;

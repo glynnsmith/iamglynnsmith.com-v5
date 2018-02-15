@@ -1,0 +1,252 @@
+
+// ===========
+// WIDGETS ===
+// ===========
+
+.widget {
+  font-size: $fontsize__xsmall;
+  font-weight: 400;
+  line-height: 27px;
+  margin: 0;
+  @include flex--inline;
+
+  a {
+    font-size: $fontsize__xsmall;
+  }
+}
+
+  .widget + .widget {
+    display: flex;
+    margin-top: $baseline - 10;
+    padding-top: $baseline;
+    @include section-separator();
+  }
+
+  .widget--item {
+    width: 100%;
+  }
+
+    .widget--item + .widget--item {
+      margin-top: $baseline / 1.5 + 3;
+    }
+
+  .widget--centered {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 100%;
+    margin-top: 8px;
+    justify-content: center;
+  }
+
+
+// Widget titles/headers
+// =====================
+.widget__title {
+  font-weight: 600;
+  margin-right: 12px;
+  display: block;
+}
+
+  .widget__title--inline {
+    display: inline-block;
+    width: auto;
+  }
+
+
+// Widget text lists
+// =================
+.widget__text {
+  display: inline;
+  margin-right: 6px;
+
+  &:after {
+    content: ", ";
+  }
+
+  &:last-child:after {
+    content: "";
+  }
+}
+
+
+// For spans wrapping each hyperlink inside a widget
+// =================================================
+.widget__link { // Parent block .widget needs to be span
+  &:link, &:visited {
+    display: inline-block;
+    margin: 0;
+    margin-right: 14px;
+    margin-bottom: 6px;
+    padding: 0;
+  }
+}
+
+  .widget__link--active { // Do not apply this with .widget__text
+    background-color: $color__primary !important;
+    color: $grey__xlight !important;
+    padding:  2px 10px 0px !important;
+    transform: translateY(-2px);
+
+    &:hover {
+      background-color: $color__primary--light !important;
+      box-shadow: none !important;
+    }
+
+    &:active {
+      background-color: $color__primary !important;
+      box-shadow: none !important;
+    }
+  }
+
+
+
+// Widget mod for sets of icons
+// ============================
+.widget--icon-block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  line-height: 0;
+  width: 100%;
+  margin: 0 auto;
+  transition: fill $time__med $ease__linear, color $time__med $ease__linear;
+  transition-delay: 0s;
+
+  .widget__title {
+    margin-bottom: 28px;
+    width: 100%;
+  }
+
+  .widget__icon {
+    color: $color__primary;
+    text-align: center;
+    transition: inherit;
+
+    .widget__icon--gfx, .widget__icon-label {
+      color: inherit;
+      fill: currentColor;
+      transition: inherit;
+    }
+
+    &:hover {
+      color: $color__primary--light;
+      transition: all $time__quick $ease__linear;
+
+      .widget__icon--gfx, .widget__icon-label {
+        color: inherit;
+        fill: currentColor;
+        transition: inherit;
+      }
+    }
+
+    &:active {
+      color: $color__primary;
+      transition: none;
+
+      .widget__icon--gfx, .widget__icon-label {
+        color: $color__primary;
+        fill: currentColor;
+        transition: inherit;
+      }
+    }
+  }
+
+    .widget__icon--gfx {
+      color: $color__primary;
+      width: $air * 1.6;
+      height: auto;
+      background: none;
+      fill: currentcolor;
+    }
+
+    .widget__icon-label {
+      display: block;
+      color: inherit;
+      margin: 0;
+      margin-top: 14px;
+      vertical-align: top;
+    }
+}
+
+.widget--icon-block--grid {
+  margin-top: $baseline + 14;
+
+  .widget__icon {
+    margin-bottom: $air - 4;
+    width: $air * 2.7;
+  }
+}
+
+.widget__icon-block--flat {
+  width: 100%;
+  max-width: $width__content - ($air * 2);
+  margin: 0 auto;
+  padding: $baseline 0;
+}
+
+
+// For spacing hash symbols + hashtags nicely
+// ==============================================
+.widget__tag--hash {
+  margin-right: 2px;
+}
+
+
+// Widget section types
+// ======================
+.widget--work-filter {
+  margin-top: $baseline;
+
+  .widget__title {
+    display: inline;
+  }
+}
+
+.widget--work-attributes {
+  margin-top: 7px;
+
+  .widget__title {
+    display: inline;
+    margin-right: 2px;
+  }
+
+  .widget--item + .widget--item {
+    margin-top: $baseline / 4;
+  }
+}
+
+.widget--work-tags {
+  display: inline;
+  padding-top: $baseline / 2 !important;
+
+  .widget__title {
+    display: inline;
+    margin-right: 2px;
+  }
+}
+
+.widget--weblog-filter {
+  align-items: center;
+}
+
+.widget--info-network {
+  margin-top: 20px;
+}
+
+.widget--info-skills {
+  display: inline-block;
+  float: right;
+  width: $baseline * 7;
+  margin-top: $baseline - 9;
+  padding-top: $baseline;
+  @include section-separator();
+}
+
+  .widget--info-skills--main {
+    display: none;
+  }
+
+    .widget--info-skills--main + p {
+      margin-top: $baseline;
+    }

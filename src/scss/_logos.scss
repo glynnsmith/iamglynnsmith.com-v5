@@ -1,0 +1,38 @@
+// =========
+// LOGOS ===
+// =========
+
+// Logo Wrapper
+.logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.logo__icon {
+  transform: translateY(5px);
+  margin-right: 8px;
+
+  svg {
+    width: 17px;
+    height: auto;
+  }
+}
+
+.logo__icon--light {
+  svg {
+    fill: $grey__light;
+  }
+}
+
+.logo__icon--dark {
+  svg {
+    fill: $grey__dark;
+  }
+}
+
+.logo__text {
+  font-size: inherit;
+  font-weight: inherit;
+}

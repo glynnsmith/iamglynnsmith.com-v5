@@ -1,0 +1,226 @@
+// ==========
+// HEADER ===
+// ==========
+
+.section__masthead, .footer {
+  max-width: $width__content;
+  width: 100%;
+  font-family: $typeface__secondary;
+  font-size: $fontsize__reg + 0;
+  font-weight: 600;
+  margin: 0 auto;
+  color: $grey__dark;
+  z-index: 20;
+}
+
+  .section__masthead {
+    align-self: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: $air + 3 0;
+    // padding-bottom: 0;
+    opacity: 1;
+    box-shadow: 0 1px $grey__light;
+  }
+
+  .section__hero {
+    .section__masthead {
+      box-shadow: none;
+    }
+  }
+
+.navigation, .navigation--desktop {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  z-index: 7;
+}
+
+  .navigation--desktop {
+    // display: none; // Debugging
+  }
+
+  .navigation__menu-opener {
+    display: none;
+    transition: inherit;
+
+    .navigation__menu-opener__icon {
+      display: inline-block;
+      width: 12px;
+      height: 17px;
+      fill: $grey__dark;
+      margin-left: 6px;
+      transition: inherit;
+    }
+
+    &:hover {
+      color: $color__primary;
+
+      .navigation__menu-opener__icon {
+        transition: inherit;
+        fill: red;
+      }
+    }
+  }
+
+.navigation__menu {
+  display: flex;
+  // display: none; // DEBUG (will mess up transition)
+  justify-content: space-around;
+  flex-direction: column;
+  flex-wrap: wrap;
+  font-family: $typeface__secondary;
+  font-size: $fontsize__med;
+  font-weight: 500;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 48;
+  background-color: darken($grey__light, 5);
+  opacity: 0;
+  left: 0;
+  transform: translateX(-100%);
+  z-index: 69;
+  transition: opacity $time__slow $ease__in-out, transform 0s linear $time__slow;
+}
+
+  .navigation__menu__inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 12.5%;
+    z-index: 2;
+    opacity: 0;
+    transform: translateY(-10%);
+
+    .navigation__link {
+      margin-left: 0;
+      white-space: nowrap;
+    }
+  }
+
+    .navigation__menu__inner--spacer {
+      height: 3%;
+    }
+
+  // JS applies ".navigation__menu--open" on mobile, to "unhide"
+  .navigation__menu--open {
+    display: flex;
+    left: 0%;
+    transform: translateX(0%);
+    opacity: 1;
+    transition: opacity $time__med, transform $time__med;
+
+    .navigation__menu__inner {
+      opacity: 1;
+      transform: translateY(0%);
+      transition: opacity $time__med, transform $time__med;
+      transition-timing-function: $ease__in-out;
+    }
+  }
+
+  @for $i from 2 through 10 {
+    .navigation__menu__inner:nth-child(#{$i}) {
+      transition-delay: $time__med * ($i / 2);
+    }
+  }
+
+  .navigation__menu--closer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 22px;
+    background-color: $color__primary;
+    color: $grey__xlight;
+    z-index: 4;
+
+    &:hover {
+      background-color: $color__primary--light;
+
+      .navigation__menu--closer--icon {
+        transition: transition($time__quick, $ease__linear);
+      }
+    }
+  }
+
+    .navigation__menu--closer--icon {
+      align-self: center;
+      display: block;
+      width: 28px;
+      height: 28px;
+      fill: $grey__xlight;
+      transition: transition($time__med, $ease__linear);
+
+      &-rect01 {
+        transform-origin: center;
+        transform: rotateZ(45deg);
+      }
+      &-rect02 {
+        transform-origin: center;
+        transform: rotateZ(-45deg);
+      }
+    }
+
+
+// Navigation links and states
+.logo, .navigation__link {
+  &:link, &:visited {
+    color: inherit;
+    text-decoration: none;
+    // display: inline-block;
+    transition: transition($time__slow, $ease__linear);
+
+    .logo__icon {
+      svg {
+        fill: $grey__dark;
+        background-color: none;
+        transition: transition($time__slow, $ease__linear);
+      }
+    }
+  }
+
+  &:hover {
+    color: $color__primary;
+    transition: transition($time__quick, $ease__linear);
+
+    .logo__icon {
+      svg {
+        fill: $color__primary;
+        transition: transition($time__quick, $ease__linear);
+      }
+    }
+  }
+
+  &:active {
+    transition: none;
+  }
+}
+
+.navigation__link {
+  &:link, &:visited {
+    margin-left: $baseline / 1.5;
+  }
+
+  &:first-child {
+    margin-left: 0;
+  }
+}
+
+
+
+// Stays at bottom of stack to overwrite HOMEPAGE mods
+.navigation__link--active {
+  &:link, &:visited {
+    color: $color__primary;
+  }
+
+  &:hover {
+    color: $color__primary--light;
+  }
+
+  &:active {
+    transition: none;
+  }
+}

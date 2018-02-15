@@ -1,0 +1,15 @@
+/node_modules/
+/build/site/snippets/
+/build/site/templates/
+/build/site/accounts/
+/build/assets/
+/build/panel/
+/build/kirby/
+/build/content/
+/build/thumbs/
+.eslintcache
+.DS_Store
+*.map
+.sass-cache/*
+PROJECT_portfolio.sublime-project
+PROJECT_portfolio.sublime-workspace

@@ -1,0 +1,55 @@
+{
+	"extends": ["prettier"],
+	"plugins": ["prettier"],
+	"parserOptions": {
+		"ecmaVersion": 2016,
+		"ecmaFeatures": {
+			"arrowFunctions": true,
+			"binaryLiterals": true,
+			"blockBindings": true,
+			"classes": true,
+			"defaultParams": true,
+			"destructuring": true,
+			"forOf": true,
+			"generators": true,
+			"objectLiteralComputedProperties": true,
+			"objectLiteralDuplicateProperties": true,
+			"objectLiteralShorthandMethods": true,
+			"objectLiteralShorthandProperties": true,
+			"octalLiterals": true,
+			"regexUFlag": true,
+			"regexYFlag": true,
+			"spread": true,
+			"superInFunctions": true,
+			"templateStrings": true,
+			"unicodeCodePointEscapes": true,
+			"globalReturn": true,
+			"jsx": true
+		}
+	},
+	"rules": {
+		"eqeqeq": ["warn", "allow-null"],
+		"indent": ["warn", "tab"],
+		"linebreak-style": ["error", "unix"],
+		"quotes": ["error", "single"],
+		"semi": ["error", "always"],
+		"no-unused-vars": ["warn"],
+		"no-var": "warn",
+		"no-undef": "error",
+		"no-useless-escape": "off",
+		"no-console": [
+			"warn",
+			{
+				"allow": ["warn", "error"]
+			}
+		]
+	},
+	"globals": {
+		"require": false
+	},
+	"env": {
+		"browser": true,
+		"es6": true
+	},
+	"parser": "babel-eslint"
+}
