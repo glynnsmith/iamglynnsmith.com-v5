@@ -1,6 +1,7 @@
 // plugins
 const gulp = require('gulp');
 const changed = require('gulp-changed');
+const sequence = require('gulp-sequence');
 const { phpMinify } = require('@cedx/gulp-php-minify');
 const sourcemaps = require('gulp-sourcemaps');
 const sass = require('gulp-sass');
@@ -10,11 +11,11 @@ const babel = require('gulp-babel');
 const concat = require('gulp-concat');
 const uglify = require('gulp-uglify');
 const browserSync = require('browser-sync').create();
-const config = require('./gulp/gulp.config.json');
 const imagemin = require('gulp-imagemin');
+const config = require('./gulp/gulp.config.json');
 
 // tasks
-gulp.task('copy-template', function() {
+gulp.task('templates', function() {
 	return gulp
 		.src(`${config.paths.srcTemplate}*.php`, { read: false })
 		.pipe(changed(config.paths.destTemplate))
@@ -22,7 +23,7 @@ gulp.task('copy-template', function() {
 		.pipe(gulp.dest(config.paths.destTemplate));
 });
 
-gulp.task('copy-component', function() {
+gulp.task('components', function() {
 	return gulp
 		.src(`${config.paths.srcComponent}*.php`, { read: false })
 		.pipe(changed(config.paths.destComponent))
@@ -76,6 +77,10 @@ gulp.task('concat-top', function() {
 	concatenate(config.concatPaths.top);
 });
 
+gulp.task('concat-all', function() {
+	sequence(['concat-home', 'concat-info', 'concat-top']);
+});
+
 gulp.task('imagemin', () =>
 	gulp
 		.src(`${config.paths.srcImg}*`)
@@ -90,9 +95,11 @@ gulp.task('browser-sync', function() {
 	});
 });
 
+gulp.task('build', sequence(['templates', 'components'], 'sass', 'concat-all', 'imagemin'));
+
 gulp.task('watch', ['browser-sync'], function() {
-	gulp.watch(`${config.paths.srcTemplate}*.php`, ['copy-template']).on('change', browserSync.reload);
-	gulp.watch(`${config.paths.srcComponent}*.php`, ['copy-component']).on('change', browserSync.reload);
+	gulp.watch(`${config.paths.srcTemplate}*.php`, ['templates']).on('change', browserSync.reload);
+	gulp.watch(`${config.paths.srcComponent}*.php`, ['components']).on('change', browserSync.reload);
 	gulp.watch(`${config.paths.srcSCSS}*.scss`, ['sass']);
 	gulp.watch(config.concatPaths.home.src, ['concat-home']).on('change', browserSync.reload);
 	gulp.watch(config.concatPaths.info.src, ['concat-info']).on('change', browserSync.reload);
@@ -100,4 +107,4 @@ gulp.task('watch', ['browser-sync'], function() {
 	gulp.watch(`${config.paths.srcImg}*`, ['imagemin']).on('change', browserSync.reload);
 });
 
-gulp.task('default', ['watch']);
+gulp.task('default', sequence('build', 'watch'));
