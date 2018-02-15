@@ -1,6 +1,7 @@
 // plugins
 const gulp = require('gulp');
 const changed = require('gulp-changed');
+const rename = require('gulp-rename');
 const sequence = require('gulp-sequence');
 const { phpMinify } = require('@cedx/gulp-php-minify');
 const sourcemaps = require('gulp-sourcemaps');
@@ -17,17 +18,17 @@ const config = require('./gulp/gulp.config.json');
 // tasks
 gulp.task('templates', function() {
 	return gulp
-		.src(`${config.paths.srcTemplate}*.php`, { read: false })
+		.src(`${config.paths.srcTemplate}**/*.php`)
+		.pipe(rename({ dirname: '' }))
 		.pipe(changed(config.paths.destTemplate))
-		.pipe(phpMinify())
 		.pipe(gulp.dest(config.paths.destTemplate));
 });
 
 gulp.task('components', function() {
 	return gulp
-		.src(`${config.paths.srcComponent}*.php`, { read: false })
+		.src(`${config.paths.srcComponent}**/*.php`)
+		.pipe(rename({ dirname: '' }))
 		.pipe(changed(config.paths.destComponent))
-		.pipe(phpMinify())
 		.pipe(gulp.dest(config.paths.destComponent));
 });
 
@@ -55,14 +56,16 @@ gulp.task('sass', function() {
 });
 
 function concatenate(cfg) {
-	return gulp
-		.src(cfg.src)
-		.pipe(concat(cfg.name))
-		.pipe(babel({ presets: ['es2015'] }))
-		.pipe(sourcemaps.init())
-		.pipe(uglify())
-		.pipe(sourcemaps.write('.'))
-		.pipe(gulp.dest(config.paths.destJS));
+	return (
+		gulp
+			.src(cfg.src)
+			.pipe(concat(cfg.name))
+			.pipe(babel({ presets: ['es2015'] }))
+			.pipe(sourcemaps.init())
+			// .pipe(uglify())
+			.pipe(sourcemaps.write('.'))
+			.pipe(gulp.dest(config.paths.destJS))
+	);
 }
 
 gulp.task('concat-home', function() {
@@ -98,8 +101,8 @@ gulp.task('browser-sync', function() {
 gulp.task('build', sequence(['templates', 'components'], 'sass', 'concat-all', 'imagemin'));
 
 gulp.task('watch', ['browser-sync'], function() {
-	gulp.watch(`${config.paths.srcTemplate}*.php`, ['templates']).on('change', browserSync.reload);
-	gulp.watch(`${config.paths.srcComponent}*.php`, ['components']).on('change', browserSync.reload);
+	gulp.watch(`${config.paths.srcTemplate}**/*.php`, ['templates']).on('change', browserSync.reload);
+	gulp.watch(`${config.paths.srcComponent}**/*.php`, ['components']).on('change', browserSync.reload);
 	gulp.watch(`${config.paths.srcSCSS}*.scss`, ['sass']);
 	gulp.watch(config.concatPaths.home.src, ['concat-home']).on('change', browserSync.reload);
 	gulp.watch(config.concatPaths.info.src, ['concat-info']).on('change', browserSync.reload);
