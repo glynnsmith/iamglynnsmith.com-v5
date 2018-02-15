@@ -1,11 +1,11 @@
 // to_top.js
 
-var docTop = document.documentElement.scrollTop;
-var button = document.getElementById('button-top');
-var trigger = 220;
-var pauseDuration = 250;
+let docTop = document.documentElement.scrollTop;
+const button = document.getElementById('button-top');
+const trigger = 220;
+const pauseDuration = 250;
 
-var runOnScroll = function() {
+const runOnScroll = function() {
 	docTop = document.documentElement.scrollTop;
 	if (docTop > trigger) {
 		button.classList.add('show');
@@ -17,9 +17,9 @@ var runOnScroll = function() {
 };
 
 function debounce(func, wait, immediate) {
-	var timeout;
+	let timeout;
 	return function() {
-		var context = this,
+		const context = this,
 			args = arguments;
 		clearTimeout(timeout);
 		timeout = setTimeout(function() {
@@ -31,7 +31,7 @@ function debounce(func, wait, immediate) {
 }
 
 // Wait for <time> after scrolling stops to check scroll position
-var myEfficientFn = debounce(function() {
+const myEfficientFn = debounce(function() {
 	runOnScroll();
 }, pauseDuration);
 
@@ -39,9 +39,9 @@ window.addEventListener('scroll', myEfficientFn);
 
 // Element to move, time in ms to animate
 function scrollTo(element, duration) {
-	var e = document.documentElement;
+	let e = document.documentElement;
 	if (e.scrollTop === 0) {
-		var t = e.scrollTop;
+		let t = e.scrollTop;
 		++e.scrollTop;
 		e = t + 1 === e.scrollTop-- ? e : document.body;
 	}

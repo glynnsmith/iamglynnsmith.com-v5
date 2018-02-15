@@ -1,6 +1,7 @@
 // plugins
 const gulp = require('gulp');
 const changed = require('gulp-changed');
+const { phpMinify } = require('@cedx/gulp-php-minify');
 const sourcemaps = require('gulp-sourcemaps');
 const sass = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
@@ -15,15 +16,17 @@ const imagemin = require('gulp-imagemin');
 // tasks
 gulp.task('copy-template', function() {
 	return gulp
-		.src(`${config.paths.srcTemplate}*.php`)
+		.src(`${config.paths.srcTemplate}*.php`, { read: false })
 		.pipe(changed(config.paths.destTemplate))
+		.pipe(phpMinify())
 		.pipe(gulp.dest(config.paths.destTemplate));
 });
 
 gulp.task('copy-component', function() {
 	return gulp
-		.src(`${config.paths.srcComponent}*.php`)
+		.src(`${config.paths.srcComponent}*.php`, { read: false })
 		.pipe(changed(config.paths.destComponent))
+		.pipe(phpMinify())
 		.pipe(gulp.dest(config.paths.destComponent));
 });
 
@@ -92,8 +95,8 @@ gulp.task('watch', ['browser-sync'], function() {
 	gulp.watch(`${config.paths.srcComponent}*.php`, ['copy-component']).on('change', browserSync.reload);
 	gulp.watch(`${config.paths.srcSCSS}*.scss`, ['sass']);
 	gulp.watch(config.concatPaths.home.src, ['concat-home']).on('change', browserSync.reload);
-	gulp.watch(config.concatPaths.info.src, ['concat-home']).on('change', browserSync.reload);
-	gulp.watch(config.concatPaths.top.src, ['concat-home']).on('change', browserSync.reload);
+	gulp.watch(config.concatPaths.info.src, ['concat-info']).on('change', browserSync.reload);
+	gulp.watch(config.concatPaths.top.src, ['concat-top']).on('change', browserSync.reload);
 	gulp.watch(`${config.paths.srcImg}*`, ['imagemin']).on('change', browserSync.reload);
 });
 
