@@ -4,7 +4,7 @@
 	<?php snippet("snippet_hero") ?>
 
 	<!-- Hero BG -->
-	<hr class="horizontal-rule horizontal-rule--hero" />
+	<!-- <hr class="horizontal-rule horizontal-rule--hero" /> -->
 
 	<!-- Information -->
 	<section class="section">

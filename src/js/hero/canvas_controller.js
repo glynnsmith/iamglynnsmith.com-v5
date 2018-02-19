@@ -6,7 +6,7 @@ const getElemID = function(id) {
 
 const buildCanvases = function() {
 	for (let i = 0; i <= 6; i++) {
-		let j = document.getElementById(`hero__canvas-layer--0${i + 1}`);
+		let j = getElemID(`hero__canvas-layer--0${i + 1}`);
 		canvasIDArray.push(j);
 
 		let k = j.getContext('2d');
@@ -20,7 +20,7 @@ const clearCanvas = function() {
 	}
 };
 
-const sizeCanvases = function() {
+const setCanvasSize = function() {
 	w = window.innerWidth;
 	h = window.innerHeight;
 
@@ -75,7 +75,7 @@ function debounce(func, wait, immediate) {
 
 // Watches browser dimensions and keeps appropriate amount of spheres on screen and/or moving
 const amountCounter = function() {
-	// Figures out which browser window dimension is largest, and uses that (landscape or portrait)
+	// Figures out which window dimension is largest, and uses that (landscape or portrait)
 	const orientation = function() {
 		if (w < h) {
 			return w;
@@ -112,40 +112,27 @@ const amountCounter = function() {
 		FGsizeMin = 2;
 		FGsizeMax = 40;
 		FGamount = orientation() / 16;
-	} else if (orientation() > 1000) {
+	} else if (orientation() >= 1000) {
 		speedHandler.speedBase = 1 * speedHandler.speedMultiplier;
 
-		BGsizeMin = orientation() / 16;
-		BGsizeMax = orientation() / 5;
-		BGamount = orientation() / 70;
+		// BGsizeMin = orientation() / 16;
+		// BGsizeMax = orientation() / 5;
+		// BGamount = orientation() / 70;
+		BGsizeMin = 65;
+		BGsizeMax = 200;
+		BGamount = 20;
 
 		MGsizeMin = 1;
 		MGsizeMax = 3;
-		MGamount = 26;
+		// MGamount = 26;
+		MGamount = 30;
 
 		FGsizeMin = 2;
-		FGsizeMax = 52;
-		FGamount = orientation() / 13;
-	} else {
-		speedHandler.speedBase = 1 * speedHandler.speedMultiplier;
-
-		BGsizeMin = orientation() / 12;
-		BGsizeMax = orientation() / 5;
-		BGamount = orientation() / 40;
-
-		MGsizeMin = 1;
-		MGsizeMax = 3;
-		MGamount = 28;
-
-		FGsizeMin = 2;
-		FGsizeMax = 68;
-		FGamount = orientation() / 20;
+		FGsizeMax = 90;
+		// FGamount = orientation() / 13;
+		FGamount = 27;
 	}
 };
-
-// const colorListBuilder = function() {
-// let BGcolorArray = [];
-// };
 
 let generateCircle = function(setName) {
 	let x, y, dx, dy, radius;
@@ -264,8 +251,8 @@ let MGamount;
 let FGsizeMin;
 let FGsizeMax;
 let FGamount;
-let FGcolorStart = 94;
-let FGcolorAmount = 6;
+let FGcolorStart = 92;
+let FGcolorAmount = 5;
 let FGcolorStep = 3;
 
 // Initial speeds
@@ -289,7 +276,7 @@ const init = function() {
 	MGcirclesArray = [];
 	FGcirclesArray = [];
 
-	sizeCanvases();
+	setCanvasSize();
 
 	// Clear all canvases
 	clearCanvas();
@@ -298,23 +285,7 @@ const init = function() {
 	amountCounter();
 
 	generateCircle('BG');
-	for (let i = 0, iMax = BGcirclesArray.length; i < iMax; i++) {
-		BGcirclesArray[i].init();
-	}
-
-	MGcirclesArray = [];
-
-	for (let j = 0, jMax = MGcirclesArray.length; j < jMax; j++) {
-		MGcirclesArray[j].init();
-	}
 	generateCircle('MG');
-
-	FGcirclesArray = [];
-
-	for (let k = 0, kMax = FGcirclesArray.length; k < kMax; k++) {
-		FGcirclesArray[k].init();
-	}
-
 	generateCircle('FG');
 };
 
@@ -341,7 +312,7 @@ const animate = function() {
 
 // Resize canvas on browser resize
 const resizeResetOut = function() {
-	sizeCanvases();
+	setCanvasSize();
 };
 
 // Respawn circles on browser resize

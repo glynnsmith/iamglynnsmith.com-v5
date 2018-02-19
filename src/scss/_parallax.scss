@@ -13,82 +13,12 @@
   left: 0;
 }
 
-$ease-out: cubic-bezier(0, 0.9, 0.09, 1);
-
-@for $i from 1 through 7 {
-  .parallax__layer--0#{$i} {
-    transition: transform 2.5s $ease-out, opacity 0.3s linear;
-    transition-delay: $i / 10 + 0s;
-    opacity: 0;
-
-    &--in {
-      opacity: 1;
-    }
-  }
-}
-
-.parallax__layer--01 {
-  transform: translateZ(-14px) scale(0.1);
-
-  &--in {
-    transform: translateZ(-14px) scale(15);
-  }
-}
-
-.parallax__layer--02 {
-  transform: translateZ(-9px) scale(0.2);
-
-  &--in {
-    transform: translateZ(-9px) scale(10);
-  }
-}
-
-.parallax__layer--03 {
-  transform: translateZ(-6px) scale(0.3);
-
-  &--in {
-    transform: translateZ(-6px) scale(7);
-  }
-}
-
-.parallax__layer--04 {
-  transform: translateZ(-4px) scale(10);
-
-  &--in {
-    transform: translateZ(-4px) scale(5);
-  }
-}
-
-.parallax__layer--05 {
-  transform: translateZ(-3px) scale(12);
-
-  &--in {
-    transform: translateZ(-3px) scale(4);
-  }
-}
-
-.parallax__layer--06 {
-  transform: translateZ(-1px) scale(10);
-
-  &--in {
-    transform: translateZ(-1px) scale(2);
-  }
-}
-
-.parallax__layer--07 {
-  transform: translateZ(0px) scale(9);
-
-  &--in {
-    transform: translateZ(0px) scale(1);
-  }
-}
-
 .parallax__logo-group {
-  transform: translate3D(0, -200%, -2px) scale(0.1);
+  transform: translate3D(0, -100%, 0) scale(1);
   opacity: 0;
 
   &--down {
-    transform: translate3D(0, -15%, -2px) scale(0.1);
+    transform: translate3D(0, 0, 0) scale(1);
     opacity: 1;
   }
 
@@ -96,3 +26,7 @@ $ease-out: cubic-bezier(0, 0.9, 0.09, 1);
     transform: translate3D(0, -15%, -2px) scale(1);
   }
 }
+
+// .hero__logo--container {
+
+// }

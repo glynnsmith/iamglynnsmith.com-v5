@@ -26,8 +26,7 @@ TweenLite.set(
 		'#hero__canvas-layer--07'
 	],
 	{
-		left: '-2000%',
-		immediateRender: false
+		left: '-2000%'
 	}
 );
 
@@ -100,32 +99,8 @@ function backgroundTransition() {
 				immediateRender: false
 			}
 		)
-		.set('#hero__canvas-layer--01', {
-			className: '+=parallax__layer--01--in',
-			immediateRender: false
-		})
-		.set('#hero__canvas-layer--02', {
-			className: '+=parallax__layer--02--in',
-			immediateRender: false
-		})
-		.set('#hero__canvas-layer--03', {
-			className: '+=parallax__layer--03--in',
-			immediateRender: false
-		})
-		.set('#hero__canvas-layer--04', {
-			className: '+=parallax__layer--04--in',
-			immediateRender: false
-		})
-		.set('#hero__canvas-layer--05', {
-			className: '+=parallax__layer--05--in',
-			immediateRender: false
-		})
-		.set('#hero__canvas-layer--06', {
-			className: '+=parallax__layer--06--in',
-			immediateRender: false
-		})
-		.set('#hero__canvas-layer--07', {
-			className: '+=parallax__layer--07--in',
+		.set('#hero__container', {
+			className: '+=hero__container--in',
 			immediateRender: false
 		})
 		.to(
@@ -146,4 +121,4 @@ master.add(logoMoveForward());
 master.add(backgroundTransition, '-=0.225');
 
 // Where we start from (mostly for debugging)
-master.progress(0.9);
+// master.progress(0.9);
