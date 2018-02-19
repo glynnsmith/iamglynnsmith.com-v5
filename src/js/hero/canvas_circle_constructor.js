@@ -2,6 +2,7 @@
 
 function Circle(x, y, dx, dy, radius, context) {
 	let linGrad;
+	let that = this;
 
 	this.x = x;
 	this.y = y;
@@ -9,32 +10,46 @@ function Circle(x, y, dx, dy, radius, context) {
 	this.dy = dy;
 	this.radius = radius;
 
-	// Decide context
-	if (context === BGc1 || context === BGc2 || context === BGc3) {
-		this.color = BGcolors[getRandomInt(0, BGcolors.length)];
-	} else if (context == MGc) {
-		this.color = MGcolors[getRandomInt(0, MGcolors.length)];
-	} else if (context == FGc1 || context == FGc2 || context == FGc3) {
-		this.color = FGcolors[getRandomInt(0, FGcolors.length)];
-	}
-
-	this.update = function() {
+	let buildGradient = function() {
 		// Create gradient
 		linGrad = context.createLinearGradient(
-			this.x - this.radius,
-			this.y - this.radius,
-			this.x - this.radius,
-			this.y + this.radius
+			that.x - that.radius,
+			that.y - that.radius,
+			that.x - that.radius,
+			that.y + that.radius
 		);
 
 		// Add colour stops to gradient
-		linGrad.addColorStop(0, 'hsl(210, 7%, ' + (this.color + 5) + '%)');
-		linGrad.addColorStop(0.5, 'hsl(210, 7%, ' + this.color + '%)');
-		linGrad.addColorStop(1, 'hsl(210, 7%, ' + (this.color - 4) + '%)');
+		linGrad.addColorStop(0, `hsl(210, 7%, ${that.color + 8}%)`);
+		linGrad.addColorStop(1, `hsl(210, 7%, ${that.color - 5}%)`);
+	};
 
+	// Decide context
+	if (
+		context === canvasContextArray[0] ||
+		context === canvasContextArray[1] ||
+		context === canvasContextArray[2]
+	) {
+		this.color = BGcolors[getRandomInt(0, BGcolors.length)];
+	} else if (context === canvasContextArray[3]) {
+		this.color = MGcolors[getRandomInt(0, MGcolors.length)];
+	} else if (
+		context === canvasContextArray[4] ||
+		context === canvasContextArray[5] ||
+		context === canvasContextArray[6]
+	) {
+		this.color = FGcolors[getRandomInt(0, FGcolors.length)];
+	}
+
+	this.init = function() {
+		buildGradient();
+	};
+
+	this.update = function() {
 		// Create circle and fill with linGrad
 		context.beginPath();
 		context.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+		buildGradient();
 		context.fillStyle = linGrad;
 		context.fill();
 		context.closePath();
@@ -49,7 +64,7 @@ function Circle(x, y, dx, dy, radius, context) {
 		}
 
 		// Movement
-		Math.floor((this.x += this.dx));
-		Math.floor((this.y += this.dy));
+		this.x += this.dx;
+		this.y += this.dy;
 	};
 }

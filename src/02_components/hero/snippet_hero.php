@@ -1,29 +1,24 @@
-<section id="hero__background" class="section__hero__background">
-	<div id="hero__background--fill" class="hero__background--fill"></div>
+<section id="hero__container" class="hero__container">
+	<canvas id="hero__canvas-layer--01" class="parallax__layer parallax__layer--01"></canvas>
+	<canvas id="hero__canvas-layer--02" class="parallax__layer parallax__layer--02"></canvas>
+	<canvas id="hero__canvas-layer--03" class="parallax__layer parallax__layer--03"></canvas>
 
-	<canvas id="hero__canvas--bg-03" class="parallax__layer parallax__layer-back03"></canvas>
-	<canvas id="hero__canvas--bg-02" class="parallax__layer parallax__layer-back02"></canvas>
-	<canvas id="hero__canvas--bg-01" class="parallax__layer parallax__layer-back01"></canvas>
-
-	<div id="hero__logo" class="parallax__layer parallax__layer-logo">
+	<div id="hero__logo--group" class="parallax__layer parallax__logo-group">
 		<!-- G Logo -->
-		<div id="section__hero__logo" class="anim__actor section__hero__logo">
-			<div id="hero__logo__shadow" class="hero__logo__shadow"></div>
+		<div id="hero__logo--container" class="anim__actor hero__logo--container">
+			<div id="hero__logo-shadow" class="hero__logo-shadow"></div>
 
-			<svg xmlns="http://www.w3.org/2000/svg" width="32" height="48" viewBox="0 0 32 48" id="hero__logo--main" class="hero__logo hero__logo--main">
+			<svg xmlns="http://www.w3.org/2000/svg" width="32" height="48" viewBox="0 0 32 48" id="hero__logo" class="hero__logo hero__logo">
 				<g><path d="M16 40a8 8 0 0 1-8-8H0a16 16 0 0 0 32 0h-8a8 8 0 0 1-8 8z"/><path d="M16 0a16 16 0 1 0 16 16A16 16 0 0 0 16 0zm0 24a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/></g>
 			</svg>
 		</div>
 	</div>
 
-	<canvas id="hero__canvas--mg" class="parallax__layer parallax__layer-mid"></canvas>
+	<canvas id="hero__canvas-layer--04" class="parallax__layer parallax__layer--04"></canvas>
 
-	<canvas id="hero__canvas--fg-01" class="parallax__layer parallax__layer-front01"></canvas>
-	<canvas id="hero__canvas--fg-02" class="parallax__layer parallax__layer-front02"></canvas>
-	<canvas id="hero__canvas--fg-03" class="parallax__layer parallax__layer-front03"></canvas>
-
-	<div id="hero__linear-gradient--top" class="anim__actor hero__linear-gradient--top"></div>
-	<div id="hero__linear-gradient--bottom" class="anim__actor hero__linear-gradient--bottom"></div>
+	<canvas id="hero__canvas-layer--05" class="parallax__layer parallax__layer--05"></canvas>
+	<canvas id="hero__canvas-layer--06" class="parallax__layer parallax__layer--06"></canvas>
+	<canvas id="hero__canvas-layer--07" class="parallax__layer parallax__layer--07"></canvas>
 </section>
 
 <section class="section">

@@ -18,52 +18,22 @@
   height: 100%;
 }
 
-.section__hero__background {
+.hero__container {
   position: absolute;
   top: 0;
   width: 100%;
   height: 100vh;
   overflow: hidden;
   margin: 0 auto;
-
-  &::selection {
-    background: transparent;
-  }
-}
-
-.hero__canvas--bg,
-.hero__canvas--mg,
-.hero__canvas--fg {
-  pointer-events: none;
-
-  &::selection {
-    background: transparent;
-  }
-}
-
-.hero__background--fill {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
   background-color: $color__primary;
 
   &::selection {
     background: transparent;
   }
-}
 
-.hero__linear-gradient--top {
-  height: 150px;
-  background: linear-gradient(to bottom, rgba($grey__xlight, 1) 20%, rgba($grey__xlight, 0) 99%);
-}
-
-.hero__linear-gradient--bottom {
-  height: 150px;
-  top: auto;
-  bottom: 0;
-  background: linear-gradient(to bottom, rgba($grey__xlight, 0) 1%, rgba($grey__xlight, 1) 80%);
+  &--in {
+    background-color: $grey__xlight;
+  }
 }
 
 .hero__logo {
@@ -72,17 +42,14 @@
   position: absolute;
   top: 0;
   left: 0;
-}
-
-.hero__logo--main {
   fill: white;
 }
 
-.hero__logo--main-red {
+.hero__logo--red {
   fill: $color__primary;
 }
 
-.hero__logo__shadow {
+.hero__logo-shadow {
   position: absolute;
   top: 50%;
   left: 50%;

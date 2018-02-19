@@ -1,75 +1,39 @@
 // canvas_controller.js
 
-const BGcanvas01 = document.getElementById('hero__canvas--bg-01'),
-	BGcanvas02 = document.getElementById('hero__canvas--bg-02'),
-	BGcanvas03 = document.getElementById('hero__canvas--bg-03'),
-	MGcanvas = document.getElementById('hero__canvas--mg'),
-	FGcanvas01 = document.getElementById('hero__canvas--fg-01'),
-	FGcanvas02 = document.getElementById('hero__canvas--fg-02'),
-	FGcanvas03 = document.getElementById('hero__canvas--fg-03');
-
-const d = document;
-
-let w = window.innerWidth || d.documentElement.clientWidth || d.getElementsByTagName('body')[0].clientWidth;
-
-let h = window.innerHeight || d.documentElement.clientHeight || d.getElementsByTagName('body')[0].clientHeight;
-
-let wCached = w; // Used to check if window = resized
-let hCached = h; // Used to check if window = resized
-
-// Values for generating BG spheres (size range, quantity, color ranges)
-let BGsizeMin;
-let BGsizeMax;
-let BGamount;
-const BGcolorStart = 86,
-	BGcolorAmount = 4,
-	BGcolorStep = 1;
-
-// Values for generating FG spheres (size range, quantity, color ranges)
-let FGsizeMin;
-let FGsizeMax;
-let FGamount;
-const FGcolorStart = 90,
-	FGcolorAmount = 5,
-	FGcolorStep = 1;
-
-// TEMP VALUES FOR DEBUGGING
-let MGsizeMin;
-let MGsizeMax;
-let MGamount;
-
-// Initial speeds
-let speedHandler = {
-	speedBase: 1,
-	speedMultiplier: 1
+const getElemID = function(id) {
+	return document.getElementById(id);
 };
 
-const BGc1 = BGcanvas01.getContext('2d');
-const BGc2 = BGcanvas02.getContext('2d');
-const BGc3 = BGcanvas03.getContext('2d');
-const MGc = MGcanvas.getContext('2d');
-const FGc1 = FGcanvas01.getContext('2d');
-const FGc2 = FGcanvas02.getContext('2d');
-const FGc3 = FGcanvas03.getContext('2d');
+const buildCanvases = function() {
+	for (let i = 0; i <= 6; i++) {
+		let j = document.getElementById(`hero__canvas-layer--0${i + 1}`);
+		canvasIDArray.push(j);
 
-BGcanvas01.width = w;
-BGcanvas01.height = h;
-BGcanvas02.width = w;
-BGcanvas02.height = h;
-BGcanvas03.width = w;
-BGcanvas03.height = h;
-MGcanvas.width = w;
-MGcanvas.height = h;
-FGcanvas01.width = w;
-FGcanvas01.height = h;
-FGcanvas02.width = w;
-FGcanvas02.height = h;
-FGcanvas03.width = w;
-FGcanvas03.height = h;
+		let k = j.getContext('2d');
+		canvasContextArray.push(k);
+	}
+};
 
-// ================
-// HELPER FUNCTIONS
-// ================
+const clearCanvas = function() {
+	for (let a = 0; a < canvasIDArray.length; a++) {
+		canvasContextArray[a].clearRect(0, 0, w, h);
+	}
+};
+
+const sizeCanvases = function() {
+	w = window.innerWidth;
+	h = window.innerHeight;
+
+	canvasIDArray.map(obj => {
+		obj.width = w;
+		obj.height = h;
+		return obj;
+	});
+};
+
+// ==============
+// UTIL FUNCTIONS
+// ==============
 
 // Generates a random integer between two values
 function getRandomInt(min, max) {
@@ -81,13 +45,11 @@ function getRandomInt(min, max) {
 // Makes sure getRandomInt isn't '0'
 function getRandomIntExclude(min, max) {
 	let generatedValue = getRandomInt(min, max);
-
 	if (generatedValue === 0) {
-		let y = getRandomInt(1, 2);
-
-		if (y === 1) {
+		let testValue = getRandomInt(1, 2);
+		if (testValue === 1) {
 			generatedValue = generatedValue - getRandomInt(1, max);
-		} else if (y === 2) {
+		} else if (testValue === 2) {
 			generatedValue = generatedValue + getRandomInt(1, max);
 		}
 	}
@@ -111,9 +73,9 @@ function debounce(func, wait, immediate) {
 	};
 }
 
-// Watches browser dimensions and does some kung fu to keep appropriate amount of spheres on screen and/or moving
+// Watches browser dimensions and keeps appropriate amount of spheres on screen and/or moving
 const amountCounter = function() {
-	// Figures out which dimension is largest, and uses that (landscape or portrait)
+	// Figures out which browser window dimension is largest, and uses that (landscape or portrait)
 	const orientation = function() {
 		if (w < h) {
 			return w;
@@ -148,7 +110,7 @@ const amountCounter = function() {
 		MGamount = 22;
 
 		FGsizeMin = 2;
-		FGsizeMax = 32;
+		FGsizeMax = 40;
 		FGamount = orientation() / 16;
 	} else if (orientation() > 1000) {
 		speedHandler.speedBase = 1 * speedHandler.speedMultiplier;
@@ -162,7 +124,7 @@ const amountCounter = function() {
 		MGamount = 26;
 
 		FGsizeMin = 2;
-		FGsizeMax = 44;
+		FGsizeMax = 52;
 		FGamount = orientation() / 13;
 	} else {
 		speedHandler.speedBase = 1 * speedHandler.speedMultiplier;
@@ -176,14 +138,14 @@ const amountCounter = function() {
 		MGamount = 28;
 
 		FGsizeMin = 2;
-		FGsizeMax = 44;
+		FGsizeMax = 68;
 		FGamount = orientation() / 20;
 	}
 };
 
-// Let's generate some colours!
-const BGcolors = [];
-const FGcolors = [];
+// const colorListBuilder = function() {
+// let BGcolorArray = [];
+// };
 
 let generateCircle = function(setName) {
 	let x, y, dx, dy, radius;
@@ -194,17 +156,29 @@ let generateCircle = function(setName) {
 		}
 		for (let j = 0; j < BGamount; j++) {
 			radius = getRandomInt(BGsizeMin, BGsizeMax);
-			x = getRandomInt(0 + radius * 1.1, w - radius * 1.1);
-			y = getRandomInt(0 + radius * 1.1, h - radius * 1.1);
-			dx = getRandomIntExclude(-25, 25) * (speedHandler.speedBase / radius) * speedHandler.speedMultiplier;
-			dy = getRandomIntExclude(-25, 25) * (speedHandler.speedBase / radius) * speedHandler.speedMultiplier;
+			x = getRandomInt(0 + radius, w - radius);
+			y = getRandomInt(0 + radius, h - radius);
+			dx =
+				getRandomIntExclude(-25, 25) *
+				(speedHandler.speedBase / radius) *
+				speedHandler.speedMultiplier;
+			dy =
+				getRandomIntExclude(-25, 25) *
+				(speedHandler.speedBase / radius) *
+				speedHandler.speedMultiplier;
 
 			if (j < BGamount / 3) {
-				BGcirclesArray.push(new Circle(x, y, dx, dy, radius, BGc1));
+				BGcirclesArray.push(
+					new Circle(x, y, dx, dy, radius, canvasContextArray[0])
+				);
 			} else if (j < BGamount / 3 * 2) {
-				BGcirclesArray.push(new Circle(x, y, dx, dy, radius, BGc2));
+				BGcirclesArray.push(
+					new Circle(x, y, dx, dy, radius, canvasContextArray[1])
+				);
 			} else {
-				BGcirclesArray.push(new Circle(x, y, dx, dy, radius, BGc3));
+				BGcirclesArray.push(
+					new Circle(x, y, dx, dy, radius, canvasContextArray[2])
+				);
 			}
 		}
 	} else if (setName === 'MG') {
@@ -212,10 +186,20 @@ let generateCircle = function(setName) {
 			radius = getRandomInt(MGsizeMin, MGsizeMax);
 			x = getRandomInt(0 + radius * 1.1, w - radius * 1.1);
 			y = getRandomInt(0 + radius * 1.1, h - radius * 1.1);
-			dx = getRandomIntExclude(-6.5, 6.5) * (speedHandler.speedBase / radius) * speedHandler.speedMultiplier;
-			dy = getRandomIntExclude(-6.5, 6.5) * (speedHandler.speedBase / radius) * speedHandler.speedMultiplier;
+			dx = Math.floor(
+				getRandomIntExclude(-6.5, 6.5) *
+					(speedHandler.speedBase / radius) *
+					speedHandler.speedMultiplier
+			);
+			dy = Math.floor(
+				getRandomIntExclude(-6.5, 6.5) *
+					(speedHandler.speedBase / radius) *
+					speedHandler.speedMultiplier
+			);
 
-			MGcirclesArray.push(new Spark(x, y, dx, dy, radius, MGc));
+			MGcirclesArray.push(
+				new Spark(x, y, dx, dy, radius, canvasContextArray[3])
+			);
 		}
 	} else if (setName === 'FG') {
 		for (let m = 0; m < FGcolorAmount; m++) {
@@ -225,68 +209,123 @@ let generateCircle = function(setName) {
 			radius = getRandomInt(FGsizeMin, FGsizeMax);
 			x = getRandomInt(0 + radius * 1.1, w - radius * 1.1);
 			y = getRandomInt(0 + radius * 1.1, h - radius * 1.1);
-			dx = getRandomIntExclude(-10, 10) * (speedHandler.speedBase / radius) * speedHandler.speedMultiplier;
-			dy = getRandomIntExclude(-10, 10) * (speedHandler.speedBase / radius) * speedHandler.speedMultiplier;
+			dx =
+				getRandomIntExclude(-20, 20) *
+				(speedHandler.speedBase / radius) *
+				speedHandler.speedMultiplier;
+			dy =
+				getRandomIntExclude(-20, 20) *
+				(speedHandler.speedBase / radius) *
+				speedHandler.speedMultiplier;
 
 			if (n < FGamount / 3) {
-				FGcirclesArray.push(new Circle(x, y, dx, dy, radius, FGc1));
+				FGcirclesArray.push(
+					new Circle(x, y, dx, dy, radius, canvasContextArray[4])
+				);
 			} else if (n < FGamount / 3 * 2) {
-				FGcirclesArray.push(new Circle(x, y, dx, dy, radius, FGc2));
+				FGcirclesArray.push(
+					new Circle(x, y, dx, dy, radius, canvasContextArray[5])
+				);
 			} else {
-				FGcirclesArray.push(new Circle(x, y, dx, dy, radius, FGc3));
+				FGcirclesArray.push(
+					new Circle(x, y, dx, dy, radius, canvasContextArray[6])
+				);
 			}
 		}
 	}
 };
 
-// Let's build some circles!!!
+let w =
+	window.innerWidth ||
+	document.documentElement.clientWidth ||
+	document.getElementsByTagName('body')[0].clientWidth;
+
+let h =
+	window.innerHeight ||
+	document.documentElement.clientHeight ||
+	document.getElementsByTagName('body')[0].clientHeight;
+
+let wCached = w; // Used to check if window = resized
+let hCached = h; // Used to check if window = resized
+
+// Values for generating BG spheres (size range, quantity, color ranges)
+let BGsizeMin;
+let BGsizeMax;
+let BGamount;
+let BGcolorStart = 86;
+let BGcolorAmount = 8;
+let BGcolorStep = 1;
+
+let MGsizeMin;
+let MGsizeMax;
+let MGamount;
+
+// Values for generating FG spheres (size range, quantity, color ranges)
+let FGsizeMin;
+let FGsizeMax;
+let FGamount;
+let FGcolorStart = 94;
+let FGcolorAmount = 6;
+let FGcolorStep = 3;
+
+// Initial speeds
+let speedHandler = {
+	speedBase: 1,
+	speedMultiplier: 1
+};
+
+let canvasIDArray = [];
+let canvasContextArray = [];
+
+let BGcolors = [];
+let FGcolors = [];
+
 let BGcirclesArray = [];
 let MGcirclesArray = [];
 let FGcirclesArray = [];
 
 const init = function() {
-	BGcanvas01.width = w;
-	BGcanvas01.height = h;
-	BGcanvas02.width = w;
-	BGcanvas02.height = h;
-	BGcanvas03.width = w;
-	BGcanvas03.height = h;
-
-	MGcanvas.width = w;
-	MGcanvas.height = h;
-
-	FGcanvas01.width = w;
-	FGcanvas01.height = h;
-	FGcanvas02.width = w;
-	FGcanvas02.height = h;
-	FGcanvas03.width = w;
-	FGcanvas03.height = h;
-
-	amountCounter();
 	BGcirclesArray = [];
+	MGcirclesArray = [];
+	FGcirclesArray = [];
+
+	sizeCanvases();
+
+	// Clear all canvases
+	clearCanvas();
+
+	// Figure out orientation + circle amount
+	amountCounter();
+
 	generateCircle('BG');
+	for (let i = 0, iMax = BGcirclesArray.length; i < iMax; i++) {
+		BGcirclesArray[i].init();
+	}
 
 	MGcirclesArray = [];
+
+	for (let j = 0, jMax = MGcirclesArray.length; j < jMax; j++) {
+		MGcirclesArray[j].init();
+	}
 	generateCircle('MG');
 
 	FGcirclesArray = [];
-	generateCircle('FG');
 
-	let initCompleted = true;
+	for (let k = 0, kMax = FGcirclesArray.length; k < kMax; k++) {
+		FGcirclesArray[k].init();
+	}
+
+	generateCircle('FG');
 };
 
 // ANIMATION LOOP
 const animate = function() {
 	requestAnimationFrame(animate);
 
-	BGc1.clearRect(0, 0, w, h);
-	BGc2.clearRect(0, 0, w, h);
-	BGc3.clearRect(0, 0, w, h);
-	MGc.clearRect(0, 0, w, h);
-	FGc1.clearRect(0, 0, w, h);
-	FGc2.clearRect(0, 0, w, h);
-	FGc3.clearRect(0, 0, w, h);
+	// Clear all canvases
+	clearCanvas();
 
+	// Redraw next frame on all canvases
 	for (let i = 0, iMax = BGcirclesArray.length; i < iMax; i++) {
 		BGcirclesArray[i].update();
 	}
@@ -302,23 +341,7 @@ const animate = function() {
 
 // Resize canvas on browser resize
 const resizeResetOut = function() {
-	w = window.innerWidth;
-	h = window.innerHeight;
-
-	BGcanvas01.width = w;
-	BGcanvas01.height = h;
-	BGcanvas02.width = w;
-	BGcanvas02.height = h;
-	BGcanvas03.width = w;
-	BGcanvas03.height = h;
-	MGcanvas.width = w;
-	MGcanvas.height = h;
-	FGcanvas01.width = w;
-	FGcanvas01.height = h;
-	FGcanvas02.width = w;
-	FGcanvas02.height = h;
-	FGcanvas03.width = w;
-	FGcanvas03.height = h;
+	sizeCanvases();
 };
 
 // Respawn circles on browser resize
@@ -328,6 +351,7 @@ const resizeResetIn = debounce(function() {
 	}
 }, 1000);
 
+buildCanvases();
 init();
 animate();
 
