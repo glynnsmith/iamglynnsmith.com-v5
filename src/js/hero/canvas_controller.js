@@ -1,26 +1,31 @@
 // canvas_controller.js
 
-const getElemID = function(id) {
-	return document.getElementById(id);
-};
+// =================
+// BUILDING CANVASES
+// =================
+const canvasAmount = 7;
 
-const buildCanvases = function() {
-	for (let i = 0; i <= 6; i++) {
-		let j = getElemID(`hero__canvas-layer--0${i + 1}`);
+function getElemID(id) {
+	return document.getElementById(id);
+}
+
+function clearCanvas() {
+	for (let a = 0; a < canvasIDArray.length; a++) {
+		canvasContextArray[a].clearRect(0, 0, w, h);
+	}
+}
+
+function buildCanvases() {
+	for (let i = 1; i <= canvasAmount; i++) {
+		let j = getElemID(`hero__canvas-layer--0${i}`);
 		canvasIDArray.push(j);
 
 		let k = j.getContext('2d');
 		canvasContextArray.push(k);
 	}
-};
+}
 
-const clearCanvas = function() {
-	for (let a = 0; a < canvasIDArray.length; a++) {
-		canvasContextArray[a].clearRect(0, 0, w, h);
-	}
-};
-
-const setCanvasSize = function() {
+function setCanvasSize() {
 	w = window.innerWidth;
 	h = window.innerHeight;
 
@@ -29,7 +34,7 @@ const setCanvasSize = function() {
 		obj.height = h;
 		return obj;
 	});
-};
+}
 
 // ==============
 // UTIL FUNCTIONS
@@ -74,67 +79,67 @@ function debounce(func, wait, immediate) {
 }
 
 // Watches browser dimensions and keeps appropriate amount of spheres on screen and/or moving
-const amountCounter = function() {
-	// Figures out which window dimension is largest, and uses that (landscape or portrait)
-	const orientation = function() {
+function amountCounter() {
+	// Finds which window dimension is largest, and uses that
+	function orientation() {
 		if (w < h) {
 			return w;
 		} else {
 			return h;
 		}
-	};
-
-	if (orientation() < 560) {
-		speedHandler.speedBase = 0;
-
-		BGsizeMin = orientation() / 9;
-		BGsizeMax = orientation() / 5;
-		BGamount = orientation() / 50;
-
-		MGsizeMin = 0.5;
-		MGsizeMax = 2;
-		MGamount = 48;
-
-		FGsizeMin = 1;
-		FGsizeMax = 25;
-		FGamount = orientation() / 12;
-	} else if (orientation() < 1000) {
-		speedHandler.speedBase = 1 * speedHandler.speedMultiplier;
-
-		BGsizeMin = orientation() / 12;
-		BGsizeMax = orientation() / 6;
-		BGamount = orientation() / 70;
-
-		MGsizeMin = 1;
-		MGsizeMax = 2;
-		MGamount = 22;
-
-		FGsizeMin = 2;
-		FGsizeMax = 40;
-		FGamount = orientation() / 16;
-	} else if (orientation() >= 1000) {
-		speedHandler.speedBase = 1 * speedHandler.speedMultiplier;
-
-		// BGsizeMin = orientation() / 16;
-		// BGsizeMax = orientation() / 5;
-		// BGamount = orientation() / 70;
-		BGsizeMin = 65;
-		BGsizeMax = 200;
-		BGamount = 20;
-
-		MGsizeMin = 1;
-		MGsizeMax = 3;
-		// MGamount = 26;
-		MGamount = 30;
-
-		FGsizeMin = 2;
-		FGsizeMax = 90;
-		// FGamount = orientation() / 13;
-		FGamount = 27;
 	}
-};
 
-let generateCircle = function(setName) {
+	orientation();
+
+	switch (orientation) {
+		case 'orientation() < 560':
+			speedHandler.speedBase = 0;
+
+			BGsizeMin = orientation() / 9;
+			BGsizeMax = orientation() / 5;
+			BGamount = orientation() / 50;
+
+			MGsizeMin = 0.5;
+			MGsizeMax = 2;
+			MGamount = 16;
+
+			FGsizeMin = 1;
+			FGsizeMax = 25;
+			FGamount = orientation() / 12;
+			break;
+		case 'orientation() < 1000':
+			speedHandler.speedBase = 1 * speedHandler.speedMultiplier;
+
+			BGsizeMin = orientation() / 12;
+			BGsizeMax = orientation() / 6;
+			BGamount = orientation() / 70;
+
+			MGsizeMin = 1;
+			MGsizeMax = 2;
+			MGamount = 50;
+
+			FGsizeMin = 2;
+			FGsizeMax = 40;
+			FGamount = orientation() / 16;
+			break;
+		default:
+			speedHandler.speedBase = 1 * speedHandler.speedMultiplier;
+			BGsizeMin = 65;
+			BGsizeMax = 200;
+			BGamount = 20;
+
+			MGsizeMin = 1;
+			MGsizeMax = 3;
+			MGamount = 60;
+
+			FGsizeMin = 2;
+			FGsizeMax = 90;
+			FGamount = 27;
+			break;
+	}
+}
+
+function generateCircle(setName) {
 	let x, y, dx, dy, radius;
 
 	if (setName === 'BG') {
@@ -194,8 +199,8 @@ let generateCircle = function(setName) {
 		}
 		for (let n = 0; n < FGamount; n++) {
 			radius = getRandomInt(FGsizeMin, FGsizeMax);
-			x = getRandomInt(0 + radius * 1.1, w - radius * 1.1);
-			y = getRandomInt(0 + radius * 1.1, h - radius * 1.1);
+			x = getRandomInt(0, w);
+			y = getRandomInt(0, h);
 			dx =
 				getRandomIntExclude(-20, 20) *
 				(speedHandler.speedBase / radius) *
@@ -205,11 +210,11 @@ let generateCircle = function(setName) {
 				(speedHandler.speedBase / radius) *
 				speedHandler.speedMultiplier;
 
-			if (n < FGamount / 3) {
+			if (n < FGamount / 2) {
 				FGcirclesArray.push(
 					new Circle(x, y, dx, dy, radius, canvasContextArray[4])
 				);
-			} else if (n < FGamount / 3 * 2) {
+			} else if (n < FGamount / 2 * 2) {
 				FGcirclesArray.push(
 					new Circle(x, y, dx, dy, radius, canvasContextArray[5])
 				);
@@ -220,7 +225,7 @@ let generateCircle = function(setName) {
 			}
 		}
 	}
-};
+}
 
 let w =
 	window.innerWidth ||
@@ -265,33 +270,16 @@ let canvasIDArray = [];
 let canvasContextArray = [];
 
 let BGcolors = [];
+let MGcolors = [];
 let FGcolors = [];
 
 let BGcirclesArray = [];
 let MGcirclesArray = [];
 let FGcirclesArray = [];
 
-const init = function() {
-	BGcirclesArray = [];
-	MGcirclesArray = [];
-	FGcirclesArray = [];
-
-	setCanvasSize();
-
-	// Clear all canvases
-	clearCanvas();
-
-	// Figure out orientation + circle amount
-	amountCounter();
-
-	generateCircle('BG');
-	generateCircle('MG');
-	generateCircle('FG');
-};
-
-// ANIMATION LOOP
-const animate = function() {
-	requestAnimationFrame(animate);
+// Draws all content to all canvases
+function draw() {
+	// requestAnimationFrame(draw);
 
 	// Clear all canvases
 	clearCanvas();
@@ -308,12 +296,32 @@ const animate = function() {
 	for (let k = 0, kMax = FGcirclesArray.length; k < kMax; k++) {
 		FGcirclesArray[k].update();
 	}
-};
+}
+
+function init() {
+	BGcirclesArray = [];
+	MGcirclesArray = [];
+	FGcirclesArray = [];
+
+	setCanvasSize();
+
+	// Clear all canvases
+	clearCanvas();
+
+	// Figure out orientation + circle amount
+	amountCounter();
+
+	generateCircle('BG');
+	generateCircle('MG');
+	generateCircle('FG');
+
+	draw();
+}
 
 // Resize canvas on browser resize
-const resizeResetOut = function() {
+function resizeResetOut() {
 	setCanvasSize();
-};
+}
 
 // Respawn circles on browser resize
 const resizeResetIn = debounce(function() {
@@ -324,7 +332,6 @@ const resizeResetIn = debounce(function() {
 
 buildCanvases();
 init();
-animate();
 
 window.addEventListener('resize', resizeResetIn);
 window.addEventListener('resize', resizeResetOut);

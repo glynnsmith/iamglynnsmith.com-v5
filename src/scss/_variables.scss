@@ -120,12 +120,8 @@ $duration-in: $time__slow * 2;
 $duration-out: $time__slow;
 
 $ease__in-out: cubic-bezier(0.2, 0.7, 0.2, 1);
-$ease__in-out--expo: cubic-bezier(1, 0, 0, 1);
+$ease__in-out--expo: cubic-bezier(1, 0, 1, 1);
 $ease-out: cubic-bezier(0, 0.9, 0.09, 1);
-$quart-in: cubic-bezier(0.755, 0.05, 0.855, 0.06);
-$quart-out: cubic-bezier(0.23, 1, 0.32, 1);
+$quart-out: cubic-bezier(0, 1, 0, 1);
+$quart-in: cubic-bezier(1, 0, 0, 1);
 $ease__linear: linear;
-
-$intro__anim-duration: 0.4s;
-$intro__pre-scale: 0.2;
-$intro__post-scale: 2;
