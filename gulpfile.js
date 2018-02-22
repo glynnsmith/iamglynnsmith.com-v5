@@ -4,12 +4,16 @@ const changed = require('gulp-changed');
 const rename = require('gulp-rename');
 const sequence = require('gulp-sequence');
 const sourcemaps = require('gulp-sourcemaps');
+const plumber = require('gulp-plumber');
+const colors = require('ansi-colors');
+const log = require('fancy-log');
+const beeper = require('beeper');
 const sass = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
 const cleanCSS = require('gulp-clean-css');
 const babel = require('gulp-babel');
 const concat = require('gulp-concat');
-const uglify = require('gulp-uglify');
+// const uglify = require('gulp-uglify');
 const browserSync = require('browser-sync').create();
 const imagemin = require('gulp-imagemin');
 const config = require('./gulp/gulp.config.json');
@@ -18,7 +22,20 @@ const config = require('./gulp/gulp.config.json');
 gulp.task('templates', function() {
 	return gulp
 		.src(`${config.paths.srcTemplate}**/*.php`)
-		.pipe(rename({dirname: ''}))
+		.pipe(
+			plumber({
+				errorHandler: function(err) {
+					log.error(
+						colors.bold(colors.red('[ERROR]')),
+						colors.bold('from ' + err.plugin)
+					);
+					log.error(err.message);
+					beeper();
+					this.emit('end');
+				}
+			})
+		)
+		.pipe(rename({ dirname: '' }))
 		.pipe(changed(config.paths.destTemplate))
 		.pipe(gulp.dest(config.paths.destTemplate));
 });
@@ -26,7 +43,20 @@ gulp.task('templates', function() {
 gulp.task('components', function() {
 	return gulp
 		.src(`${config.paths.srcComponent}**/*.php`)
-		.pipe(rename({dirname: ''}))
+		.pipe(
+			plumber({
+				errorHandler: function(err) {
+					log.error(
+						colors.bold(colors.red('[ERROR]')),
+						colors.bold('from ' + err.plugin)
+					);
+					log.error(err.message);
+					beeper();
+					this.emit('end');
+				}
+			})
+		)
+		.pipe(rename({ dirname: '' }))
 		.pipe(changed(config.paths.destComponent))
 		.pipe(gulp.dest(config.paths.destComponent));
 });
@@ -34,6 +64,19 @@ gulp.task('components', function() {
 gulp.task('sass', function() {
 	return gulp
 		.src(`${config.paths.src}scss/*.scss`)
+		.pipe(
+			plumber({
+				errorHandler: function(err) {
+					log.error(
+						colors.bold(colors.red('[ERROR]')),
+						colors.bold('from ' + err.plugin)
+					);
+					log.error(err.message);
+					beeper();
+					this.emit('end');
+				}
+			})
+		)
 		.pipe(changed(config.paths.destCSS))
 		.pipe(sourcemaps.init())
 		.pipe(sass())
@@ -43,10 +86,9 @@ gulp.task('sass', function() {
 				cascade: false
 			})
 		)
-		.pipe(cleanCSS({compatibility: '*'}))
+		.pipe(cleanCSS({ compatibility: '*' }))
 		.pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest(config.paths.destCSS))
-		.on('error', sass.logError)
 		.pipe(
 			browserSync.reload({
 				stream: true
@@ -55,14 +97,34 @@ gulp.task('sass', function() {
 });
 
 function concatenate(cfg) {
-	return gulp
-		.src(cfg.src)
-		.pipe(concat(cfg.name))
-		.pipe(babel({presets: ['es2015']}))
-		.pipe(sourcemaps.init())
-		.pipe(uglify())
-		.pipe(sourcemaps.write('.'))
-		.pipe(gulp.dest(config.paths.destJS));
+	return (
+		gulp
+			.src(cfg.src)
+			.pipe(
+				plumber({
+					errorHandler: function(err) {
+						log.error(
+							colors.bold(colors.red('[ERROR]')),
+							colors.bold('from ' + err.plugin)
+						);
+						// log.error(err.fileName);
+						log.error(
+							err.fileName +
+								(err.loc ? `( ${err.loc.line}, ${err.loc.column} ): ` : ': ')
+						);
+						log.error(err.codeFrame);
+						beeper();
+						this.emit('end');
+					}
+				})
+			)
+			.pipe(sourcemaps.init())
+			.pipe(concat(cfg.name))
+			.pipe(babel({ presets: ['es2015'] }))
+			// .pipe(uglify())
+			.pipe(sourcemaps.write('.'))
+			.pipe(gulp.dest(config.paths.destJS))
+	);
 }
 
 gulp.task('concat-home', function() {
@@ -84,6 +146,19 @@ gulp.task('concat-all', function() {
 gulp.task('imagemin', () =>
 	gulp
 		.src(`${config.paths.srcImg}*`)
+		.pipe(
+			plumber({
+				errorHandler: function(err) {
+					log.error(
+						colors.bold(colors.red('[ERROR]')),
+						colors.bold('from ' + err.plugin)
+					);
+					log.error(err.message);
+					beeper();
+					this.emit('end');
+				}
+			})
+		)
 		.pipe(changed(config.paths.destImg))
 		.pipe(imagemin())
 		.pipe(gulp.dest(config.paths.destImg))

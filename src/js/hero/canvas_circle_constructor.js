@@ -14,6 +14,8 @@ function Circle(x, y, radius, context) {
 		context.closePath();
 	}
 
+WOOOOO!!!!!!
+
 	this.x = x;
 	this.y = y;
 	this.radius = radius;

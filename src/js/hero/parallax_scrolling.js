@@ -1,10 +1,13 @@
+const fg = getElemID('hero__foreground');
+const clientHeight = document.documentElement.clientHeight;
+
 document.querySelectorAll('.parallax-layer').forEach(elem => {
 	const modifier = elem.getAttribute('data-modifier');
 
 	const parallax = basicScroll.create({
 		elem: elem,
 		from: 0,
-		to: document.documentElement.clientHeight,
+		to: clientHeight,
 		props: {
 			'--translateY': {
 				from: '0',
@@ -17,12 +20,10 @@ document.querySelectorAll('.parallax-layer').forEach(elem => {
 	parallax.start();
 });
 
-const fg = getElemID('hero__foreground');
-
 const opacity = basicScroll.create({
 	elem: fg,
-	from: document.documentElement.clientHeight / 4,
-	to: document.documentElement.clientHeight / 1.2,
+	from: clientHeight / 4,
+	to: clientHeight / 1.2,
 	props: {
 		'--opacity': {
 			from: '0',
