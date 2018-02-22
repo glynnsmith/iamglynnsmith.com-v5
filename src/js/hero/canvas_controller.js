@@ -10,7 +10,7 @@ function getElemID(id) {
 }
 
 function clearCanvas() {
-	for (let a = 0; a < canvasIDArray.length; a++) {
+	for (let a = 0; a < canvasAmount; a++) {
 		canvasContextArray[a].clearRect(0, 0, w, h);
 	}
 }
@@ -133,14 +133,14 @@ function amountCounter() {
 			MGamount = 60;
 
 			FGsizeMin = 2;
-			FGsizeMax = 90;
-			FGamount = 27;
+			FGsizeMax = 64;
+			FGamount = 45;
 			break;
 	}
 }
 
 function generateCircle(setName) {
-	let x, y, dx, dy, radius;
+	let x, y, radius;
 
 	if (setName === 'BG') {
 		for (let i = 0; i < BGcolorAmount; i++) {
@@ -148,29 +148,15 @@ function generateCircle(setName) {
 		}
 		for (let j = 0; j < BGamount; j++) {
 			radius = getRandomInt(BGsizeMin, BGsizeMax);
-			x = getRandomInt(0 + radius, w - radius);
-			y = getRandomInt(0 + radius, h - radius);
-			dx =
-				getRandomIntExclude(-25, 25) *
-				(speedHandler.speedBase / radius) *
-				speedHandler.speedMultiplier;
-			dy =
-				getRandomIntExclude(-25, 25) *
-				(speedHandler.speedBase / radius) *
-				speedHandler.speedMultiplier;
+			x = getRandomInt(0 + radius * 1.1, w - radius * 1.1);
+			y = getRandomInt(0, h);
 
 			if (j < BGamount / 3) {
-				BGcirclesArray.push(
-					new Circle(x, y, dx, dy, radius, canvasContextArray[0])
-				);
+				BGcirclesArray.push(new Circle(x, y, radius, canvasContextArray[0]));
 			} else if (j < BGamount / 3 * 2) {
-				BGcirclesArray.push(
-					new Circle(x, y, dx, dy, radius, canvasContextArray[1])
-				);
+				BGcirclesArray.push(new Circle(x, y, radius, canvasContextArray[1]));
 			} else {
-				BGcirclesArray.push(
-					new Circle(x, y, dx, dy, radius, canvasContextArray[2])
-				);
+				BGcirclesArray.push(new Circle(x, y, radius, canvasContextArray[2]));
 			}
 		}
 	} else if (setName === 'MG') {
@@ -178,20 +164,8 @@ function generateCircle(setName) {
 			radius = getRandomInt(MGsizeMin, MGsizeMax);
 			x = getRandomInt(0 + radius * 1.1, w - radius * 1.1);
 			y = getRandomInt(0 + radius * 1.1, h - radius * 1.1);
-			dx = Math.floor(
-				getRandomIntExclude(-6.5, 6.5) *
-					(speedHandler.speedBase / radius) *
-					speedHandler.speedMultiplier
-			);
-			dy = Math.floor(
-				getRandomIntExclude(-6.5, 6.5) *
-					(speedHandler.speedBase / radius) *
-					speedHandler.speedMultiplier
-			);
 
-			MGcirclesArray.push(
-				new Spark(x, y, dx, dy, radius, canvasContextArray[3])
-			);
+			MGcirclesArray.push(new Spark(x, y, radius, canvasContextArray[3]));
 		}
 	} else if (setName === 'FG') {
 		for (let m = 0; m < FGcolorAmount; m++) {
@@ -199,29 +173,15 @@ function generateCircle(setName) {
 		}
 		for (let n = 0; n < FGamount; n++) {
 			radius = getRandomInt(FGsizeMin, FGsizeMax);
-			x = getRandomInt(0, w);
+			x = getRandomInt(0 + radius * 1.1, w - radius * 1.1);
 			y = getRandomInt(0, h);
-			dx =
-				getRandomIntExclude(-20, 20) *
-				(speedHandler.speedBase / radius) *
-				speedHandler.speedMultiplier;
-			dy =
-				getRandomIntExclude(-20, 20) *
-				(speedHandler.speedBase / radius) *
-				speedHandler.speedMultiplier;
 
 			if (n < FGamount / 2) {
-				FGcirclesArray.push(
-					new Circle(x, y, dx, dy, radius, canvasContextArray[4])
-				);
+				FGcirclesArray.push(new Circle(x, y, radius, canvasContextArray[4]));
 			} else if (n < FGamount / 2 * 2) {
-				FGcirclesArray.push(
-					new Circle(x, y, dx, dy, radius, canvasContextArray[5])
-				);
+				FGcirclesArray.push(new Circle(x, y, radius, canvasContextArray[5]));
 			} else {
-				FGcirclesArray.push(
-					new Circle(x, y, dx, dy, radius, canvasContextArray[6])
-				);
+				FGcirclesArray.push(new Circle(x, y, radius, canvasContextArray[6]));
 			}
 		}
 	}
@@ -277,22 +237,15 @@ let BGcirclesArray = [];
 let MGcirclesArray = [];
 let FGcirclesArray = [];
 
-// Draws all content to all canvases
 function draw() {
-	// requestAnimationFrame(draw);
-
-	// Clear all canvases
 	clearCanvas();
 
-	// Redraw next frame on all canvases
 	for (let i = 0, iMax = BGcirclesArray.length; i < iMax; i++) {
 		BGcirclesArray[i].update();
 	}
-
 	for (let j = 0, jMax = MGcirclesArray.length; j < jMax; j++) {
 		MGcirclesArray[j].update();
 	}
-
 	for (let k = 0, kMax = FGcirclesArray.length; k < kMax; k++) {
 		FGcirclesArray[k].update();
 	}

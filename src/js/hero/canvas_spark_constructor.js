@@ -1,10 +1,8 @@
 // canvas_spark_constructor.js
 
-function Spark(x, y, dx, dy, radius, context) {
+function Spark(x, y, radius, context) {
 	this.x = x;
 	this.y = y;
-	this.dx = dx;
-	this.dy = dy;
 	this.radius = radius;
 
 	this.update = function() {
@@ -16,18 +14,5 @@ function Spark(x, y, dx, dy, radius, context) {
 		context.fillStyle = colorPrimary;
 		context.fill();
 		context.closePath();
-
-		// Detect edges of canvas
-		if (this.x + this.radius > w || this.x - this.radius < 0) {
-			this.dx = -this.dx;
-		}
-
-		if (this.y + this.radius > h || this.y - this.radius < 0) {
-			this.dy = -this.dy;
-		}
-
-		// Movement
-		Math.floor((this.x += this.dx));
-		Math.floor((this.y += this.dy));
 	};
 }

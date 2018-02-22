@@ -1,4 +1,4 @@
-.parallax__layer {
+.parallax-layer {
   position: absolute;
   top: 0;
   right: 0;
@@ -6,26 +6,4 @@
   left: 0;
   transform: translateY(var(--translateY));
   will-change: transform;
-}
-
-.parallax__logo-group {
-  .hero__logo--container {
-    transform: translateY(-60%) scale(0.1);
-    opacity: 0;
-  }
-
-  &--down {
-    .hero__logo--container {
-      transition: transform 1.2s $quart-out;
-      transform: translateY(-10%) scale(0.1);
-      opacity: 1;
-    }
-  }
-
-  &--in {
-    .hero__logo--container {
-      transition: transform 0.8s $quart-in;
-      transform: translateY(-10%) scale(1);
-    }
-  }
 }

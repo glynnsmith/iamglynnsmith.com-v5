@@ -16,7 +16,7 @@
 
 		html.wf-active > * {
 			opacity: 1;
-			transition: opacity 4s cubic-bezier(0, 1.000, 0.320, 1.000) 0.4s;
+			transition: opacity 0.5s cubic-bezier(0, 1.000, 0.320, 1.000) 0.4s;
 		}
 	</style>
 

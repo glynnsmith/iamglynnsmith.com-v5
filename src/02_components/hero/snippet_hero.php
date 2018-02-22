@@ -1,21 +1,38 @@
 <section id="hero__container" class="hero__container">
-	<canvas id="hero__canvas-layer--01" data-modifier="80" class="parallax__layer parallax__layer--01"></canvas>
-	<canvas id="hero__canvas-layer--02" data-modifier="70" class="parallax__layer parallax__layer--02"></canvas>
-	<canvas id="hero__canvas-layer--03" data-modifier="60" class="parallax__layer parallax__layer--03"></canvas>
+	<div id="hero__background" class="hero__background"></div>
+	<div data-modifier="80" class="parallax-layer">
+		<canvas id="hero__canvas-layer--01" class="hero__canvas-layer--01"></canvas>
+	</div>
+	<div data-modifier="70" class="parallax-layer">
+		<canvas id="hero__canvas-layer--02" class="hero__canvas-layer--02"></canvas>
+	</div>
+	<div data-modifier="60" class="parallax-layer">
+		<canvas id="hero__canvas-layer--03" class="hero__canvas-layer--03"></canvas>
+	</div>
 
-	<div id="hero__logo--group" data-modifier="50" class="parallax__layer parallax__logo-group">
+	<div id="hero__logo--group" data-modifier="50" class="parallax-layer parallax__logo-group">
 		<div id="hero__logo--container" class="hero__logo--container">
 			<div id="hero__logo-shadow" class="hero__logo-shadow"></div>
-			<svg xmlns="http://www.w3.org/2000/svg" width="32" height="48" viewBox="0 0 32 48" id="hero__logo" class="hero__logo hero__logo">
+			<svg xmlns="http://www.w3.org/2000/svg" width="32" height="48" viewBox="0 0 32 48" id="hero__logo" class="hero__logo">
 				<g><path d="M16 40a8 8 0 0 1-8-8H0a16 16 0 0 0 32 0h-8a8 8 0 0 1-8 8z"/><path d="M16 0a16 16 0 1 0 16 16A16 16 0 0 0 16 0zm0 24a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/></g>
 			</svg>
 		</div>
 	</div>
 
-	<canvas id="hero__canvas-layer--04" data-modifier="40" class="parallax__layer parallax__layer--04"></canvas>
-	<canvas id="hero__canvas-layer--05" data-modifier="30" class="parallax__layer parallax__layer--05"></canvas>
-	<canvas id="hero__canvas-layer--06" data-modifier="20" class="parallax__layer parallax__layer--06"></canvas>
-	<canvas id="hero__canvas-layer--07" data-modifier="10" class="parallax__layer parallax__layer--07"></canvas>
+	<div data-modifier="40" class="parallax-layer">
+		<canvas id="hero__canvas-layer--04" class="hero__canvas-layer--04"></canvas>
+	</div>
+	<div data-modifier="30" class="parallax-layer">
+		<canvas id="hero__canvas-layer--05" class="hero__canvas-layer--05"></canvas>
+	</div>
+	<div data-modifier="20" class="parallax-layer">
+		<canvas id="hero__canvas-layer--06" class="hero__canvas-layer--06"></canvas>
+	</div>
+	<div data-modifier="10" class="parallax-layer">
+		<canvas id="hero__canvas-layer--07" class="hero__canvas-layer--07"></canvas>
+	</div>
+
+	<div id="hero__foreground" class="hero__foreground"></div>
 </section>
 
 <section class="section">

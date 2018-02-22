@@ -1,6 +1,6 @@
 // canvas_circle_constructor.js
 
-function Circle(x, y, dx, dy, radius, context) {
+function Circle(x, y, radius, context) {
 	let linGrad;
 	let that = this;
 

@@ -1,37 +1,37 @@
 // hero_animation.js
 
-CustomEase.create('easeLogoIn', 'M0,0 C0,1 0.23,1 1,1');
-CustomEase.create(
-	'easeLogoForward',
-	'M0,0 C0.383,0 0.81,0 0.816,0.2 0.84,1 0.802,1 1,1'
-);
-
 // Create master timeline
 const master = new TimelineLite();
 
+const ease = {
+	in: 'M0,0 C1,0 1,0 1,1',
+	logoIn: 'M0,0 C1.2,0 0.3,1 1,1',
+	out: 'M0,0 C0,1 0.018,0.984 1,1'
+};
+
 // Controlling variables
-const logoSlideInDuration = 2.5; // Hero logo slides in
 const textFadeDelay = 2.5; // Hero UI slide delay
-const textFadeDuration = 0.85; // Hero UI slides in
+const textFadeDuration = 1.25; // Hero UI slides in
 
 // Setting initial values
-// TweenLite.set(
-// 	[
-// 		'#hero__canvas-layer--01',
-// 		'#hero__canvas-layer--02',
-// 		'#hero__canvas-layer--03',
-// 		'#hero__canvas-layer--04',
-// 		'#hero__canvas-layer--05',
-// 		'#hero__canvas-layer--06',
-// 		'#hero__canvas-layer--07'
-// 	],
-// 	{
-// 		autoAlpha: 0
-// 	}
-// );
-
 TweenLite.set(['#hero__logo-shadow', '#section__header', '#hero__footer'], {
 	autoAlpha: 0
+});
+
+for (let i = 1; i <= 7; i++) {
+	TweenLite.set(
+		`#hero__canvas-layer--0${i}`,
+		{
+			xPercent: -100
+		},
+		i / 2
+	);
+}
+
+TweenLite.set('#hero__logo--container', {
+	autoAlpha: 0,
+	yPercent: -140,
+	scale: 0.18
 });
 
 TweenLite.set('#section__header', {
@@ -46,32 +46,30 @@ TweenLite.set('#hero__footer', {
 function logoSlideIn() {
 	let tl = new TimelineLite();
 
+	tl.to('#hero__logo--container', 1.2, {
+		ease: CustomEase.create('custom', ease.out),
+		autoAlpha: 1,
+		yPercent: -10
+	});
 	tl.to(
-		'#hero__logo--group',
-		logoSlideInDuration,
+		'#hero__logo--container',
+		1.2,
 		{
-			ease: 'easeLogoIn',
-			className: '+=parallax__logo-group--down'
+			ease: CustomEase.create('custom', ease.logoIn),
+			scale: 1
 		},
-		1.5
+		2
 	);
-	return tl;
-}
-
-function logoMoveForward() {
-	let tl = new TimelineLite();
-
-	tl.to('#hero__logo--group', 1.25, {
-		ease: 'easeLogoForward',
-		className: '+=parallax__logo-group--in'
+	tl.set('#hero__background', {
+		autoAlpha: 0
 	});
 	tl.set('#hero__logo', {
-		className: '+=hero__logo--red',
+		className: '+=red',
 		immediateRender: false
 	});
-	tl.set('#hero__logo-shadow', {
-		autoAlpha: 0.3,
-		immediateRender: false
+	tl.to('#hero__logo-shadow', 1.2, {
+		ease: Power3.easeOut,
+		autoAlpha: 0.3
 	});
 	return tl;
 }
@@ -79,15 +77,12 @@ function logoMoveForward() {
 function backgroundTransition() {
 	let tl = new TimelineLite();
 
-	for (let i = 1; i <= 7; i++) {
-		tl.set(
-			`#hero__canvas-layer--0${i}`,
-			{
-				className: `+=parallax__layer--0${i}--in`,
-				immediateRender: false
-			},
-			i / 2
-		);
+	for (let j = 1; j <= 7; j++) {
+		TweenLite.to(`#hero__canvas-layer--0${j}`, (j * -1 + 45) / 16, {
+			xPercent: 0,
+			ease: CustomEase.create('custom', ease.out),
+			delay: j * (j / 1.5) / 15 + 4.4
+		});
 	}
 
 	tl.to(
@@ -103,9 +98,8 @@ function backgroundTransition() {
 	return tl;
 }
 
+master.add(logoSlideIn(), '+=1');
 master.add(backgroundTransition());
-master.add(logoSlideIn());
-master.add(logoMoveForward());
 
 // Where we start from (mostly for debugging)
 // master.progress(0.9);
