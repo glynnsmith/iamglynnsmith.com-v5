@@ -97,6 +97,37 @@ $width__full: 100%;
   border-bottom: $line-thickness solid $color;
 }
 
+$mq-responsive: true;
+$mq-breakpoints: (
+  mobile--s: 250px,
+  mobile: 300px,
+  mobile--l: 350px,
+  tablet--xs: 425px,
+  tablet--s: 500px,
+  tablet: 580px,
+  tablet--l: 630px,
+  tablet--xl: 700px,
+  desktop--s: 900px,
+  desktop: 1024px,
+  wide: 1200px,
+  wide--l: 1400px
+);
+
+$mq-show-breakpoints: (
+  mobile--s,
+  mobile,
+  mobile--l,
+  tablet--xs,
+  tablet--s,
+  tablet,
+  tablet--l,
+  tablet--xl,
+  desktop--s,
+  desktop,
+  wide,
+  wide--l
+);
+
 // MOTION
 // ======
 @function transition($transition-time: 400ms,
