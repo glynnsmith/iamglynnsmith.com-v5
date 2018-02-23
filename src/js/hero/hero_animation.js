@@ -10,7 +10,7 @@ const ease = {
 };
 
 // Controlling variables
-const textFadeDelay = 2.5; // Hero UI slide delay
+const textFadeDelay = 2.65; // Hero UI slide delay
 const textFadeDuration = 1.25; // Hero UI slides in
 
 // Setting initial values
@@ -28,7 +28,7 @@ for (let i = 1; i <= 7; i++) {
 	);
 }
 
-TweenLite.set('#hero__logo--container', {
+TweenLite.set('#hero__logo-container', {
 	autoAlpha: 0,
 	yPercent: -140,
 	scale: 0.18
@@ -46,13 +46,13 @@ TweenLite.set('#hero__footer', {
 function logoSlideIn() {
 	let tl = new TimelineLite();
 
-	tl.to('#hero__logo--container', 1.2, {
+	tl.to('#hero__logo-container', 1.2, {
 		ease: CustomEase.create('custom', ease.out),
 		autoAlpha: 1,
 		yPercent: -10
 	});
 	tl.to(
-		'#hero__logo--container',
+		'#hero__logo-container',
 		1.2,
 		{
 			ease: CustomEase.create('custom', ease.logoIn),
@@ -102,4 +102,4 @@ master.add(logoSlideIn(), '+=1');
 master.add(backgroundTransition());
 
 // Where we start from (mostly for debugging)
-// master.progress(0.9);
+master.progress(0.9);

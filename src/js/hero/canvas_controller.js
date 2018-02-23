@@ -130,7 +130,7 @@ function amountCounter() {
 
 			MGsizeMin = 1;
 			MGsizeMax = 3;
-			MGamount = 60;
+			MGamount = 100;
 
 			FGsizeMin = 2;
 			FGsizeMax = 64;
