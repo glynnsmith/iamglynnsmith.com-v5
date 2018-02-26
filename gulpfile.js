@@ -16,6 +16,7 @@ const concat = require('gulp-concat');
 // const uglify = require('gulp-uglify');
 const browserSync = require('browser-sync').create();
 const imagemin = require('gulp-imagemin');
+
 const config = require('./gulp/gulp.config.json');
 
 // tasks
@@ -87,6 +88,7 @@ gulp.task('sass', function() {
 			})
 		)
 		.pipe(cleanCSS({ compatibility: '*' }))
+		.pipe(rename({ extname: '.min.css' }))
 		.pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest(config.paths.destCSS))
 		.pipe(
@@ -107,7 +109,6 @@ function concatenate(cfg) {
 							colors.bold(colors.red('[ERROR]')),
 							colors.bold('from ' + err.plugin)
 						);
-						// log.error(err.fileName);
 						log.error(
 							err.fileName +
 								(err.loc ? `( ${err.loc.line}, ${err.loc.column} ): ` : ': ')
@@ -145,7 +146,7 @@ gulp.task('concat-all', function() {
 
 gulp.task('imagemin', () =>
 	gulp
-		.src(`${config.paths.srcImg}*`)
+		.src(`${config.paths.srcImg}**/*`)
 		.pipe(
 			plumber({
 				errorHandler: function(err) {
@@ -160,14 +161,26 @@ gulp.task('imagemin', () =>
 			})
 		)
 		.pipe(changed(config.paths.destImg))
-		.pipe(imagemin())
+		.pipe(
+			imagemin([
+				imagemin.svgo({
+					plugins: [{ removeViewBox: false }, { removeComments: true }]
+				})
+			])
+		)
 		.pipe(gulp.dest(config.paths.destImg))
 );
 
 gulp.task('browser-sync', function() {
 	browserSync.init({
 		proxy: config.browsersync.proxy,
-		notify: false
+		notify: false,
+		ghostMode: {
+			clicks: true,
+			location: true,
+			forms: true,
+			scroll: true
+		}
 	});
 });
 

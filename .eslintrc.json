@@ -30,12 +30,12 @@
 	"rules": {
 		"eqeqeq": ["warn", "allow-null"],
 		"indent": ["warn", "tab"],
-		"linebreak-style": ["error", "unix"],
+		"linebreak-style": ["warn", "unix"],
 		"quotes": ["error", "single"],
 		"semi": ["error", "always"],
 		"no-unused-vars": ["warn"],
-		"no-var": "warn",
-		"no-undef": "error",
+		"no-var": "error",
+		"no-undef": "warn",
 		"no-useless-escape": "off",
 		"no-console": [
 			"warn",
