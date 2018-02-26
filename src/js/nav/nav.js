@@ -9,6 +9,7 @@ hamburger.addEventListener(
 	function(event) {
 		event.preventDefault();
 		navMenu.classList.toggle('open');
+		hamburger.classList.toggle('open');
 	},
 	false
 );

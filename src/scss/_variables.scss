@@ -32,8 +32,7 @@ $fontsize__xlarge: 7rem;
 
 @mixin flex--inline {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
 }
 
 // BUTTON STYLES
@@ -130,19 +129,6 @@ $mq-show-breakpoints: (
 
 // MOTION
 // ======
-@function transition($transition-time: 400ms,
-$ease-type: cubic-bezier(0.2, 0.7, 0.2, 1)) {
-  @return color $transition-time $ease-type,
-    fill $transition-time $ease-type,
-    background-color $transition-time $ease-type,
-    background $transition-time $ease-type,
-    background-image $transition-time $ease-type,
-    box-shadow $transition-time $ease-type,
-    transform $transition-time $ease-type,
-    opacity $transition-time $ease-type,
-    box-shadow $transition-time $ease-type;
-}
-
 $time__quick: 80ms;
 $time__med: 170ms;
 $time__slow: 450ms;

@@ -16,12 +16,18 @@
   flex-direction: row;
   justify-content: space-between;
   padding: $air + 3 0;
-  opacity: 1;
+  opacity: 0.9999999999;
   box-shadow: 0 1px $grey__light;
 }
 
+.logo {
+  z-index: 8;
+}
+
 .hero {
+  // When nested in the hero component
   .masthead {
+    // Don't show the underline
     box-shadow: none;
   }
 }
@@ -31,24 +37,59 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  transition: left 0s;
+  transition-delay: 0s;
   z-index: 7;
-}
-
-.navigation__menu {
-  // display: none; // Debugging
 }
 
 .navigation__hamburger-button {
   display: none;
-  transition: inherit;
+  transition: opacity 1s $quart-in, transform 1s $quart-in;
 
   .navigation__hamburger-icon {
     display: inline-block;
     width: 12px;
-    height: 17px;
+    height: 20px;
+    margin-left: 4px;
     fill: $grey__dark;
-    margin-left: 6px;
+    transform: translateY(3px);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .navigation__menu-icon,
+  .navigation__close-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .navigation__menu-icon {
+    opacity: 1;
+    transform: translateX(0);
     transition: inherit;
+  }
+
+  .navigation__close-icon {
+    opacity: 0;
+    transform: translateX(100%);
+    transition: inherit;
+  }
+
+  &.open {
+    transition: opacity 1s $quart-out, transform 1s $quart-out;
+
+    .navigation__menu-icon {
+      opacity: 0;
+      transform: translateX(-100%);
+      transition: inherit;
+    }
+
+    .navigation__close-icon {
+      opacity: 1;
+      transform: translateX(0);
+      transition: inherit;
+    }
   }
 
   &:hover {
@@ -58,10 +99,13 @@
       transition: inherit;
       fill: red;
     }
+
+    .navigation__close-icon {
+      transition: inherit;
+      fill: red;
+    }
   }
 }
-
-// JS applies ".navigation__menu--open" on mobile, to "unhide"
 
 // Navigation links and states
 .logo,
@@ -70,25 +114,25 @@
   &:visited {
     color: inherit;
     text-decoration: none;
-    transition: transition($time__slow, $ease__linear);
+    transition: color $time__slow $ease__linear;
 
     .logo__icon {
       svg {
         fill: $grey__dark;
         background-color: none;
-        transition: transition($time__slow, $ease__linear);
+        transition: fill $time__slow $ease__linear;
       }
     }
   }
 
   &:hover {
     color: $color__primary;
-    transition: transition($time__quick, $ease__linear);
+    transition: color $time__quick $ease__linear;
 
     .logo__icon {
       svg {
         fill: $color__primary;
-        transition: transition($time__quick, $ease__linear);
+        transition: fill $time__quick $ease__linear;
       }
     }
   }
@@ -109,7 +153,7 @@
   }
 }
 
-// Stays at bottom of stack to overwrite HOMEPAGE mods
+// Stays at bottom of file to overwrite Homepage mods
 .navigation__link--active {
   &:link,
   &:visited {
@@ -142,48 +186,56 @@
 
   .navigation__link:link,
   .navigation__link:visited {
-    margin-left: $baseline / 2 !important;
+    margin-left: 0;
+    margin-right: 0;
   }
 
   .navigation__link:first-child {
-    margin-left: 0 !important;
-  }
-
-  .hero__header {
-    margin: $baseline * 1 0;
+    margin-left: 0;
   }
 
   .navigation__menu {
     display: flex;
-    // display: none; // DEBUG (will mess up transition)
     justify-content: space-around;
-    flex-direction: column;
-    flex-wrap: wrap;
+    flex-flow: column wrap;
     font-family: $typeface__secondary;
     font-size: $fontsize__med;
     font-weight: 500;
     position: fixed;
     width: 100%;
     height: 100%;
-    background-color: darken($grey__light, 5);
-    opacity: 0;
+    padding: 12vh 0 10vh;
+    background-color: $grey__light;
+    opacity: 0.5;
     top: 0;
-    left: 0;
+    left: 100%;
     transform: translateX(100%);
-    z-index: 4;
-    // transition: opacity $time__slow $ease__in-out, transform 0s linear;
+    z-index: 3;
+    transition: opacity $time__slow $quart-in, transform $time__slow $quart-in,
+      left 0s linear $time__slow;
+
+    .navigation__link {
+      opacity: 0;
+      transition: opacity $time__med $quart-in;
+    }
+
+    @for $i from 1 through 10 {
+      .navigation__link:nth-child(#{$i}) {
+        transition-delay: $time__med * ($i / 2);
+      }
+    }
 
     &.open {
       display: flex;
       transform: translateX(0%);
+      left: 0;
       opacity: 1;
-      transition: opacity $time__med, transform $time__med;
-    }
-  }
+      transition: opacity $time__slow $quart-out,
+        transform $time__slow $quart-out, left 0s;
 
-  @for $i from 2 through 10 {
-    .navigation__link:nth-child(#{$i}) {
-      transition-delay: $time__med * ($i / 2);
+      .navigation__link {
+        opacity: 1;
+      }
     }
   }
 }

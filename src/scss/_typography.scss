@@ -6,7 +6,6 @@
 // ==========================
 // Note: Component-specific typography is specified with each component
 
-
 // Base typography settings
 // ========================
 
@@ -21,32 +20,36 @@ html {
   text-rendering: optimizelegibility;
 }
 
-html, body {
+html,
+body {
   height: auto;
   margin: 0;
   padding: 0;
 }
 
-
 // Headers
 // =======
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-family: $typeface__secondary;
   font-weight: 400;
   padding: 0;
   margin: 0;
 }
 
-h1 {} // Reserved for .logo__text (in header)
-h2 {} // Reserved for page/page-section headers
-h3 { // Reserved for weblog post title headers
+h1 {
+} // Reserved for .logo__text (in header)
+h2 {
+} // Reserved for page/page-section headers
+h3 {
+  // Reserved for weblog post title headers
   font-size: $fontsize__med;
   margin-top: $baseline - 2;
   margin-bottom: $baseline / 1.5 + 4;
   text-transform: capitalize;
 }
-
 
 // Base styling for links
 // ======================
@@ -55,18 +58,17 @@ a:link,
 a:visited {
   text-decoration: none;
   color: $grey__dark;
-  transition: transition($time__slow, $ease__linear);
+  // transition: transition($time__slow, $ease__linear);
 }
 
-  a:hover {
-    color: $color__primary--light;
-    transition: transition($time__quick, $ease__linear);
-  }
+a:hover {
+  color: $color__primary--light;
+  // transition: transition($time__quick, $ease__linear);
+}
 
-  a:active {
-    transition: none;
-  }
-
+a:active {
+  // transition: none;
+}
 
 // Paragraphs and spans
 // ====================
@@ -79,50 +81,56 @@ p {
   line-height: $baseline;
 }
 
-  p + p {
-    margin-top: $baseline;
-  }
+p + p {
+  margin-top: $baseline;
+}
 
-  .p__run-in {
-    text-transform: uppercase;
-    font-weight: 600;
-    font-size: $fontsize__small + 0.05;
-    letter-spacing: 0.65px;
-    line-height: $baseline - 5px;
+.p__run-in {
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: $fontsize__small + 0.05;
+  letter-spacing: 0.65px;
+  line-height: $baseline - 5px;
 
-    a {
-      &:link {
-        font-weight: 600;
-      }
+  a {
+    &:link {
+      font-weight: 600;
     }
   }
+}
 
-  .p__note {
-    font-style: italic;
-    font-weight: 400;
-    color: $grey__mid;
-  }
+.p__note {
+  font-style: italic;
+  font-weight: 400;
+  color: $grey__mid;
+}
 
-p, span, li, blockquote, cite {
-  a, .section__header__link, .widget__link {
+p,
+span,
+li,
+blockquote,
+cite {
+  a,
+  .section__header__link,
+  .widget__link {
     &:link,
     &:visited {
       color: $color__primary;
       text-decoration: none;
       font-weight: 400;
-      transition: transition($time__med, $ease__linear);
+      // transition: transition($time__med, $ease__linear);
     }
 
     &:hover {
       color: $color__primary;
       box-shadow: inset 0 -3px $color__primary;
-      transition: transition($time__quick, $ease__linear);
+      // transition: transition($time__quick, $ease__linear);
     }
 
     &:active {
       color: $color__primary--light;
       box-shadow: inset 0 -3px $color__primary--light;
-      transition: none;
+      // transition: none;
     }
   }
 }
@@ -151,15 +159,14 @@ ul {
   margin-top: $baseline;
 }
 
-  li {
-    margin-bottom: $baseline / 2;
-  }
+li {
+  margin-bottom: $baseline / 2;
+}
 
 .copyright {
   font-size: $fontsize__xsmall;
   font-family: $typeface__primary;
   font-weight: 400;
-  // color: $grey__xdark;
   text-align: center;
 }
 
@@ -174,18 +181,18 @@ blockquote {
   margin-bottom: $baseline * 1 - 3;
 }
 
-  cite {
-    display: block;
-    margin: 0;
-    margin-top: 3px;
-    line-height: $baseline;
-    font-size: $fontsize__small;
-    font-style: normal;
+cite {
+  display: block;
+  margin: 0;
+  margin-top: 3px;
+  line-height: $baseline;
+  font-size: $fontsize__small;
+  font-style: normal;
 
-    &:before {
-      content: "- ";
-    }
+  &::before {
+    content: '- ';
   }
+}
 
 ::selection {
   background-color: rgba($color__primary, 0.75);
@@ -209,21 +216,21 @@ hr {
   height: 1px;
 }
 
-  .horizontal-rule {
-    display: block;
-    position: relative;
-    margin: auto;
-    margin-top: $baseline * 2.4 + 1;
-    margin-bottom: $baseline * 2.1 + 2;
-    width: 100%;
-    max-width: $width__content - ($baseline * 2);
-    text-align: center;
-    background-color: rgba($grey__light, 1);
-    height: $line-thickness;
-  }
+.horizontal-rule {
+  display: block;
+  position: relative;
+  margin: auto;
+  margin-top: $baseline * 2.4 + 1;
+  margin-bottom: $baseline * 2.1 + 2;
+  width: 100%;
+  max-width: $width__content - ($baseline * 2);
+  text-align: center;
+  background-color: rgba($grey__light, 1);
+  height: $line-thickness;
+}
 
-    .horizontal-rule--hero {
-      margin-top: $baseline - 6;
-      margin-bottom: $baseline * 2 + 6;
-      background-color: rgba($grey__light, 1);
-    }
+.horizontal-rule--hero {
+  margin-top: $baseline - 6;
+  margin-bottom: $baseline * 2 + 6;
+  background-color: rgba($grey__light, 1);
+}

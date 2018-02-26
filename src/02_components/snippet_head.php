@@ -16,14 +16,14 @@
 
 		html.wf-active > * {
 			opacity: 1;
-			transition: opacity 0.5s cubic-bezier(0, 1.000, 0.320, 1.000) 0.4s;
+			transition: opacity 1.2s cubic-bezier(0, 1.000, 0.320, 1.000) 0.4s;
 		}
 	</style>
 
 	<!-- Typekit -->
 	<script>
 	  (function(d) {
-	    var config = {
+	    let config = {
 	      kitId: 'ysa2qbk',
 	      scriptTimeout: 3000,
 	      async: true

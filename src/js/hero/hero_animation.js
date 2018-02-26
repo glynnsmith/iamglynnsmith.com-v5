@@ -102,4 +102,4 @@ master.add(logoSlideIn(), '+=1');
 master.add(backgroundTransition());
 
 // Where we start from (mostly for debugging)
-master.progress(0.9);
+// master.progress(0.9);

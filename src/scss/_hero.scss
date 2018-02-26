@@ -1,4 +1,4 @@
-.section__hero {
+.hero-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -105,9 +105,12 @@
   display: none;
 }
 
-.section__hero__footer {
+.hero__footer {
+  position: absolute;
+  bottom: 0;
   width: 100%;
-  max-width: 1200px + ($air * 4);
+  max-width: 1200px - ($air);
+  padding: 0 $air;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;

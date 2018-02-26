@@ -324,6 +324,7 @@ $mq-media-type: all !default;
         background-color: #555555;
         color: #eeeeee;
         font: small-caption;
+        font-size: 11px;
         padding: 6px 10px;
         border-bottom-right-radius: 5px;
         border-bottom-left-radius: 5px;
@@ -338,7 +339,7 @@ $mq-media-type: all !default;
         @each $show-breakpoint in $show-breakpoints {
             $width: mq-get-breakpoint-width($show-breakpoint, $breakpoints);
             @include mq($show-breakpoint, $breakpoints: $breakpoints) {
-                content: '#{$show-breakpoint} (#{$width})';
+                content: '#{$show-breakpoint} (> #{$width})';
             }
         }
     }
