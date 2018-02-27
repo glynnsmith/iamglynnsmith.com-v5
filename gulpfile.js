@@ -174,6 +174,7 @@ gulp.task('imagemin', () =>
 gulp.task('browser-sync', function() {
 	browserSync.init({
 		proxy: config.browsersync.proxy,
+		browser: ['google chrome', 'firefox developer edition', 'safari'],
 		notify: false,
 		ghostMode: {
 			clicks: true,

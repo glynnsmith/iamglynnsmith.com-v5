@@ -17,10 +17,10 @@
 		"home": {
 			"name": "home.js",
 			"src": [
-				"src/js/greensock/TimelineLite.min.js",
-				"src/js/greensock/TweenLite.min.js",
-				"src/js/greensock/CSSPlugin.min.js",
-				"src/js/greensock/CustomEase.min.js",
+				"src/js/greensock/TimelineLite.js",
+				"src/js/greensock/TweenLite.js",
+				"src/js/greensock/CSSPlugin.js",
+				"src/js/greensock/CustomEase.js",
 				"src/js/hero/canvas_circle_constructor.js",
 				"src/js/hero/canvas_spark_constructor.js",
 				"src/js/hero/canvas_controller.js",
