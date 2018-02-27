@@ -7,52 +7,53 @@ var i = 0;
 var j = 0;
 var k = 0;
 var totalLoaded = 0;
+var value = undefined;
 
-var loadBigImages = function(){
-	var imageSmall = imagesSmall[j];
-	var div = gridItems[j];
+var loadBigImages = function () {
+  var imageSmall = imagesSmall[j];
+  var div = gridItems[j];
 
   var imageBig = new Image();
 
 
 
-	imageBig.classList.add("grid__img", "grid__img--big");
+  imageBig.classList.add("grid__img", "grid__img--big");
   imageBig.srcset = imageSmall.dataset.image_m + ", " + imageSmall.dataset.image_l;
   imageBig.sizes = "600px, 1200px";
   imageBig.src = imageSmall.dataset.src;
 
-  imageBig.onload = function(){
+  imageBig.onload = function () {
     imageBig.classList.add("grid__img--loaded");
     if (j++ < max - 1) loadBigImages();
   };
 
-  imageBig.onerror = function(){
+  imageBig.onerror = function () {
     if (j++ < max - 1) loadBigImages();
   };
 
   div.appendChild(imageBig);
 };
 
-var checkSmallLoaded = function() {
-	var imageSmall = imagesSmall[i];
+var checkSmallLoaded = function () {
+  var imageSmall = imagesSmall[i];
 
-	var image = new Image();
+  var image = new Image();
 
   image.src = imageSmall.src;
 
-	image.onload = function(){
+  image.onload = function () {
     if (i++ < max - 1) checkSmallLoaded();
   };
 
-  image.onerror = function(){
+  image.onerror = function () {
     if (i++ < max - 1) checkSmallLoaded();
   };
 
   totalLoaded++;
 
-  if(totalLoaded >= max) {
-		loadBigImages();
-	}
+  if (totalLoaded >= max) {
+    loadBigImages();
+  }
 };
 
 checkSmallLoaded();
