@@ -7,15 +7,12 @@ var i = 0;
 var j = 0;
 var k = 0;
 var totalLoaded = 0;
-var value = undefined;
 
 var loadBigImages = function () {
   var imageSmall = imagesSmall[j];
   var div = gridItems[j];
 
   var imageBig = new Image();
-
-
 
   imageBig.classList.add("grid__img", "grid__img--big");
   imageBig.srcset = imageSmall.dataset.image_m + ", " + imageSmall.dataset.image_l;
