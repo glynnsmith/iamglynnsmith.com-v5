@@ -24,15 +24,15 @@ function Circle(x, y, radius, context) {
 		context === canvasContextArray[1] ||
 		context === canvasContextArray[2]
 	) {
-		this.color = BGcolors[getRandomInt(0, BGcolors.length)];
+		this.color = bg.bgColors[getRandomInt(0, bg.bgColors.length)];
 	} else if (context === canvasContextArray[3]) {
-		this.color = MGcolors[getRandomInt(0, MGcolors.length)];
+		this.color = mg.mgColors[getRandomInt(0, mg.mgColors.length)];
 	} else if (
 		context === canvasContextArray[4] ||
 		context === canvasContextArray[5] ||
 		context === canvasContextArray[6]
 	) {
-		this.color = FGcolors[getRandomInt(0, FGcolors.length)];
+		this.color = fg.fgColors[getRandomInt(0, fg.fgColors.length)];
 	}
 
 	let buildGradient = function() {

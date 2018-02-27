@@ -1,9 +1,5 @@
 <section class="hero-wrapper">
 	<section id="hero" class="hero">
-		<section id="hero__masthead" class="section">
-		  <?php snippet("snippet_masthead") ?>
-		</section>
-
 		<div id="hero__background" class="hero__background"></div>
 		<div data-modifier="80" class="parallax-layer">
 			<canvas id="hero__canvas-layer--01" class="hero__canvas-layer--01"></canvas>
@@ -39,8 +35,12 @@
 
 		<div id="hero__foreground" class="hero__foreground"></div>
 
-		<section id="hero__footer" class="hero__footer">
+		<section id="hero__footer" class="section hero__footer">
 		  <?php snippet("snippet_network_full") ?>
+		</section>
+
+		<section id="hero__masthead" class="section hero__header">
+		  <?php snippet("snippet_masthead") ?>
 		</section>
 	</section>
 </section>

@@ -78,64 +78,50 @@ function debounce(func, wait, immediate) {
 	};
 }
 
+// Finds which window dimension is largest, and uses that
+function orientation() {
+	if (w < h) {
+		return w;
+	} else {
+		return h;
+	}
+}
+
 // Watches browser dimensions and keeps appropriate amount of spheres on screen and/or moving
 function amountCounter() {
-	// Finds which window dimension is largest, and uses that
-	function orientation() {
-		if (w < h) {
-			return w;
-		} else {
-			return h;
-		}
-	}
+	if (orientation() < 560) {
+		speedHandler.speedBase = 0;
 
-	orientation();
+		bg.bgSizeMin = orientation() / 9;
+		bg.bgSizeMax = orientation() / 5;
+		bg.bgAmount = orientation() / 40;
+		mg.mgAmount = 32;
 
-	switch (orientation) {
-		case 'orientation() < 560':
-			speedHandler.speedBase = 0;
+		fg.fgSizeMin = 3;
+		fg.fgSizeMax = 35;
+		fg.fgAmount = orientation() / 12;
+	} else if (orientation() < 1000) {
+		speedHandler.speedBase = 1 * speedHandler.speedMultiplier;
 
-			BGsizeMin = orientation() / 9;
-			BGsizeMax = orientation() / 5;
-			BGamount = orientation() / 50;
+		bg.bgSizeMin = orientation() / 12;
+		bg.bgSizeMax = orientation() / 6;
+		bg.bgAmount = orientation() / 70;
+		mg.mgAmount = 50;
 
-			MGsizeMin = 0.5;
-			MGsizeMax = 2;
-			MGamount = 16;
+		fg.fgSizeMin = 2;
+		fg.fgSizeMax = 60;
+		fg.fgAmount = orientation() / 24;
+	} else {
+		speedHandler.speedBase = 1 * speedHandler.speedMultiplier;
 
-			FGsizeMin = 1;
-			FGsizeMax = 25;
-			FGamount = orientation() / 12;
-			break;
-		case 'orientation() < 1000':
-			speedHandler.speedBase = 1 * speedHandler.speedMultiplier;
+		bg.bgSizeMin = 65;
+		bg.bgSizeMax = 200;
+		bg.bgAmount = 20;
+		mg.mgAmount = 100;
 
-			BGsizeMin = orientation() / 12;
-			BGsizeMax = orientation() / 6;
-			BGamount = orientation() / 70;
-
-			MGsizeMin = 1;
-			MGsizeMax = 2;
-			MGamount = 50;
-
-			FGsizeMin = 2;
-			FGsizeMax = 40;
-			FGamount = orientation() / 16;
-			break;
-		default:
-			speedHandler.speedBase = 1 * speedHandler.speedMultiplier;
-			BGsizeMin = 65;
-			BGsizeMax = 200;
-			BGamount = 20;
-
-			MGsizeMin = 1;
-			MGsizeMax = 3;
-			MGamount = 100;
-
-			FGsizeMin = 2;
-			FGsizeMax = 64;
-			FGamount = 45;
-			break;
+		fg.fgSizeMin = 2;
+		fg.fgSizeMax = 64;
+		fg.fgAmount = 45;
 	}
 }
 
@@ -143,45 +129,45 @@ function generateCircle(setName) {
 	let x, y, radius;
 
 	if (setName === 'BG') {
-		for (let i = 0; i < BGcolorAmount; i++) {
-			BGcolors.push(BGcolorStart - i * BGcolorStep);
+		for (let i = 0; i < bg.bgColorAmount; i++) {
+			bg.bgColors.push(bg.bgColorStart - i * bg.bgColorStep);
 		}
-		for (let j = 0; j < BGamount; j++) {
-			radius = getRandomInt(BGsizeMin, BGsizeMax);
+		for (let j = 0; j < bg.bgAmount; j++) {
+			radius = getRandomInt(bg.bgSizeMin, bg.bgSizeMax);
 			x = getRandomInt(0 + radius * 1.1, w - radius * 1.1);
 			y = getRandomInt(0, h);
 
-			if (j < BGamount / 3) {
-				BGcirclesArray.push(new Circle(x, y, radius, canvasContextArray[0]));
-			} else if (j < BGamount / 3 * 2) {
-				BGcirclesArray.push(new Circle(x, y, radius, canvasContextArray[1]));
+			if (j < bg.bgAmount / 3) {
+				bg.bgCirclesArray.push(new Circle(x, y, radius, canvasContextArray[0]));
+			} else if (j < bg.bgAmount / 3 * 2) {
+				bg.bgCirclesArray.push(new Circle(x, y, radius, canvasContextArray[1]));
 			} else {
-				BGcirclesArray.push(new Circle(x, y, radius, canvasContextArray[2]));
+				bg.bgCirclesArray.push(new Circle(x, y, radius, canvasContextArray[2]));
 			}
 		}
 	} else if (setName === 'MG') {
-		for (let l = 0; l < MGamount; l++) {
-			radius = getRandomInt(MGsizeMin, MGsizeMax);
+		for (let l = 0; l < mg.mgAmount; l++) {
+			radius = getRandomInt(mg.mgSizeMin, mg.mgSizeMax);
 			x = getRandomInt(0 + radius * 1.1, w - radius * 1.1);
 			y = getRandomInt(0 + radius * 1.1, h - radius * 1.1);
 
-			MGcirclesArray.push(new Spark(x, y, radius, canvasContextArray[3]));
+			mg.mgCirclesArray.push(new Spark(x, y, radius, canvasContextArray[3]));
 		}
 	} else if (setName === 'FG') {
-		for (let m = 0; m < FGcolorAmount; m++) {
-			FGcolors.push(FGcolorStart - m * FGcolorStep);
+		for (let m = 0; m < fg.fgColorAmount; m++) {
+			fg.fgColors.push(fg.fgColorStart - m * fg.fgColorStep);
 		}
-		for (let n = 0; n < FGamount; n++) {
-			radius = getRandomInt(FGsizeMin, FGsizeMax);
+		for (let n = 0; n < fg.fgAmount; n++) {
+			radius = getRandomInt(fg.fgSizeMin, fg.fgSizeMax);
 			x = getRandomInt(0 + radius * 1.1, w - radius * 1.1);
 			y = getRandomInt(0, h);
 
-			if (n < FGamount / 2) {
-				FGcirclesArray.push(new Circle(x, y, radius, canvasContextArray[4]));
-			} else if (n < FGamount / 2 * 2) {
-				FGcirclesArray.push(new Circle(x, y, radius, canvasContextArray[5]));
+			if (n < fg.fgAmount / 2) {
+				fg.fgCirclesArray.push(new Circle(x, y, radius, canvasContextArray[4]));
+			} else if (n < fg.fgAmount / 2 * 2) {
+				fg.fgCirclesArray.push(new Circle(x, y, radius, canvasContextArray[5]));
 			} else {
-				FGcirclesArray.push(new Circle(x, y, radius, canvasContextArray[6]));
+				fg.fgCirclesArray.push(new Circle(x, y, radius, canvasContextArray[6]));
 			}
 		}
 	}
@@ -201,24 +187,34 @@ let wCached = w; // Used to check if window = resized
 let hCached = h; // Used to check if window = resized
 
 // Values for generating BG spheres (size range, quantity, color ranges)
-let BGsizeMin;
-let BGsizeMax;
-let BGamount;
-let BGcolorStart = 86;
-let BGcolorAmount = 8;
-let BGcolorStep = 1;
+let bg = {
+	bgSizeMin: 1,
+	bgSizeMax: 1,
+	bgAmount: 1,
+	bgColorStart: 86,
+	bgColorAmount: 8,
+	bgColorStep: 1,
+	bgColors: [],
+	bgCirclesArray: []
+};
 
-let MGsizeMin;
-let MGsizeMax;
-let MGamount;
+let mg = {
+	mgSizeMin: 1,
+	mgSizeMax: 3,
+	mgAmount: 30
+};
 
 // Values for generating FG spheres (size range, quantity, color ranges)
-let FGsizeMin;
-let FGsizeMax;
-let FGamount;
-let FGcolorStart = 92;
-let FGcolorAmount = 5;
-let FGcolorStep = 3;
+let fg = {
+	fgSizeMin: 1,
+	fgSizeMax: 1,
+	fgAmount: 1,
+	fgColorStart: 92,
+	fgColorAmount: 5,
+	fgColorStep: 3,
+	fgColors: [],
+	fgCirclesArray: []
+};
 
 // Initial speeds
 let speedHandler = {
@@ -229,32 +225,24 @@ let speedHandler = {
 let canvasIDArray = [];
 let canvasContextArray = [];
 
-let BGcolors = [];
-let MGcolors = [];
-let FGcolors = [];
-
-let BGcirclesArray = [];
-let MGcirclesArray = [];
-let FGcirclesArray = [];
-
 function draw() {
 	clearCanvas();
 
-	for (let i = 0, iMax = BGcirclesArray.length; i < iMax; i++) {
-		BGcirclesArray[i].update();
+	for (let i = 0, iMax = bg.bgCirclesArray.length; i < iMax; i++) {
+		bg.bgCirclesArray[i].update();
 	}
-	for (let j = 0, jMax = MGcirclesArray.length; j < jMax; j++) {
-		MGcirclesArray[j].update();
+	for (let j = 0, jMax = mg.mgCirclesArray.length; j < jMax; j++) {
+		mg.mgCirclesArray[j].update();
 	}
-	for (let k = 0, kMax = FGcirclesArray.length; k < kMax; k++) {
-		FGcirclesArray[k].update();
+	for (let k = 0, kMax = fg.fgCirclesArray.length; k < kMax; k++) {
+		fg.fgCirclesArray[k].update();
 	}
 }
 
 function init() {
-	BGcirclesArray = [];
-	MGcirclesArray = [];
-	FGcirclesArray = [];
+	bg.bgCirclesArray = [];
+	mg.mgCirclesArray = [];
+	fg.fgCirclesArray = [];
 
 	setCanvasSize();
 

@@ -1,4 +1,4 @@
-const fg = getElemID('hero__foreground');
+const fgScreen = getElemID('hero__foreground');
 const clientHeight = document.documentElement.clientHeight;
 
 document.querySelectorAll('.parallax-layer').forEach(elem => {
@@ -21,7 +21,7 @@ document.querySelectorAll('.parallax-layer').forEach(elem => {
 });
 
 const opacity = basicScroll.create({
-	elem: fg,
+	elem: fgScreen,
 	from: clientHeight / 4,
 	to: clientHeight / 1.2,
 	props: {

@@ -102,13 +102,13 @@
 // =========================================
 
 @media all and (max-width: 900px) {
-  .section__content {
-    width: calc(100% - (#{$baseline} * 4.5));
-  }
+  // .section__content {
+  //   width: calc(100% - (#{$baseline} * 4.5));
+  // }
 
-  .section__sidebar {
-    width: $baseline * 4.5;
-  }
+  // .section__sidebar {
+  //   width: $baseline * 4.5;
+  // }
 
   .widget--info-skills {
     width: $baseline * 4.5;
@@ -146,81 +146,6 @@
 // =========================================
 
 @media all and (max-width: 700px) {
-  //                           #      #
-  //     ###                   #      #
-  //    #   #                  #
-  //    #       ###    ####  #####   ##     ###   # ##    ####
-  //     ###   #   #  #        #      #    #   #  ##  #  #
-  //        #  #####  #        #      #    #   #  #   #   ###
-  //    #   #  #      #        #      #    #   #  #   #      #
-  //     ###    ###    ####     ##   ###    ###   #   #  ####
-  //
-
-  .section,
-  .section--wide {
-    padding-left: $air;
-    padding-right: $air;
-  }
-
-  .section__main {
-    display: block;
-    margin: 0;
-    margin-top: $baseline - 7;
-    padding: 0;
-    width: 100%;
-    position: relative;
-  }
-
-  .section__content {
-    position: relative;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    float: none;
-  }
-
-  .section__sidebar {
-    display: grid;
-    grid-gap: 0;
-    grid-template-columns: auto auto;
-    align-items: center;
-    margin: 0;
-    margin-left: 0;
-    margin-bottom: $baseline;
-    padding: 0;
-    float: none;
-    width: 100%;
-  }
-
-  .section__main--project {
-    .section__sidebar {
-      @include section-separator--bottom();
-      padding-top: $air / 1.5;
-      padding-bottom: $air / 1.5 - 6px;
-    }
-  }
-
-  .section__header {
-    margin-top: 0;
-  }
-
-  .section__header__text {
-    margin-top: 22px;
-    margin-bottom: 0px;
-    line-height: 54px;
-    font-size: $fontsize__large / 1.4;
-  }
-
-  .section__header__subheader {
-    margin-top: 10px;
-  }
-
-  .section__work-images {
-    figure + figure {
-      margin-top: $baseline;
-    }
-  }
-
   //             #        #                  #
   //    #   #    #        #                  #
   //    #   #             #                  #

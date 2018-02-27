@@ -16,7 +16,7 @@
   flex-direction: row;
   justify-content: space-between;
   padding: $air + 3 0;
-  opacity: 0.9999999999;
+  opacity: 1;
   box-shadow: 0 1px $grey__light;
 }
 
@@ -44,7 +44,6 @@
 
 .navigation__hamburger-button {
   display: none;
-  transition: opacity 1s $quart-in, transform 1s $quart-in;
 
   .navigation__hamburger-icon {
     display: inline-block;
@@ -66,29 +65,31 @@
 
   .navigation__menu-icon {
     opacity: 1;
-    transform: translateX(0);
-    transition: inherit;
+    transform: translateX(0%);
+    transition: opacity $time__slow $quart-in 0s,
+      transform $time__slow $quart-in 0s;
   }
 
   .navigation__close-icon {
     opacity: 0;
     transform: translateX(100%);
-    transition: inherit;
+    transition: opacity $time__slow $quart-in 0s,
+      transform $time__slow $quart-in 0s;
   }
 
   &.open {
-    transition: opacity 1s $quart-out, transform 1s $quart-out;
-
     .navigation__menu-icon {
       opacity: 0;
       transform: translateX(-100%);
-      transition: inherit;
+      transition: opacity $time__slow $quart-out 0s,
+        transform $time__slow $quart-out 0s;
     }
 
     .navigation__close-icon {
       opacity: 1;
-      transform: translateX(0);
-      transition: inherit;
+      transform: translateX(0%);
+      transition: opacity $time__slow $quart-out 0s,
+        transform $time__slow $quart-out 0s;
     }
   }
 
@@ -96,13 +97,11 @@
     color: $color__primary;
 
     .navigation__hamburger-icon {
-      transition: inherit;
-      fill: red;
+      fill: $color__primary;
     }
 
     .navigation__close-icon {
-      transition: inherit;
-      fill: red;
+      fill: $color__primary;
     }
   }
 }
@@ -203,7 +202,7 @@
     font-weight: 500;
     position: fixed;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     padding: 12vh 0 10vh;
     background-color: $grey__light;
     opacity: 0.5;
