@@ -7,7 +7,6 @@ var i = 0;
 var j = 0;
 var k = 0;
 var totalLoaded = 0;
-var test = undefined;
 
 var loadBigImages = function () {
   var imageSmall = imagesSmall[j];
