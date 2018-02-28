@@ -26,6 +26,7 @@
 				"src/js/hero/canvas_controller.js",
 				"src/js/hero/hero_animation.js",
 				"src/js/info/greeting.js",
+				"src/js/top/top.js",
 				"src/js/nav/nav.js",
 				"node_modules/basicscroll/dist/basicScroll.min.js",
 				"src/js/hero/parallax_scrolling.js"
