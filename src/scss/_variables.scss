@@ -4,15 +4,15 @@
 
 // COLOUR VALUES
 // =============
-$color__primary: hsl(350, 100%, 58%);
-$color__primary--light: lighten($color__primary, 19%);
+$color__primary: hsl(345, 100%, 56%);
+$color__primary--light: lighten($color__primary, 14%);
 $color__primary--dark: darken($color__primary, 32%);
 
-$grey__xlight: hsl(210, 12%, 86%); // For page BG
+$grey__xlight: hsl(210, 14%, 76%); // For page BG
 $grey__light: saturate(darken($grey__xlight, 8%), 1%); // Underlines
 $grey__mid: desaturate(darken($grey__xlight, 20%), 5%);
-$grey__dark: saturate(darken($grey__xlight, 52%), 2%); // Text color
-$grey__xdark: saturate(darken($grey__xlight, 65%), 12%);
+$grey__dark: saturate(darken($grey__xlight, 48%), 2%); // Text color
+$grey__xdark: saturate(darken($grey__xlight, 56%), 12%);
 
 // TYPOGRAPHY
 // ==========
@@ -136,9 +136,8 @@ $time__slow: 450ms;
 $duration-in: $time__slow * 2;
 $duration-out: $time__slow;
 
-$ease__in-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+$ease__in-out: cubic-bezier(0.4, 0, 0.2, 1);
 $ease__in-out--expo: cubic-bezier(1, 0, 1, 1);
-$ease-out: cubic-bezier(0, 0.9, 0.09, 1);
-$quart-out: cubic-bezier(0, 1, 0, 1);
-$quart-in: cubic-bezier(1, 0, 0, 1);
+$ease__quart-out: cubic-bezier(0, 1, 0, 1);
+$ease__quart-in: cubic-bezier(1, 0, 0, 1);
 $ease__linear: linear;

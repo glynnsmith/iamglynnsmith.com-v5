@@ -11,151 +11,182 @@
   margin-top: $baseline / 1.2;
   margin-bottom: $baseline;
   width: 100%;
-  transition: transition($time__med);
 }
 
-  .grid__item {
-    height: auto;
-    font-size: $fontsize__xsmall;
-    vertical-align: top;
-    overflow: hidden;
-    width: 100%;
-    transition: $time__slow $ease__in-out--expo;
+.grid__item {
+  height: auto;
+  font-size: $fontsize__xsmall;
+  vertical-align: top;
+  overflow: hidden;
+  width: 100%;
+  // transition: all $time__med $ease__in-out;
+}
+
+.grid--large {
+  max-width: $width__max;
+}
+
+.grid--small {
+  // Doesn't need max-width as should be contained within .section
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.grid__item-link {
+  position: relative;
+  top: 0;
+  left: 0;
+  display: block;
+  overflow: hidden;
+}
+
+.grid__img--shade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0;
+  transition: all $time__med $ease__in-out;
+  z-index: 2;
+}
+
+.grid__img {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: 0;
+  transition: all $time__med $ease__in-out;
+}
+
+.grid__img--small {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: 0;
+  opacity: 1;
+}
+
+.grid__img--big {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: 1;
+}
+
+.grid__img--big.grid__img--loaded {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.grid__item__text-slider {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: all $time__med $ease__in-out;
+}
+
+.grid__item__text--top {
+  padding: $air / 1.5;
+  display: block;
+  width: 100%;
+  animation: grid__item__fade-in 0.1s $ease__in-out;
+  transform: translateY(0%);
+  background-color: rgba($color__primary, 0);
+  transition: all $time__med $ease__in-out;
+}
+
+.grid__item__text {
+  background-color: rgba($grey__xdark, 1);
+  color: $grey__mid;
+  display: table;
+  padding: 6px 10px;
+  margin-bottom: 5px;
+  transition: all $time__med $ease__in-out;
+}
+
+// INTERACTIVITY
+.grid__item-link {
+  &:link,
+  &:visited {
+    transition: all $time__med $ease__in-out;
   }
 
-  .grid--large {
-    max-width: $width__max;
+  &:hover {
+    transition: all $time__med $ease__in-out;
+
+    .grid__item__text-slider {
+      transform: translateY(50%);
+      transition: all $time__med $ease__in-out;
+    }
+
+    .grid__img--shade {
+      opacity: 0.75;
+      transition: all $time__med $ease__in-out;
+    }
+
+    .grid__img {
+      transition: all $time__med $ease__in-out;
+    }
+
+    .grid__item__text--top {
+      opacity: 1;
+      transform: translateY(-50%);
+      background-color: rgba($color__primary, 1);
+      transition: all $time__med $ease__in-out;
+    }
+
+    .grid__item__text {
+      background-color: $color__primary--dark;
+      color: $color__primary;
+      transition: all $time__med $ease__in-out;
+    }
+  }
+}
+
+@include mq($until: wide) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
   }
 
   .grid--small {
-    // Doesn't need max-width as should be contained within .section
     grid-template-columns: repeat(4, 1fr);
   }
+}
 
-  .grid__item-link {
-    position: relative;
-    top: 0;
-    left: 0;
-    display: block;
-    overflow: hidden;
-    transition: transition($time__med);
+@include mq($until: desktop) {
+  .grid--small {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@include mq($until: tablet--xl) {
+  .grid--small {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@include mq($until: tablet) {
+  .grid {
+    grid-template-columns: 1fr;
   }
 
-  .grid__img--shade {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: black;
-    opacity: 0;
-    transition: transition($time__med);
-    z-index: 2;
+  .grid--small {
+    grid-template-columns: repeat(2, 1fr);
   }
+}
 
-  .grid__img {
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: auto;
-    z-index: 0;
-    transition: all $time__slow * 1 $ease__in-out;
+@include mq($until: tablet--xs) {
+  .grid--small {
+    grid-template-columns: repeat(1, 1fr);
   }
-
-    .grid__img--small {
-      position: relative;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: auto;
-      z-index: 0;
-      opacity: 1;
-    }
-
-    .grid__img--big {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: auto;
-      z-index: 1;
-    }
-
-      .grid__img--big.grid__img--loaded {
-        transform: scale(1);
-        opacity: 1;
-      }
-
-  .grid__item__text-slider {
-    position: absolute;
-    z-index: 3;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    transition: transition($time__med);
-  }
-
-  .grid__item__text--top {
-    padding: $air / 1.5;
-    display: block;
-    width: 100%;
-    animation: grid__item__fade-in 0.1s $ease__in-out;
-    transform: translateY(0%);
-    background-color: rgba($color__primary, 0);
-    transition: transition($time__med);
-  }
-
-  .grid__item__text {
-    background-color: rgba($grey__xdark, 1);
-    color: $grey__mid;
-    display: table;
-    padding: 5px;
-    padding: 7px 10px 4px;
-    margin-bottom: 5px;
-    transition: transition($time__med);
-  }
-
-
-  // INTERACTIVITY
-  .grid__item-link {
-    &:link, &:visited {
-      transition: inherit;
-    }
-
-    &:hover {
-      transition: transition($time__med);
-
-      .grid__item__text-slider {
-        transform: translateY(50%);
-        transition: transition($time__med);
-      }
-
-        .grid__item__text--top {
-          opacity: 1;
-          transition: transition($time__med);
-        }
-
-        .grid__img--shade {
-          opacity: 0.75;
-          transition: transition($time__med);
-        }
-
-        .grid__img {
-          transition: transition($time__med);
-        }
-
-          .grid__item__text--top {
-            transform: translateY(-50%);
-            background-color: rgba($color__primary, 1);
-            transition: transition($time__med);
-          }
-
-          .grid__item__text {
-            transition: transition($time__med);
-            background-color: $color__primary--dark;
-            color: $color__primary;
-          }
-      }
-    }
+}

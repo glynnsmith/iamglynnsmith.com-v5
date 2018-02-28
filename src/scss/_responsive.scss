@@ -14,80 +14,6 @@
 // =========================================
 // =========================================
 //
-//      #       #    ###    ###
-//     ##      ##   #   #  #   #
-//      #      ##   #  ##  #  ##
-//      #     # #   # # #  # # #  ####   #   #
-//      #     # #   ##  #  ##  #  #   #   # #
-//      #    #####  #   #  #   #  #   #    #
-//      #       #   #   #  #   #  #   #   # #
-//      #      ###   ###    ###   ####   #   #
-//                                #
-//                                #
-// =========================================
-// =========================================
-
-@media all and (max-width: 1400px) {
-  .grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .grid--small {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-// =========================================
-// =========================================
-//
-//      #     ###    ###    ###
-//     ##    #   #  #   #  #   #
-//      #        #  #  ##  #  ##
-//      #       #   # # #  # # #  ####   #   #
-//      #      #    ##  #  ##  #  #   #   # #
-//      #     #     #   #  #   #  #   #    #
-//      #    #      #   #  #   #  #   #   # #
-//      #    #####   ###    ###   ####   #   #
-//                                #
-//                                #
-// =========================================
-// =========================================
-
-@media all and (max-width: 1200px) {
-  .grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .grid--small {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-// =========================================
-// =========================================
-//
-//      #     ###    ###      #
-//     ##    #   #  #   #    ##
-//      #    #  ##      #    ##
-//      #    # # #     #    # #   ####   #   #
-//      #    ##  #    #     # #   #   #   # #
-//      #    #   #   #     #####  #   #    #
-//      #    #   #  #         #   #   #   # #
-//      #     ###   #####    ###  ####   #   #
-//                                #
-//                                #
-// =========================================
-// =========================================
-
-@media all and (max-width: 1024px) {
-  .grid--small {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-// =========================================
-// =========================================
-//
 //     ###    ###    ###
 //    #   #  #   #  #   #
 //    #   #  #  ##  #  ##
@@ -102,14 +28,6 @@
 // =========================================
 
 @media all and (max-width: 900px) {
-  // .section__content {
-  //   width: calc(100% - (#{$baseline} * 4.5));
-  // }
-
-  // .section__sidebar {
-  //   width: $baseline * 4.5;
-  // }
-
   .widget--info-skills {
     width: $baseline * 4.5;
   }
@@ -122,8 +40,6 @@
     }
 
     .widget__link {
-      // width: 100%;
-      // display: block;
       margin-left: 0;
     }
   }
@@ -361,22 +277,17 @@
 
     .widget--work-tags {
       display: inline-block;
-      width: auto;
       border-top: none;
       margin: 0;
       margin-bottom: 0;
-      padding-top: 0 !important;
-      padding: 0;
+      width: 100%;
+      padding: 0 !important;
     }
 
     .widget__title,
     .widget--work-tags {
       width: auto;
       line-height: $baseline;
-    }
-
-    .widget--work-tags {
-      width: 100%;
     }
 
     .widget__title {
@@ -482,10 +393,6 @@
     font-size: $fontsize__med / 1.3;
   }
 
-  .grid--small {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
   .horizontal-rule {
     margin: $baseline * 1.5 auto $baseline;
   }
@@ -520,32 +427,6 @@
     display: grid;
     grid-template-columns: repeat(3, auto);
     grid-gap: $air;
-  }
-}
-
-// =========================================
-// =========================================
-//
-//    #####   ###    ###
-//    #      #   #  #   #
-//    #      #   #  #  ##
-//    ####    ###   # # #  ####   #   #
-//        #  #   #  ##  #  #   #   # #
-//        #  #   #  #   #  #   #    #
-//    #   #  #   #  #   #  #   #   # #
-//     ###    ###    ###   ####   #   #
-//                         #
-//                         #
-// =========================================
-// =========================================
-
-@media all and (max-width: 580px) {
-  .grid {
-    grid-template-columns: 1fr;
-  }
-
-  .grid--small {
-    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -655,10 +536,6 @@
 // =========================================
 
 @media all and (max-width: 425px) {
-  .grid--small {
-    grid-template-columns: repeat(1, 1fr);
-  }
-
   .widget__icon {
     width: 33.3333333%;
   }
@@ -712,7 +589,6 @@
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: auto auto;
-    // align-items: center;
     justify-items: center;
     margin: 0;
     margin-left: 0;
@@ -765,27 +641,7 @@
 
 @media all and (max-width: 300px) {
   .subnav__text-wrapper {
-    padding-top: $baseline / 2.5;
-    padding-bottom: $baseline / 1.2;
-    padding-left: none;
-    padding-right: none;
-  }
-
-  .subnav__title,
-  .subnav__description {
-    display: none;
-  }
-
-  .subnav__icon {
-    width: $baseline / 1.5;
-    height: auto;
-  }
-
-  .subnav__text-wrapper {
-    padding-top: $baseline / 2.5;
-    padding-bottom: $baseline / 1.2;
-    padding-left: none;
-    padding-right: none;
+    padding: $baseline / 2.5 0 $baseline / 1.2 0;
   }
 
   .subnav__title,
