@@ -69,7 +69,7 @@ function logoSlideIn() {
 	});
 	tl.to('#hero__logo-shadow', 1.2, {
 		ease: Power3.easeOut,
-		autoAlpha: 0.3
+		autoAlpha: 0.25
 	});
 	return tl;
 }

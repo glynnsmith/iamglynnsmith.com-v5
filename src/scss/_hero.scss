@@ -92,7 +92,7 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: 50%;
-  transform: translate(-50%, -43%) scale(1.12);
+  transform: translate(-50%, -38%) scale(1.12);
   pointer-events: none;
 }
 
@@ -113,10 +113,6 @@
   width: 100%;
   max-width: 1200px;
   padding: 0 $baseline;
-  // margin: 0 auto;
-  // display: flex;
-  // flex-direction: column;
-  // justify-content: center;
 }
 
 .hero__footer__link {

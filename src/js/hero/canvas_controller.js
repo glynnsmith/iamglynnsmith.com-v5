@@ -191,9 +191,9 @@ let bg = {
 	bgSizeMin: 1,
 	bgSizeMax: 1,
 	bgAmount: 1,
-	bgColorStart: 86,
-	bgColorAmount: 8,
-	bgColorStep: 1,
+	bgColorStart: 82,
+	bgColorAmount: 7,
+	bgColorStep: 2,
 	bgColors: [],
 	bgCirclesArray: []
 };
@@ -209,8 +209,8 @@ let fg = {
 	fgSizeMin: 1,
 	fgSizeMax: 1,
 	fgAmount: 1,
-	fgColorStart: 92,
-	fgColorAmount: 5,
+	fgColorStart: 90,
+	fgColorAmount: 7,
 	fgColorStep: 3,
 	fgColors: [],
 	fgCirclesArray: []

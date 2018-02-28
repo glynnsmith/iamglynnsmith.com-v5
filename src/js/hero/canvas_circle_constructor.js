@@ -45,9 +45,9 @@ function Circle(x, y, radius, context) {
 		);
 
 		// Add colour stops to gradient
-		linGrad.addColorStop(0, `hsl(210, 7%, ${that.color + 8}%)`);
-		linGrad.addColorStop(0.5, `hsl(210, 7%, ${that.color}%)`);
-		linGrad.addColorStop(1, `hsl(210, 7%, ${that.color - 5}%)`);
+		linGrad.addColorStop(0, `hsl(210, 14%, ${that.color + 8}%)`);
+		linGrad.addColorStop(0.5, `hsl(210, 14%, ${that.color}%)`);
+		linGrad.addColorStop(1, `hsl(210, 14%, ${that.color - 7}%)`);
 	};
 
 	this.init = function() {

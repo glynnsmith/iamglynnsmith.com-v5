@@ -22,8 +22,8 @@ document.querySelectorAll('.parallax-layer').forEach(elem => {
 
 const opacity = basicScroll.create({
 	elem: fgScreen,
-	from: clientHeight / 4,
-	to: clientHeight / 1.2,
+	from: clientHeight / 3,
+	to: clientHeight / 1.1,
 	props: {
 		'--opacity': {
 			from: '0',

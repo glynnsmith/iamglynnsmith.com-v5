@@ -66,30 +66,30 @@
   .navigation__menu-icon {
     opacity: 1;
     transform: translateX(0%);
-    transition: opacity $time__slow $quart-in 0s,
-      transform $time__slow $quart-in 0s;
+    transition: opacity $time__slow $ease__quart-in 0s,
+      transform $time__slow $ease__quart-in 0s;
   }
 
   .navigation__close-icon {
     opacity: 0;
     transform: translateX(100%);
-    transition: opacity $time__slow $quart-in 0s,
-      transform $time__slow $quart-in 0s;
+    transition: opacity $time__slow $ease__quart-in 0s,
+      transform $time__slow $ease__quart-in 0s;
   }
 
   &.open {
     .navigation__menu-icon {
       opacity: 0;
       transform: translateX(-100%);
-      transition: opacity $time__slow $quart-out 0s,
-        transform $time__slow $quart-out 0s;
+      transition: opacity $time__slow $ease__quart-out 0s,
+        transform $time__slow $ease__quart-out 0s;
     }
 
     .navigation__close-icon {
       opacity: 1;
       transform: translateX(0%);
-      transition: opacity $time__slow $quart-out 0s,
-        transform $time__slow $quart-out 0s;
+      transition: opacity $time__slow $ease__quart-out 0s,
+        transform $time__slow $ease__quart-out 0s;
     }
   }
 
@@ -172,7 +172,6 @@
 // RESPONSIVE
 // =====================
 
-// 700px
 @include mq($until: tablet--xl) {
   .masthead {
     padding: $air 0;
@@ -210,12 +209,12 @@
     left: 100%;
     transform: translateX(100%);
     z-index: 3;
-    transition: opacity $time__slow $quart-in, transform $time__slow $quart-in,
-      left 0s linear $time__slow;
+    transition: opacity $time__slow $ease__quart-in,
+      transform $time__slow $ease__quart-in, left 0s linear $time__slow;
 
     .navigation__link {
       opacity: 0;
-      transition: opacity $time__med $quart-in;
+      transition: opacity $time__med $ease__quart-in;
     }
 
     @for $i from 1 through 10 {
@@ -229,8 +228,8 @@
       transform: translateX(0%);
       left: 0;
       opacity: 1;
-      transition: opacity $time__slow $quart-out,
-        transform $time__slow $quart-out, left 0s;
+      transition: opacity $time__slow $ease__quart-out,
+        transform $time__slow $ease__quart-out, left 0s;
 
       .navigation__link {
         opacity: 1;
