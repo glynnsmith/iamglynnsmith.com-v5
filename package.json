@@ -2,12 +2,7 @@
 	"name": "portfolio",
 	"version": "0.0.1",
 	"description": "A Kirby portfolio theme",
-	"keywords": [
-		"kirby",
-		"kirby-cms",
-		"theme",
-		"portfolio"
-	],
+	"keywords": ["kirby", "kirby-cms", "theme", "portfolio"],
 	"author": "Glynn Smith <glynn.smith@gmail.com>",
 	"repository": {
 		"type": "git",
@@ -40,6 +35,7 @@
 		"gulp-cli": "^2.0.1",
 		"gulp-concat": "^2.6.1",
 		"gulp-imagemin": "^4.1.0",
+		"gulp-mode": "^1.0.2",
 		"gulp-plumber": "^1.2.0",
 		"gulp-rename": "^1.2.2",
 		"gulp-sass": "^3.1.0",
@@ -49,7 +45,8 @@
 		"sass-mq": "^4.0.2"
 	},
 	"scripts": {
-		"start": "gulp"
+		"start": "gulp --dev",
+		"build": "gulp --build"
 	},
 	"main": "build/index.php",
 	"license": "MIT"

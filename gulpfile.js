@@ -1,5 +1,10 @@
 // plugins
 const gulp = require('gulp');
+const mode = require('gulp-mode')({
+	modes: ['dev', 'build'],
+	default: 'dev',
+	verbose: false
+});
 const changed = require('gulp-changed');
 const rename = require('gulp-rename');
 const sequence = require('gulp-sequence');
@@ -19,11 +24,14 @@ const imagemin = require('gulp-imagemin');
 
 const config = require('./gulp/gulp.config.json');
 
+let isModeBuild = mode.build();
+
 // tasks
 gulp.task('copy-root', function() {
 	return gulp
 		.src([`${config.paths.src.rootContents}**/*`], { dot: true })
-		.pipe(gulp.dest(`${config.paths.dev.root}`));
+		.pipe(mode.dev(gulp.dest(`${config.paths.dev.root}`)))
+		.pipe(mode.build(gulp.dest(`${config.paths.build.root}`)));
 });
 
 gulp.task('templates', function() {
@@ -43,13 +51,15 @@ gulp.task('templates', function() {
 			})
 		)
 		.pipe(rename({ dirname: '' }))
-		.pipe(changed(config.paths.dev.templates))
-		.pipe(gulp.dest(config.paths.dev.templates));
+		.pipe(mode.dev(changed(config.paths.dev.templates)))
+		.pipe(mode.build(changed(config.paths.build.templates)))
+		.pipe(mode.dev(gulp.dest(config.paths.dev.templates)))
+		.pipe(mode.build(gulp.dest(config.paths.build.templates)));
 });
 
 gulp.task('components', function() {
 	return gulp
-		.src(`${config.paths.src.component}**/*.php`)
+		.src(`${config.paths.src.components}**/*.php`)
 		.pipe(
 			plumber({
 				errorHandler: function(err) {
@@ -64,8 +74,10 @@ gulp.task('components', function() {
 			})
 		)
 		.pipe(rename({ dirname: '' }))
-		.pipe(changed(config.paths.dev.components))
-		.pipe(gulp.dest(config.paths.dev.components));
+		.pipe(mode.dev(changed(config.paths.dev.components)))
+		.pipe(mode.build(changed(config.paths.build.components)))
+		.pipe(mode.dev(gulp.dest(config.paths.dev.components)))
+		.pipe(mode.build(gulp.dest(config.paths.build.components)));
 });
 
 gulp.task('sass', function() {
@@ -84,8 +96,9 @@ gulp.task('sass', function() {
 				}
 			})
 		)
-		.pipe(changed(config.paths.dev.css))
-		.pipe(sourcemaps.init())
+		.pipe(mode.dev(changed(config.paths.dev.css)))
+		.pipe(mode.build(changed(config.paths.build.css)))
+		.pipe(mode.dev(sourcemaps.init()))
 		.pipe(sass())
 		.pipe(
 			autoprefixer({
@@ -93,10 +106,11 @@ gulp.task('sass', function() {
 				cascade: false
 			})
 		)
-		.pipe(cleanCSS({ compatibility: '*' }))
+		.pipe(mode.build(cleanCSS({ compatibility: '*' })))
 		.pipe(rename({ extname: '.min.css' }))
-		.pipe(sourcemaps.write('.'))
-		.pipe(gulp.dest(config.paths.dev.css))
+		.pipe(mode.dev(sourcemaps.write('.')))
+		.pipe(mode.dev(gulp.dest(config.paths.dev.css)))
+		.pipe(mode.build(gulp.dest(config.paths.build.css)))
 		.pipe(
 			browserSync.reload({
 				stream: true
@@ -124,12 +138,13 @@ function concatenate(cfg) {
 				}
 			})
 		)
-		.pipe(sourcemaps.init())
+		.pipe(mode.dev(sourcemaps.init()))
 		.pipe(concat(cfg.name))
 		.pipe(babel({ presets: ['es2015'] }))
-		.pipe(uglify())
-		.pipe(sourcemaps.write('.'))
-		.pipe(gulp.dest(config.paths.dev.js));
+		.pipe(mode.build(uglify()))
+		.pipe(mode.dev(sourcemaps.write('.')))
+		.pipe(mode.dev(gulp.dest(config.paths.dev.js)))
+		.pipe(mode.build(gulp.dest(config.paths.build.js)));
 }
 
 gulp.task('concat-home', function() {
@@ -164,7 +179,8 @@ gulp.task('imagemin', () =>
 				}
 			})
 		)
-		.pipe(changed(config.paths.dev.img))
+		.pipe(mode.dev(changed(config.paths.dev.img)))
+		.pipe(mode.build(changed(config.paths.build.img)))
 		.pipe(
 			imagemin([
 				imagemin.svgo({
@@ -172,30 +188,45 @@ gulp.task('imagemin', () =>
 				})
 			])
 		)
-		.pipe(gulp.dest(config.paths.dev.img))
+		.pipe(mode.dev(gulp.dest(config.paths.dev.img)))
+		.pipe(mode.build(gulp.dest(config.paths.build.img)))
 );
 
 gulp.task('browser-sync', function() {
-	browserSync.init({
-		proxy: config.browsersync.proxy,
-		browser: ['google chrome', 'firefox developer edition', 'safari'],
-		notify: false,
-		ghostMode: {
-			clicks: true,
-			location: true,
-			forms: true,
-			scroll: true
-		}
-	});
+	if (isModeBuild) {
+		browserSync.init({
+			proxy: config.browsersync.proxyBuild,
+			browser: ['google chrome', 'firefox developer edition', 'safari'],
+			notify: false,
+			ghostMode: {
+				clicks: true,
+				location: true,
+				forms: true,
+				scroll: true
+			}
+		});
+	} else {
+		browserSync.init({
+			proxy: config.browsersync.proxyDev,
+			browser: ['google chrome', 'firefox developer edition', 'safari'],
+			notify: false,
+			ghostMode: {
+				clicks: true,
+				location: true,
+				forms: true,
+				scroll: true
+			}
+		});
+	}
 });
 
 gulp.task(
-	'dev',
+	'update-files',
 	sequence(
 		'copy-root',
 		['templates', 'components'],
 		'sass',
-		'concat-all',
+		['concat-home', 'concat-info', 'concat-top'],
 		'imagemin'
 	)
 );
@@ -222,4 +253,4 @@ gulp.task('watch', ['browser-sync'], function() {
 		.on('change', browserSync.reload);
 });
 
-gulp.task('default', sequence('dev', 'watch'));
+gulp.task('default', sequence('update-files', 'watch'));

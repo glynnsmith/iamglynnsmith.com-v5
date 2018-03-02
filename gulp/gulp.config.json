@@ -59,6 +59,7 @@
 		}
 	},
 	"browsersync": {
-		"proxy": "localhost:3000/portfolio/dev"
+		"proxyDev": "localhost:3000/portfolio/dev",
+		"proxyBuild": "localhost:3000/portfolio/build"
 	}
 }
