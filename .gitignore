@@ -1,12 +1,8 @@
 /node_modules/
-/build/site/snippets/
-/build/site/templates/
-/build/site/accounts/
-/build/assets/
-/build/panel/
-/build/kirby/
-/build/content/
-/build/thumbs/
+/src/root/
+/src/docs/
+/build/
+/dev/
 .eslintcache
 .DS_Store
 *.map
