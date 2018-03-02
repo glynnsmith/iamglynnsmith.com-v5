@@ -1,0 +1,57 @@
+Title: Lumicon
+
+----
+
+Description: Tactical word puzzle game
+
+----
+
+Tags: videogame design,sound effects,music,illustration
+
+----
+
+Text: 
+
+<blockquote>"I don’t like playing Lumicon. It’s too good at creating a frantic experience."<cite><a href="http://www.ztgd.com/reviews/lumicon/">ZTGD</a> (7.8 out of 10)</cite></blockquote>
+
+<span class="p__run-in">This was my favourite Lumicon review</span> and hit exactly what we were aiming for. We wanted to create a game built on a somewhat simple premise, yet give it depth, and make it stand out from its competitors - a game that could be thrilling by being "masterable", but also brutally unforgiving if you're unlucky enough to muck something up.
+
+<div class='embed-container embed--portrait'>
+<iframe src='https://player.vimeo.com/video/43669934?color=ffffff&title=0&byline=0&portrait=0' frameborder='0' allowFullScreen></iframe>
+</div>
+
+Designed and built by both me (videogame design, visual & audio design, music) and [Nial Giacomelli](https://twitter.com/measuredweighed) (videogame design, programming), Lumicon is a tactical word game for iOS, in which players must battle time to form words, trigger combos, gain powerups and score points.
+
+I learned a ton from this project. A lot of the work was in making animation mock-ups in Flash that Nial would then animate with code. This was a bit of a MacGuyvered workflow that proved very effective in the absence of an engine that I could directly animate within.
+
+We also built a musical system based on loops that, when you enter different parts of the game's UI, certain elements would be brought in whilst others would be removed, creating a continuous musical bedding that sounds distinct per each UI view.
+
+<div class="embed--soundcloud">
+<iframe width="100%" height="385" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/358885219&amp;color=%23ff294d&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true"></iframe>
+</div>
+
+<p>We were rather chuffed with our reviews:</p>
+<p></p>
+<blockquote>"Which is why discovering that Lumicon is unforgivingly difficult right off the bat was like a smack into a refreshing brick wall."<cite><a href="http://kotaku.com/lumicon/">Kotaku</a> (Gaming App of the Day Award)</cite></blockquote>
+
+<blockquote>"If you like word games, this is definitely one of the best looking ones on the App Store."<cite><a href="http://beautifulpixels.com/iphone/lumicon-a-gorgeous-tactical-word-game/">Beautiful Pixels</a></cite></blockquote>
+
+<blockquote>"...a tilt-a-whirl of tossing, screaming, stomach-flipping nostalgia."<cite><a href="http://www.148apps.com/reviews/lumicon-review/">148 Apps</a> (4/5 stars)</cite></blockquote>
+
+<blockquote>"If you’re a word game lover, you will want to give Lumicon a try."<cite><a href="http://appadvice.com/appnn/2012/06/quickadvice-lumicon">App Advice</a></cite></blockquote>
+
+----
+
+Client: Self
+
+----
+
+Date: 2016-05-05
+
+----
+
+Bgcolor: #131313
+
+----
+
+Bgtype: section__work-images--dark

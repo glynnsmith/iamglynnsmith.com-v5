@@ -1,0 +1,46 @@
+Title: Redtech Software Solutions
+
+----
+
+Description: High quality software
+
+----
+
+Tags: website design,illustration,website development
+
+----
+
+Text: 
+
+<span class="p__run-in">Having completed a handful of client projects in collaboration with Redtech Software Solutions</span>, the time came to give the dusty, _old_ Redtech site a bit of an overhaul to bring it in-line with the quality of work it does for it's own clients.
+
+We tackled this in a number of ways: by cleaning everything up, boiling everything down to the essentials, and by making it visually sharp. A responsive, single page site was designed and built, with sticky navigation to help the user swoosh up and down the page.
+
+The first highlight was in the animations. After working through a number of methods and techniques, I drew up some inline SVG elements and animated them via CSS, resulting in a minimised file-size and maximised browser support. It's silky-smooth, and requires no dependencies. It was a fantastic learning experience, and I was very happy with how they turned out.
+
+<div class="media__embed">
+<p data-height="650" data-theme-id="31396" data-slug-hash="YwZZrM" data-default-tab="result" data-user="iamglynnsmith" data-embed-version="2" data-pen-title="Animated Icons with SVG & CSS" class="codepen">See the Pen <a href="https://codepen.io/iamglynnsmith/pen/YwZZrM/">Animated Icons with SVG & CSS</a> by Glynn Smith (<a href="https://codepen.io/iamglynnsmith">@iamglynnsmith</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+</div>
+
+The second project highlight is the logo - a monogram initial "R" that represents code in an IDE/text editor. To the lay-person, it's a clean, interesting-looking R. If you've got that insider coder knowledge, you get the extended/hidden meaning too. A nice touch came from being able to incorporate the logo into one of the animations so, if it isn't quite clear, it's visually explained too.
+
+The third highlight was working on the range of icons for the "What We've Built" section, each drawn up to represent the section they illustrate. I enjoy icon work immensely, and being able to draw these proved to be a great way to learn all about the SVG format. This was an SVG-"heavy" project that enabled me to learn all about best practices, tools and the benefits/drawbacks of using this format of graphics.
+
+If you'd like to see the entire project, please do head on over to the <a href="http://redtechsolutions.co.uk/" target="blank">live site</a> and check it out.
+
+----
+
+Client: Redtech Software Solutions
+
+----
+
+Date: 2016-05-10
+
+----
+
+Bgcolor: hsl(210,12%,84%)
+
+----
+
+Bgtype: section__work-images--light

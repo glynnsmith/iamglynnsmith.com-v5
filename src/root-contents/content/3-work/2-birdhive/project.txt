@@ -1,0 +1,39 @@
+Title: Birdhive
+
+----
+
+Description: Creative inspiration
+
+----
+
+Tags: website design,illustration
+
+----
+
+Text: 
+
+<span class="p__note">Please note: The mascot image above is a redesign, so to speak, of the assets created for the project below. I've always loved these guys, and fancied a go at updating them a little. So I redrew them. I feel dizzy with power.</span>
+
+<span class="p__run-in">BirdHive was a way for people to share links to creative projects</span> through Twitter, designed and built as a community website that would take Twitter posts tagged with a specific hashtag (#bh) and post them to the site, with poster credits, tags, etc.
+
+This was a great project we built in the early days of Twitter, which gave me a taste of working with a community. It also afforded me the opportunity to employ my illustration skills, creating charming graphic work that instructed the user on how to use the site.
+
+----
+
+Client: Community-based
+
+----
+
+Date: 2016-05-06
+
+----
+
+Bgcolor: hsl(210,12%,80%)
+
+----
+
+Coverimage: hero.png
+
+----
+
+Bgtype: section__work-images--light

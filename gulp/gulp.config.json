@@ -1,17 +1,30 @@
 {
 	"paths": {
-		"src": "src/",
-		"srcTemplate": "src/01_templates/",
-		"srcComponent": "src/02_components/",
-		"srcSCSS": "src/scss/",
-		"srcJS": "src/js/",
-		"srcImg": "src/img/",
-		"destPHP": "build/site/",
-		"destTemplate": "build/site/templates/",
-		"destComponent": "build/site/snippets/",
-		"destCSS": "build/assets/css/",
-		"destJS": "build/assets/js/",
-		"destImg": "build/assets/img/"
+		"src": {
+			"root": "src/",
+			"rootContents": "src/root-contents/",
+			"templates": "src/01_templates/",
+			"components": "src/02_components/",
+			"scss": "src/scss/",
+			"js": "src/js/",
+			"img": "src/img/"
+		},
+		"dev": {
+			"root": "dev/",
+			"templates": "dev/site/templates/",
+			"components": "dev/site/snippets/",
+			"css": "dev/assets/css/",
+			"js": "dev/assets/js/",
+			"img": "dev/assets/img/"
+		},
+		"build": {
+			"root": "build/",
+			"templates": "build/site/templates/",
+			"components": "build/site/snippets/",
+			"css": "build/assets/css/",
+			"js": "build/assets/js/",
+			"img": "build/assets/img/"
+		}
 	},
 	"concatPaths": {
 		"home": {
@@ -46,6 +59,6 @@
 		}
 	},
 	"browsersync": {
-		"proxy": "localhost:3000/portfolio/build"
+		"proxy": "localhost:3000/portfolio/dev"
 	}
 }

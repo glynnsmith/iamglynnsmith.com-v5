@@ -1,0 +1,33 @@
+Title: TrackRecord 2
+
+----
+
+Description: Time-tracking software
+
+----
+
+Tags: website design,illustration
+
+----
+
+Text: 
+
+<span class="p__run-in">I was contracted by [SI Digital](http://sidigital.co/) (Formerly Excited Atom)</span> to redesign and improve the upcoming release of their *TrackRecord 2* time-tracking software.
+
+This project was a blast, and gave me the opportunity to touch almost all aspects of this app's design, including UI work, tiny sidebar icons, and a range of app icons, keeping it all as clean and characterful as I could.
+
+----
+
+Client: SI Digital (Formerly Excited Atom)
+
+----
+
+Date: 2016-05-07
+
+----
+
+Bgcolor: hsl(210,12%,80%)
+
+----
+
+Bgtype: section__work-images--light

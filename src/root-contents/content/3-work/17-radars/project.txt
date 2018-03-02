@@ -1,0 +1,41 @@
+Title: Military Radars
+
+----
+
+Description: Assorted military radar units
+
+----
+
+Summary: 
+
+----
+
+Text: 
+
+<span class="p__run-in">A set of 3D models for various military radar systems</span>, typically used to track targets for separate weapons platforms.
+
+The first is the AN MPQ-55, an Improved Continuous Wave Acquisition Radar used in conjunction with the Raytheon MIM-23 HAWK missile battery.
+
+The second is the SON-9 "Fire Can", a type of Russian/Soviet fire director radar for 57 mm and 100 mm anti-aircraft guns. It was widely employed during the Vietnam war.
+
+The third is the Skyguard Radar, used in conjunction with two twin 35mm gun platforms in low-altitude flight zones.
+
+Built for military simulation applications, contracted by Simthetiq, who provide best-in-class simulation services for the civil aviation, defense and industrial fields.
+
+This project required several LOD meshes, a damaged variant (not shown), and a texture set including diffuse, specular and ambient occlusion maps.
+
+----
+
+Client: Simthetiq
+
+----
+
+Date: 
+
+----
+
+Tags: 3d art
+
+----
+
+Bgtype: section__work-images--dark

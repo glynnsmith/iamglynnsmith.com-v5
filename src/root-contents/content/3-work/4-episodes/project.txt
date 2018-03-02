@@ -1,0 +1,51 @@
+Title: Episodes
+
+----
+
+Description: TV scheduling
+
+----
+
+Tags: illustration
+
+----
+
+Text: 
+
+<span class="p__run-in">In my childhood, the television had four channels.</span> You had to rotate a dial to tune your TV set to each channel. The only button on the box was the power button.
+
+Today's vast wealth of 4K HD, 3D, HDR, voice-activated, on-demand, digitally distributed entertainment options comes with one rather large caveat: How do you keep track of everything you'd like to watch?
+
+Enter _Episodes_. 
+<br />
+<blockquote>With a single tap, Episodes will show you your favourite shows, when they're next on TV and whether or not you've missed an episode. Drill down for information on air dates, episode listings, individual episode summaries and even screen captures.</blockquote>
+
+UglyApps approached me for their app icon design. They already had a solid app, but were struggling to arrive at an icon that represented their software.
+
+I started by presenting a couple of pages of initial sketches of TV sets old and new. We whittled those down to one that really caught UglyApp's imagination. I traced and vectorised that particular set, made on/off variants, and finished it off with a range of colourways.
+
+At this stage, we gave the icon a test drive on an iOS device, along with the usual motley crew of other app's icons present to compare and contrast against. It became apparent that the asymmetrical nature of the icon design made it sit strangely and made it feel off-balance. This was fixed by rotating the TV controls and placing them under the screen, and increasing the size of the TV screen to sit central to the icon.
+
+After the rapturous applause and clinking of champagne glasses had quietened down, I polished the icon up and added the tick to the screen (a main feature of the app is being able to mark shows as "watched", denoted with a tick).
+
+I loved working on this project, and, let's be honest, I'm never going to turn down the opportunity to draw a bunch of cute, boxy, old-worldy TV sets.
+
+Beautiful Pixels gave it a nice write-up:
+<br />
+<blockquote>"The icon is by far one of the greatest icons we have ever seen. It looks like an old blue CRT television set with detailed controls on the front and a grill on the back. It even has pixellated noise on the screen behind the checkmark you use to mark shows watched inside the app. The icon screams pure class and we deem it as one of the best icons on the App Store today. Episodes is available for (link: https://itunes.apple.com/app/episodes/id415127844?mt=8 text: free) as a universal app on the App Store. It is (link: http://failgunner.com/ text: Mikhail’s) current favourite icon as well."<cite><a href="https://beautifulpixels.com/mac/best-of-2012-app-icons/">Beautiful Pixels - Best of Year</a></cite></blockquote>
+
+----
+
+Client: UglyApps
+
+----
+
+Date: 2016-04-06
+
+----
+
+Bgcolor: #262626
+
+----
+
+Bgtype: section__work-images--dark

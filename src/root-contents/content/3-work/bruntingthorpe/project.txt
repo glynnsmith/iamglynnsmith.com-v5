@@ -1,0 +1,35 @@
+Title: Bruntingthorpe
+
+----
+
+Description: Auto solutions, events & proving grounds
+
+----
+
+Tags: website design
+
+----
+
+Text: 
+
+<span class="p__run-in">I co-ran [game-art.net](http://www.game-art.net) for several years</span> with the fantastically talented [Jeroen Maton](https://www.artstation.com/art/doylle), and a staff roster of professional game arts that have gone on to work at some of the most prestigious game development studios around the world, including Rockstar, DICE, Bungie, Frictional Games, Turtle Rock Studios, Guerrilla Games, TT Games, and more.
+
+It was a site that saw huge progression under our term there. We organised weekly events, interviews with prominent arts, we put together some of the biggest competitions and events the industry had seen, featuring on all the major videogame news sites regularly.
+
+The size of our events, and the size of our community at that time, were so vast that we needed tools and forum features to help organise, moderate and run future endeavours. I put this redesign together as part of the expansion discussion being held.
+
+----
+
+Client: Bruntingthorpe
+
+----
+
+Date: 2016-05-10
+
+----
+
+Bgcolor: hsl(210,12%,80%)
+
+----
+
+Bgtype: section__work-images--light

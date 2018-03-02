@@ -1,0 +1,39 @@
+Title: Low Poly Cars
+
+----
+
+Description: Vehicles for microsimulation
+
+----
+
+Tags: 3d art
+
+----
+
+Text: 
+
+<span class="p__run-in">Used in 80 countries worldwide, Paramics is a traffic simulation platform </span> able to scale from single intersections, congested freeways, through to modelling the traffic systems for entire cities. Paramics serves thousands of customers, including commercial consultants, cutting edge transportation researchers and state-funded Government agencies.
+
+I was contracted to build them a range of low polygon vehicles, including cars, vans, family vehicles and SUVs, each with several colour options, that could be used to populate their simulated roads.
+
+My workflow involved hunting down parked cars on the street that would be suitable for texture photography sources - Each car had to be clean, and as close to white as possible, to allow the colouring process to remain quick and easy.
+
+Three good photographs for each car was all I needed - front, side, rear - and sometimes a single shot of the wheel detail to reduce angular distortion. Then it was a case of cleaning them up, removing any distortion, and fitting them to the UV map.
+
+Working on this project was very enjoyable, and I was lucky enough to work on several subsequent Paramics projects, including the (link: ../people text: pedestrian assets) they'd use for modelling foot traffic simulations.
+
+----
+
+Client: Quadstone Paramics
+
+----
+
+Date: 2016-05-07
+
+----
+
+Bgcolor: #222222
+
+----
+
+Bgtype: section__work-images--dark

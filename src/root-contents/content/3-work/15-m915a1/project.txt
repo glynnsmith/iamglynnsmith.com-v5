@@ -1,0 +1,35 @@
+Title: M915a1, M916 & M920
+
+----
+
+Description: US Army line haul tractor trucks
+
+----
+
+Tags: 3d art
+
+----
+
+Text: 
+
+<span class="p__run-in">A set of fully articulated 3D models of the M9x class of trucks</span> used by the United States Army for haulage. The M915a1 is a tractor truck used for heavy loads, the M916 was used for light equipment transport via roads and cross-country routes, and the M920 is a tractor truck able to traverse off-road routes.
+
+Built for military simulation applications, contracted by Simthetiq, who provide best-in-class simulation services for the civil aviation, defense and industrial fields.
+
+This project required several LOD meshes, a damaged variant (not shown), and a texture set including diffuse, specular and ambient occlusion maps.
+
+----
+
+Client: Simthetiq
+
+----
+
+Date: 2016-05-23
+
+----
+
+Bgcolor: #383838
+
+----
+
+Bgtype: section__work-images--dark

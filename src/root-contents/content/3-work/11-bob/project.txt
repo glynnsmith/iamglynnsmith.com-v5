@@ -1,0 +1,35 @@
+Title: The Man with the Beard of Bees
+
+----
+
+Description: Otherwise known as B.O.B.
+
+----
+
+Tags: 3d art
+
+----
+
+Text: 
+
+<span class="p__run-in">Inspired by a line from an [Aquabats song](https://www.youtube.com/watch?v=OW9ozMpAkNg)</span>, this guy designed himself. The dreaded _Man With a Beard of Bees_ - with stripy jumper and a shed-made jetpack.
+
+I'm no character artist, but I very much enjoyed building this guy up from quirky, strange ideas I'd conjured from listening to ska. Not quite finished, but we'll get there one day.
+
+Specs: <10k tris (including bees), 1 x 1024px body texture, 1 x 512px face texture
+
+----
+
+Client: Self
+
+----
+
+Date: 2016-05-19
+
+----
+
+Bgcolor: #222
+
+----
+
+Bgtype: section__work-images--dark

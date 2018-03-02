@@ -1,0 +1,35 @@
+Title: Low Poly People
+
+----
+
+Description: Humans for microsimulation
+
+----
+
+Tags: 3d art
+
+----
+
+Text: 
+
+<span class="p__run-in">In tandem with the (link: ../cars text: road vehicle assets) I created for Paramics,</span> I was tasked with building a range of low polygon people, of various gender, race and size, with several variations in clothes style and colour.
+
+These pedestrians are used in unison with road traffic simulations to discern whether crossing points, walkway sizes, intersections and crossing wait times might become issues when planning a road's overall performance and impact, right down to the optimal walk/don't walk timings of crossing lights and zebra crossings.
+
+The simulation engine didn't support rigged meshes, so, to support animated walk cycles, I rigged each mesh to an IK bone system that I animated. I then exported each frame of the animated mesh out as a separate mesh, which the simulation engine cycles through to give the appearance of an animated pedestrian.
+
+----
+
+Client: Quadstone Paramics
+
+----
+
+Date: 2016-05-23
+
+----
+
+Bgcolor: #222222
+
+----
+
+Bgtype: section__work-images--dark

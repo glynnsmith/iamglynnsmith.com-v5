@@ -1,0 +1,35 @@
+Title: We Are Not People
+
+----
+
+Description: Indie videogame dev website
+
+----
+
+Tags: website design,illustration,website development
+
+----
+
+Text: 
+
+<span class="p__run-in">Fresh out of uni,</span> *We Are Not People* was meant to be an early indie videogame development collective, a project brainstormed by me and a handful of creative friends. Like anyone fresh out of uni, I had no experience with the world and thought I had the chops to put together something serious.
+
+Alas, nearly, but not quite.
+
+I got super-excited about the project and put together some ideas for characters, logos and a website. It wasn't meant to be, but I thought the work was neat enough to show here.
+
+----
+
+Client: Self
+
+----
+
+Date: 2016-05-01
+
+----
+
+Bgcolor: hsl(210,12%,80%)
+
+----
+
+Bgtype: section__work-images--dark
