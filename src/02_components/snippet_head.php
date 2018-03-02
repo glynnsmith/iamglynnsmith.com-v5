@@ -32,17 +32,6 @@
 	  })(document);
 	</script>
 
-	<!-- Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-32800574-1"></script>
-	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
-
-	  gtag('config', 'UA-32800574-1');
-	</script>
-
-
 	<!-- Favicons -->
 	<link rel="apple-touch-icon" sizes="180x180" href="<?php echo kirby()->urls()->index() ?>/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="<?php echo kirby()->urls()->index() ?>/favicon-32x32.png">
