@@ -2,18 +2,19 @@
 	"name": "portfolio",
 	"version": "0.0.1",
 	"description": "A Kirby portfolio theme",
-	"keywords": ["kirby", "kirby-cms", "theme", "portfolio"],
+	"keywords": [
+		"kirby",
+		"kirby-cms",
+		"theme",
+		"portfolio"
+	],
 	"author": "Glynn Smith <glynn.smith@gmail.com>",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/glynnsmith/iamglynnsmith.com-v5.git"
 	},
-	"dependencies": {
-		"postcss": "^6.0.19",
-		"stylelint": "^8.4.0"
-	},
+	"dependencies": {},
 	"devDependencies": {
-		"@cedx/gulp-php-minify": "^7.1.1",
 		"ansi-colors": "^1.1.0",
 		"babel-core": "^6.26.0",
 		"babel-eslint": "^8.2.2",
@@ -42,7 +43,9 @@
 		"gulp-sequence": "^1.0.0",
 		"gulp-sourcemaps": "^2.6.4",
 		"gulp-uglify": "^3.0.0",
-		"sass-mq": "^4.0.2"
+		"postcss": "^6.0.19",
+		"sass-mq": "^4.0.2",
+		"stylelint": "^9.1.1"
 	},
 	"scripts": {
 		"start": "gulp --dev",
