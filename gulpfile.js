@@ -233,10 +233,10 @@ gulp.task(
 
 gulp.task('watch', ['browser-sync'], function() {
 	gulp
-		.watch(`${config.paths.src.template}**/*.php`, ['templates'])
+		.watch(`${config.paths.src.templates}**/*.php`, ['templates'])
 		.on('change', browserSync.reload);
 	gulp
-		.watch(`${config.paths.src.component}**/*.php`, ['components'])
+		.watch(`${config.paths.src.components}**/*.php`, ['components'])
 		.on('change', browserSync.reload);
 	gulp.watch(`${config.paths.src.scss}*.scss`, ['sass']);
 	gulp
