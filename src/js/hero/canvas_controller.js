@@ -8,27 +8,15 @@ function getElemID(id) {
 	return document.getElementById(id);
 }
 
-function getCanvasSize() {
-	w =
-		window.innerWidth ||
-		document.documentElement.clientWidth ||
-		document.getElementsByTagName('body')[0].clientWidth;
-	h = 600;
-}
-
 function setCanvasSize() {
+	w = screen.width;
+	h = screen.height;
+
 	canvasIDArray.map(obj => {
 		obj.width = w;
 		obj.height = h;
 		return obj;
 	});
-}
-
-function setSizeCache() {
-	wCached =
-		window.innerWidth ||
-		document.documentElement.clientWidth ||
-		document.getElementsByTagName('body')[0].clientWidth;
 }
 
 function clearCanvas() {
@@ -91,8 +79,6 @@ function debounce(func, wait, immediate) {
 
 // Finds which window dimension is largest, and uses that
 function orientation() {
-	// console.log('- Getting orientation');
-
 	if (w < h) {
 		return w;
 	} else {
@@ -102,7 +88,6 @@ function orientation() {
 
 // Watches browser dimensions and keeps appropriate amount of spheres on screen and/or moving
 function amountCounter() {
-	// console.log('- Calculating circle attributes');
 	if (orientation() < 560) {
 		bg.bgSizeMin = orientation() / 9;
 		bg.bgSizeMax = orientation() / 5;
@@ -226,11 +211,7 @@ function init() {
 	canvasContextArray = [];
 	getCanvasIds();
 
-	getCanvasSize();
-
 	setCanvasSize();
-
-	setSizeCache();
 
 	bg.bgCirclesArray = [];
 	mg.mgCirclesArray = [];
@@ -260,15 +241,3 @@ function draw() {
 }
 
 init();
-
-// Respawn circles on browser width resize
-window.addEventListener(
-	'resize',
-	debounce(function() {
-		getCanvasSize();
-
-		if (w !== wCached) {
-			init();
-		}
-	}, 1000)
-);
