@@ -1,17 +1,17 @@
 <section class="hero-wrapper">
 	<section id="hero" class="hero">
 		<div id="hero__background" class="hero__background"></div>
-		<div data-modifier="80" class="parallax-layer">
+		<div data-modifier="20" class="parallax-layer">
 			<canvas id="hero__canvas-layer--01" class="hero__canvas-layer--01"></canvas>
 		</div>
-		<div data-modifier="70" class="parallax-layer">
+		<div data-modifier="16" class="parallax-layer">
 			<canvas id="hero__canvas-layer--02" class="hero__canvas-layer--02"></canvas>
 		</div>
-		<div data-modifier="60" class="parallax-layer">
+		<div data-modifier="12" class="parallax-layer">
 			<canvas id="hero__canvas-layer--03" class="hero__canvas-layer--03"></canvas>
 		</div>
 
-		<div id="hero__logo-group" data-modifier="50" class="parallax-layer hero__logo-group">
+		<div id="hero__logo-group" data-modifier="10" class="parallax-layer hero__logo-group">
 			<div id="hero__logo-container" class="hero__logo-container">
 				<div id="hero__logo-shadow" class="hero__logo-shadow"></div>
 				<svg xmlns="http://www.w3.org/2000/svg" width="32" height="48" viewBox="0 0 32 48" id="hero__logo" class="hero__logo">
@@ -20,16 +20,16 @@
 			</div>
 		</div>
 
-		<div data-modifier="40" class="parallax-layer">
+		<div data-modifier="6" class="parallax-layer">
 			<canvas id="hero__canvas-layer--04" class="hero__canvas-layer--04"></canvas>
 		</div>
-		<div data-modifier="30" class="parallax-layer">
+		<div data-modifier="4" class="parallax-layer">
 			<canvas id="hero__canvas-layer--05" class="hero__canvas-layer--05"></canvas>
 		</div>
-		<div data-modifier="20" class="parallax-layer">
+		<div data-modifier="2" class="parallax-layer">
 			<canvas id="hero__canvas-layer--06" class="hero__canvas-layer--06"></canvas>
 		</div>
-		<div data-modifier="10" class="parallax-layer">
+		<div data-modifier="1" class="parallax-layer">
 			<canvas id="hero__canvas-layer--07" class="hero__canvas-layer--07"></canvas>
 		</div>
 

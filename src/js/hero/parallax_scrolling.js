@@ -11,7 +11,7 @@ document.querySelectorAll('.parallax-layer').forEach(elem => {
 		props: {
 			'--translateY': {
 				from: '0',
-				to: `${10 * modifier}px`,
+				to: `${20 * modifier}px`,
 				direct: true
 			}
 		}
@@ -22,12 +22,12 @@ document.querySelectorAll('.parallax-layer').forEach(elem => {
 
 const opacity = basicScroll.create({
 	elem: fgScreen,
-	from: clientHeight / 3,
-	to: clientHeight / 1.1,
+	from: 400,
+	to: 600,
 	props: {
 		'--opacity': {
 			from: '0',
-			to: '1',
+			to: '0.3',
 			direct: true
 		}
 	}

@@ -3,10 +3,32 @@
 // =================
 // BUILDING CANVASES
 // =================
-const canvasAmount = 7;
 
 function getElemID(id) {
 	return document.getElementById(id);
+}
+
+function getCanvasSize() {
+	w =
+		window.innerWidth ||
+		document.documentElement.clientWidth ||
+		document.getElementsByTagName('body')[0].clientWidth;
+	h = 600;
+}
+
+function setCanvasSize() {
+	canvasIDArray.map(obj => {
+		obj.width = w;
+		obj.height = h;
+		return obj;
+	});
+}
+
+function setSizeCache() {
+	wCached =
+		window.innerWidth ||
+		document.documentElement.clientWidth ||
+		document.getElementsByTagName('body')[0].clientWidth;
 }
 
 function clearCanvas() {
@@ -15,7 +37,7 @@ function clearCanvas() {
 	}
 }
 
-function buildCanvases() {
+function getCanvasIds() {
 	for (let i = 1; i <= canvasAmount; i++) {
 		let j = getElemID(`hero__canvas-layer--0${i}`);
 		canvasIDArray.push(j);
@@ -23,17 +45,6 @@ function buildCanvases() {
 		let k = j.getContext('2d');
 		canvasContextArray.push(k);
 	}
-}
-
-function setCanvasSize() {
-	w = window.innerWidth;
-	h = window.innerHeight;
-
-	canvasIDArray.map(obj => {
-		obj.width = w;
-		obj.height = h;
-		return obj;
-	});
 }
 
 // ==============
@@ -80,6 +91,8 @@ function debounce(func, wait, immediate) {
 
 // Finds which window dimension is largest, and uses that
 function orientation() {
+	// console.log('- Getting orientation');
+
 	if (w < h) {
 		return w;
 	} else {
@@ -89,9 +102,8 @@ function orientation() {
 
 // Watches browser dimensions and keeps appropriate amount of spheres on screen and/or moving
 function amountCounter() {
+	// console.log('- Calculating circle attributes');
 	if (orientation() < 560) {
-		speedHandler.speedBase = 0;
-
 		bg.bgSizeMin = orientation() / 9;
 		bg.bgSizeMax = orientation() / 5;
 		bg.bgAmount = orientation() / 40;
@@ -101,8 +113,6 @@ function amountCounter() {
 		fg.fgSizeMax = 35;
 		fg.fgAmount = orientation() / 12;
 	} else if (orientation() < 1000) {
-		speedHandler.speedBase = 1 * speedHandler.speedMultiplier;
-
 		bg.bgSizeMin = orientation() / 12;
 		bg.bgSizeMax = orientation() / 6;
 		bg.bgAmount = orientation() / 70;
@@ -112,8 +122,6 @@ function amountCounter() {
 		fg.fgSizeMax = 60;
 		fg.fgAmount = orientation() / 24;
 	} else {
-		speedHandler.speedBase = 1 * speedHandler.speedMultiplier;
-
 		bg.bgSizeMin = 65;
 		bg.bgSizeMax = 200;
 		bg.bgAmount = 20;
@@ -135,7 +143,7 @@ function generateCircle(setName) {
 		for (let j = 0; j < bg.bgAmount; j++) {
 			radius = getRandomInt(bg.bgSizeMin, bg.bgSizeMax);
 			x = getRandomInt(0 + radius * 1.1, w - radius * 1.1);
-			y = getRandomInt(0, h);
+			y = getRandomInt(0 + radius * 1.1, h - radius * 1.1);
 
 			if (j < bg.bgAmount / 3) {
 				bg.bgCirclesArray.push(new Circle(x, y, radius, canvasContextArray[0]));
@@ -160,7 +168,7 @@ function generateCircle(setName) {
 		for (let n = 0; n < fg.fgAmount; n++) {
 			radius = getRandomInt(fg.fgSizeMin, fg.fgSizeMax);
 			x = getRandomInt(0 + radius * 1.1, w - radius * 1.1);
-			y = getRandomInt(0, h);
+			y = getRandomInt(0 + radius, h - radius);
 
 			if (n < fg.fgAmount / 2) {
 				fg.fgCirclesArray.push(new Circle(x, y, radius, canvasContextArray[4]));
@@ -173,20 +181,7 @@ function generateCircle(setName) {
 	}
 }
 
-let w =
-	window.innerWidth ||
-	document.documentElement.clientWidth ||
-	document.getElementsByTagName('body')[0].clientWidth;
-
-let h =
-	window.innerHeight ||
-	document.documentElement.clientHeight ||
-	document.getElementsByTagName('body')[0].clientHeight;
-
-let wCached = w; // Used to check if window = resized
-let hCached = h; // Used to check if window = resized
-
-// Values for generating BG spheres (size range, quantity, color ranges)
+// Values for generating background spheres (size range, quantity, color ranges)
 let bg = {
 	bgSizeMin: 1,
 	bgSizeMax: 1,
@@ -198,13 +193,14 @@ let bg = {
 	bgCirclesArray: []
 };
 
+// Values for generating middle spheres (size range, quantity)
 let mg = {
 	mgSizeMin: 1,
 	mgSizeMax: 3,
 	mgAmount: 30
 };
 
-// Values for generating FG spheres (size range, quantity, color ranges)
+// Values for generating foreground spheres (size range, quantity, color ranges)
 let fg = {
 	fgSizeMin: 1,
 	fgSizeMax: 1,
@@ -216,14 +212,38 @@ let fg = {
 	fgCirclesArray: []
 };
 
-// Initial speeds
-let speedHandler = {
-	speedBase: 1,
-	speedMultiplier: 1
-};
+const canvasAmount = 7;
+
+let w;
+let h;
+let wCached;
 
 let canvasIDArray = [];
 let canvasContextArray = [];
+
+function init() {
+	canvasIDArray = [];
+	canvasContextArray = [];
+	getCanvasIds();
+
+	getCanvasSize();
+
+	setCanvasSize();
+
+	setSizeCache();
+
+	bg.bgCirclesArray = [];
+	mg.mgCirclesArray = [];
+	fg.fgCirclesArray = [];
+
+	amountCounter();
+
+	generateCircle('BG');
+	generateCircle('MG');
+	generateCircle('FG');
+
+	draw();
+}
 
 function draw() {
 	clearCanvas();
@@ -239,40 +259,16 @@ function draw() {
 	}
 }
 
-function init() {
-	bg.bgCirclesArray = [];
-	mg.mgCirclesArray = [];
-	fg.fgCirclesArray = [];
-
-	setCanvasSize();
-
-	// Clear all canvases
-	clearCanvas();
-
-	// Figure out orientation + circle amount
-	amountCounter();
-
-	generateCircle('BG');
-	generateCircle('MG');
-	generateCircle('FG');
-
-	draw();
-}
-
-// Resize canvas on browser resize
-function resizeResetOut() {
-	setCanvasSize();
-}
-
-// Respawn circles on browser resize
-const resizeResetIn = debounce(function() {
-	if (w !== wCached || h !== hCached) {
-		init();
-	}
-}, 1000);
-
-buildCanvases();
 init();
 
-window.addEventListener('resize', resizeResetIn);
-window.addEventListener('resize', resizeResetOut);
+// Respawn circles on browser width resize
+window.addEventListener(
+	'resize',
+	debounce(function() {
+		getCanvasSize();
+
+		if (w !== wCached) {
+			init();
+		}
+	}, 1000)
+);
