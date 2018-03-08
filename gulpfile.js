@@ -208,7 +208,7 @@ gulp.task('browser-sync', function() {
 	} else {
 		browserSync.init({
 			proxy: config.browsersync.proxyDev,
-			browser: ['google chrome', 'firefox developer edition', 'safari'],
+			browser: ['google chrome'],
 			notify: false,
 			ghostMode: {
 				clicks: true,

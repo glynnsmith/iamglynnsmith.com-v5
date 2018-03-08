@@ -44,6 +44,7 @@
 		"gulp-sourcemaps": "^2.6.4",
 		"gulp-uglify": "^3.0.0",
 		"postcss": "^6.0.19",
+		"sass-lint": "^1.12.1",
 		"sass-mq": "^4.0.2",
 		"stylelint": "^9.1.1"
 	},
