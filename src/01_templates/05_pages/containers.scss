@@ -1,0 +1,174 @@
+// ==============
+// CONTAINERS ===
+// ==============
+
+// MISC PAGE CONTAINERS
+// ====================
+
+// NOTE: Containers that wrap specific components will be specified at component's location
+
+// Sections to hold all block-level elements
+
+.section {
+	width: 100%;
+	max-width: $width__content;
+	padding: 0 $baseline;
+	margin: 0 auto;
+}
+
+.section--wide {
+	width: 100%;
+	max-width: 100%;
+	padding: 0 $baseline;
+	margin: 0 auto;
+}
+
+// Elements
+
+.section__main {
+	display: block;
+	margin: 0;
+	margin-top: $baseline - 7;
+	padding: 0;
+	width: auto;
+}
+
+.section__content {
+	// display: inline-block;
+	float: left;
+	margin: 0;
+	padding: 0;
+	padding-right: $baseline;
+	width: calc(100% - (#{$baseline} * 7));
+}
+
+.section__sidebar {
+	// display: inline-block;
+	float: right;
+	width: $baseline * 7;
+}
+
+.section__cta {
+	width: 100%;
+	margin-top: $baseline * 1.5;
+	padding: 0;
+	text-align: center;
+}
+
+.section__work-images {
+	padding: $baseline * 2;
+	margin-top: $baseline + 6;
+}
+
+.section__work-images--light {
+	background-image: url('../img/bg_tile_dark.svg');
+	background-color: darken($grey__xlight, 4%);
+	background-size: 24px * 2.5 42px * 2.5;
+	background-position: 50% 0;
+}
+
+.section__work-images--dark {
+	background-image: url('../img/bg_tile_light.svg');
+	background-color: #1e1f21;
+	background-size: 24px * 2.5 42px * 2.5;
+	background-position: 50% 0;
+}
+
+.section__footer {
+	width: 100%;
+	margin: 0 auto;
+	margin-top: $baseline * 2;
+	padding: 0 $baseline;
+	background: $grey__light;
+}
+
+.section__copyright {
+	padding: 16px 0;
+	background-color: $grey__dark;
+	max-width: 100%;
+	color: $grey__light;
+	padding-left: $baseline + $air;
+	padding-right: $baseline + $air;
+}
+
+// ----------
+// RESPONSIVE
+// ----------
+
+@include mq($until: tablet--xl) {
+	.section,
+	.section--wide {
+		padding-left: $air;
+		padding-right: $air;
+		width: 100%;
+	}
+
+	.section__main {
+		display: block;
+		margin: 0;
+		margin-top: $baseline - 7;
+		padding: 0;
+		width: 100%;
+		position: relative;
+	}
+
+	.section__content {
+		position: relative;
+		width: 100%;
+		margin: 0;
+		padding: 0;
+		float: none;
+	}
+
+	.section__sidebar {
+		display: grid;
+		grid-gap: 0;
+		grid-template-columns: auto auto;
+		align-items: center;
+		margin: 0;
+		margin-left: 0;
+		margin-bottom: $baseline;
+		padding: 0;
+		float: none;
+		width: 100%;
+	}
+
+	.section__main--project {
+		.section__sidebar {
+			@include section-separator--bottom();
+			padding-top: $air / 1.5;
+			padding-bottom: $air / 1.5 - 6px;
+		}
+	}
+
+	.section__header {
+		margin-top: 0;
+	}
+
+	.section__header__text {
+		margin-top: 22px;
+		margin-bottom: 0px;
+		line-height: 54px;
+		font-size: $fontsize__large / 1.4;
+	}
+
+	.section__header__subheader {
+		margin-top: 10px;
+	}
+
+	.section__work-images {
+		figure + figure {
+			margin-top: $baseline;
+		}
+	}
+}
+
+@include mq($from: tablet--xl, $until: desktop--s) {
+	.section__content {
+		width: calc(100% - (#{$baseline} * 4.5));
+	}
+
+	.section__sidebar {
+		width: $baseline * 4.5;
+	}
+}

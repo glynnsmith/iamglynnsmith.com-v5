@@ -1,0 +1,41 @@
+// ===================
+// SECTION HEADERS ===
+// ===================
+
+.section__header {
+	margin-top: $baseline * 2 + 1;
+	width: 100%;
+}
+
+.section__header-text {
+	display: inline-block;
+	font-size: $fontsize__large;
+	line-height: $fontsize__med + 0.85;
+	width: 100%;
+}
+
+.section__header-subheader {
+	display: inline-block;
+	width: 100%;
+	font-family: $typeface__primary;
+	text-transform: uppercase;
+	font-size: $fontsize__xsmall;
+	font-weight: 600;
+	margin-top: 10px;
+	line-height: 27px;
+
+	&::after {
+		margin-top: 26px;
+		width: 100%;
+		@include section-separator();
+	}
+}
+
+.section__header-dash {
+	margin-left: 3px;
+	margin-right: 3px;
+}
+.section__header-link {
+	text-transform: initial;
+	padding-bottom: 3px;
+}

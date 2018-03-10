@@ -6,12 +6,12 @@
 <section class="section">
   <!-- Section Title -->
   <header class="section__header">
-    <h2 class="section__header__text"><a href="<?php echo page('information')->url() ?>"><?php echo page('information')->title() ?></a></h2>
-    <span class="section__header__subheader">
-      <span class="section__header__description"><?php echo page('information')->description()->html() ?></span>
-      <span class="section__header__dash"> - </span>
-      <span class="section__header__link__wrapper">
-        <a href="<?php echo page('information')->url() ?>" class="section__header__link">Read full information</a>
+    <h2 class="section__header-text"><a href="<?php echo page('information')->url() ?>"><?php echo page('information')->title() ?></a></h2>
+    <span class="section__header-subheader">
+      <span class="section__header-description"><?php echo page('information')->description()->html() ?></span>
+      <span class="section__header-dash"> - </span>
+      <span class="section__header-link-wrapper">
+        <a href="<?php echo page('information')->url() ?>" class="section__header-link">Read full information</a>
       </span>
     </span>
   </header>
@@ -28,13 +28,9 @@
 
     <!-- Section Content -->
     <article class="section__content clearfix">
-      <?php echo page('information')->summarystart()->kirbytext() ?>
-    <!-- </article> -->
-
-    <?php snippet('snippet_short_skills_main') ?>
-
-    <!-- <article class="section__content clearfix"> -->
-      <?php echo page('information')->summaryend()->kirbytext() ?>
+			<?php echo page('information')->summarystart()->kirbytext() ?>
+			<?php snippet('snippet_short_skills_main') ?>
+			<?php echo page('information')->summaryend()->kirbytext() ?>
     </article>
   </main>
 
@@ -49,12 +45,12 @@
 <!-- Projects -->
 <section class="section">
 	<header class="container section__header container--side-padding">
-		<h2 class="section__header__text">Work</h2>
-		<span class="section__header__subheader">
-			<span class="section__header__description"><?php echo page('work')->description() ?></span>
-			<span class="section__header__dash"> - </span>
-			<span class="section__header__link__wrapper">
-				<a href="<?php echo page("work")->url() ?>" class="section__header__link">View All Work</a>
+		<h2 class="section__header-text">Work</h2>
+		<span class="section__header-subheader">
+			<span class="section__header-description"><?php echo page('work')->description() ?></span>
+			<span class="section__header-dash"> - </span>
+			<span class="section__header-link-wrapper">
+				<a href="<?php echo page("work")->url() ?>" class="section__header-link">View All Work</a>
 			</span>
 		</span>
 	</header>

@@ -1,51 +1,34 @@
-// ==============
-// BEM LEGEND ===
-// ==============
-
-/*
-
-	CSS:
-	====
-	// Block component:
-	.button {}
-
-	// Element that depends upon the "button" block:
-	.button__price {}
-
-	// Modifier that changes the style of the block:
-	.button--orange {}
-	.button--big {}
-
-	HTML:
-	=====
-	<a class="button button--big button--orange" href="http://www.theinternet.com">
-		<span class="button__price">$9.99</span>
-		<span class="button__text">Subscribe</span>
-	</a>
-
- */
-
 // ==========
 // SCREEN ===
 // ==========
 
+// Base variables (needs splitting up into sensible groups)
 @import 'variables';
+
+// Media query mixins
 @import 'mq';
+
+// Normalize
 @import 'normalize';
-@import 'containers';
+
+// Base typography settings (old implementation - needs updating)
 @import 'typography';
-@import 'section_header';
+
+// Everything else?
+@import '../01_templates/**/*.scss';
+// @import 'baseline';
+// @import 'section_header';
 @import 'logos';
-@import 'masthead';
-@import 'hero';
-@import 'parallax';
-@import 'grid';
+// @import 'masthead';
+// @import 'hero';
+// @import 'parallax';
+// @import 'grid';
 @import 'media';
 @import 'widgets';
-@import 'subnav';
-@import 'pagination';
+// @import 'subnav';
+// @import 'pagination';
 @import 'buttons';
 // @import 'weblog';
-@import 'returntotop';
+// @import 'returntotop';
 @import 'utility';
 @import 'responsive';

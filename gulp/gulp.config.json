@@ -1,13 +1,21 @@
 {
 	"paths": {
 		"src": {
-			"root": "src/",
-			"rootContents": "src/root-contents/",
-			"templates": "src/01_templates/",
-			"components": "src/02_components/",
-			"scss": "src/scss/",
-			"js": "src/js/",
-			"img": "src/img/"
+			"root": "./src/",
+			"rootContents": "./src/root-contents/",
+
+			"php": {
+				"pages": "./src/01_templates/05_pages/*.php",
+				"components": "./src/01_templates/**/*.php"
+			},
+
+			"scss": {
+				"src": "src/scss/screen.scss",
+				"pages": "./src/01_templates/05_pages/*.scss",
+				"components": "./src/01_templates/**/*.scss"
+			},
+			"js": "./src/js/",
+			"img": "./src/img/"
 		},
 		"dev": {
 			"root": "dev/",
@@ -26,6 +34,7 @@
 			"img": "build/assets/img/"
 		}
 	},
+
 	"concatPaths": {
 		"home": {
 			"name": "home.js",
@@ -39,7 +48,7 @@
 				"src/js/hero/canvas_controller.js",
 				"src/js/hero/hero_animation.js",
 				"src/js/info/greeting.js",
-				"src/js/top/top.js",
+				"src/js/back_to_top/back_to_top.js",
 				"src/js/nav/nav.js",
 				"node_modules/basicscroll/dist/basicScroll.min.js",
 				"src/js/hero/parallax_scrolling.js"
@@ -49,15 +58,16 @@
 			"name": "info.js",
 			"src": [
 				"src/js/info/greeting.js",
-				"src/js/top/top.js",
+				"src/js/back_to_top/back_to_top.js",
 				"src/js/nav/nav.js"
 			]
 		},
 		"top": {
-			"name": "top.js",
-			"src": ["src/js/top/top.js", "src/js/nav/nav.js"]
+			"name": "back_to_top.js",
+			"src": ["src/js/back_to_top/back_to_top.js", "src/js/nav/nav.js"]
 		}
 	},
+
 	"browsersync": {
 		"proxyDev": "localhost:3000/portfolio/dev",
 		"proxyBuild": "localhost:3000/portfolio/build"

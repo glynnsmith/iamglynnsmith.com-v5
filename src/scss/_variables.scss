@@ -8,10 +8,10 @@ $color__primary: hsl(345, 100%, 56%);
 $color__primary--light: lighten($color__primary, 14%);
 $color__primary--dark: darken($color__primary, 32%);
 
-$grey__xlight: hsl(210, 14%, 76%); // For page BG
+$grey__xlight: hsl(210, 14%, 72%); // For page BG
 $grey__light: saturate(darken($grey__xlight, 8%), 1%); // Underlines
 $grey__mid: desaturate(darken($grey__xlight, 20%), 5%);
-$grey__dark: saturate(darken($grey__xlight, 48%), 2%); // Text color
+$grey__dark: saturate(darken($grey__xlight, 42%), 16%); // Text color
 $grey__xdark: saturate(darken($grey__xlight, 56%), 12%);
 
 // TYPOGRAPHY
@@ -31,45 +31,8 @@ $fontsize__large: 3.3rem;
 $fontsize__xlarge: 7rem;
 
 @mixin flex--inline {
-  display: flex;
-  flex-flow: row wrap;
-}
-
-// BUTTON STYLES
-// =============
-$border__opacity--light: 0.12;
-$border__opacity--dark: 0.875;
-
-@mixin button--idle(
-  $outline: 2px,
-  $radius: 0,
-  $button__bg-color: $color__primary,
-  $button__fg-color: $grey__xlight) {
-  background-color: $button__bg-color;
-  color: $button__fg-color;
-  fill: $button__fg-color;
-  border-radius: $radius;
-  transition: transition($time__slow, $ease__in-out);
-}
-
-@mixin button--hover(
-  $button__bg-color: $color__primary--light,
-  $button__fg-color: $grey__xlight) {
-  background-color: $button__bg-color;
-  color: $button__fg-color;
-  fill: $button__fg-color;
-  box-shadow: none;
-  transition: transition($time__quick, $ease__in-out);
-}
-
-@mixin button--active(
-  $button__bg-color: $color__primary,
-  $button__fg-color: $grey__xlight) {
-  background-color: $button__bg-color;
-  color: $button__fg-color;
-  fill: $button__fg-color;
-  box-shadow: none;
-  transition: none;
+	display: flex;
+	flex-flow: row wrap;
 }
 
 // WIDTHS & SPACING
@@ -77,65 +40,61 @@ $border__opacity--dark: 0.875;
 $air: 24px;
 $line-thickness: 1px;
 $button-size: $air * 1.6;
-
 $width__max: 1824px;
 $width__content: 1200px;
 $width__full: 100%;
 
-@mixin section-separator ($color: rgba($grey__light, 0.85)) {
-  content: '';
-  display: block;
-  max-width: $width__content;
-  border-top: $line-thickness solid $color;
+@mixin section-separator($color: rgba($grey__light, 0.85)) {
+	content: '';
+	display: block;
+	max-width: $width__content;
+	border-top: $line-thickness solid $color;
 }
 
-@mixin section-separator--bottom ($color: rgba($grey__light, 1)) {
-  content: '';
-  display: block;
-  max-width: $width__content;
-  border-bottom: $line-thickness solid $color;
+@mixin section-separator--bottom($color: rgba($grey__light, 1)) {
+	content: '';
+	display: block;
+	max-width: $width__content;
+	border-bottom: $line-thickness solid $color;
 }
 
 $mq-responsive: true;
+
 $mq-breakpoints: (
-  mobile--s: 250px,
-  mobile: 300px,
-  mobile--l: 350px,
-  tablet--xs: 425px,
-  tablet--s: 500px,
-  tablet: 580px,
-  tablet--l: 630px,
-  tablet--xl: 700px,
-  desktop--s: 900px,
-  desktop: 1024px,
-  wide: 1200px,
-  wide--l: 1400px
+	mobile--s: 250px,
+	mobile: 300px,
+	mobile--l: 350px,
+	tablet--xs: 425px,
+	tablet--s: 500px,
+	tablet: 580px,
+	tablet--l: 630px,
+	tablet--xl: 700px,
+	desktop--s: 900px,
+	desktop: 1024px,
+	wide: 1200px,
+	wide--l: 1400px
 );
-
 $mq-show-breakpoints: (
-  mobile--s,
-  mobile,
-  mobile--l,
-  tablet--xs,
-  tablet--s,
-  tablet,
-  tablet--l,
-  tablet--xl,
-  desktop--s,
-  desktop,
-  wide,
-  wide--l
+	mobile--s,
+	mobile,
+	mobile--l,
+	tablet--xs,
+	tablet--s,
+	tablet,
+	tablet--l,
+	tablet--xl,
+	desktop--s,
+	desktop,
+	wide,
+	wide--l
 );
-
 // MOTION
 // ======
 $time__quick: 80ms;
 $time__med: 170ms;
 $time__slow: 450ms;
-
 $duration-in: $time__slow * 2;
 $duration-out: $time__slow;
-
 $ease__in-out: cubic-bezier(0.4, 0, 0.2, 1);
 $ease__in-out--expo: cubic-bezier(1, 0, 1, 1);
 $ease__quart-out: cubic-bezier(0, 1, 0, 1);

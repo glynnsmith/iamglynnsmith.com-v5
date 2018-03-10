@@ -40,10 +40,12 @@
 		"gulp-plumber": "^1.2.0",
 		"gulp-rename": "^1.2.2",
 		"gulp-sass": "^3.1.0",
+		"gulp-sass-glob": "^1.0.8",
 		"gulp-sequence": "^1.0.0",
 		"gulp-sourcemaps": "^2.6.4",
 		"gulp-uglify": "^3.0.0",
 		"postcss": "^6.0.19",
+		"require-dir": "^1.0.0",
 		"sass-lint": "^1.12.1",
 		"sass-mq": "^4.0.2",
 		"stylelint": "^9.1.1"

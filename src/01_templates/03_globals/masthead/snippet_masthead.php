@@ -1,7 +1,7 @@
 <section role="banner" id="masthead" class="masthead">
   <a href="<?php echo url() ?>" alt="" class="logo">
     <div class="logo__icon logo__icon--dark">
-			<?php snippet("svg_logo") ?>
+			<?php snippet("svg_icon_logo") ?>
 		</div>
 		<h1 class="logo__text"><span class="logo__text--title"><?php echo $site->title()->html() ?></span><span class="logo__text--dash"> - </span><span class="logo__text--role"><?php echo $site->role()->html() ?></span></h1>
   </a>
