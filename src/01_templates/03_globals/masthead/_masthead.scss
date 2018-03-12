@@ -20,10 +20,6 @@
   box-shadow: 0 1px $grey__light;
 }
 
-.logo {
-  z-index: 8;
-}
-
 .hero {
   // When nested in the hero component
   .masthead {
@@ -45,12 +41,33 @@
 .navigation__hamburger-button {
   display: none;
 
+  &:link,
+  &:visited {
+    color: $grey__dark;
+    transition: color $time__slow $ease__linear, fill $time__slow $ease__linear;
+
+    .navigation__hamburger-icon {
+      color: inherit;
+      fill: currentColor;
+    }
+  }
+
+  &:hover {
+    color: $color__primary;
+    transition: color $time__quick $ease__linear,
+      fill $time__quick $ease__linear;
+
+    .navigation__hamburger-icon {
+      color: inherit;
+      fill: currentColor;
+    }
+  }
+
   .navigation__hamburger-icon {
     display: inline-block;
     width: 12px;
     height: 20px;
     margin-left: 4px;
-    fill: $grey__dark;
     transform: translateY(3px);
     position: relative;
     overflow: hidden;
@@ -92,63 +109,30 @@
         transform $time__slow $ease__quart-out 0s;
     }
   }
-
-  &:hover {
-    color: $color__primary;
-
-    .navigation__hamburger-icon {
-      fill: $color__primary;
-    }
-
-    .navigation__close-icon {
-      fill: $color__primary;
-    }
-  }
 }
 
 // Navigation links and states
-.logo,
+
 .navigation__link {
   &:link,
   &:visited {
     color: inherit;
+    margin-left: $baseline / 1.5;
     text-decoration: none;
     transition: color $time__slow $ease__linear;
+  }
 
-    .logo__icon {
-      svg {
-        fill: $grey__dark;
-        background-color: none;
-        transition: fill $time__slow $ease__linear;
-      }
-    }
+  &:first-child {
+    margin-left: 0;
   }
 
   &:hover {
     color: $color__primary;
     transition: color $time__quick $ease__linear;
-
-    .logo__icon {
-      svg {
-        fill: $color__primary;
-        transition: fill $time__quick $ease__linear;
-      }
-    }
   }
 
   &:active {
     transition: none;
-  }
-}
-
-.navigation__link {
-  &:link,
-  &:visited {
-    margin-left: $baseline / 1.5;
-  }
-
-  &:first-child {
-    margin-left: 0;
   }
 }
 

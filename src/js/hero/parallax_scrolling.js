@@ -1,5 +1,5 @@
 const fgScreen = getElemID('hero__foreground');
-const height = window.innerWidth;
+const height = window.innerHeight;
 
 document.querySelectorAll('.parallax-layer').forEach(elem => {
 	const modifier = elem.getAttribute('data-modifier');

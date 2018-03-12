@@ -58,12 +58,14 @@ a:link,
 a:visited {
 	text-decoration: none;
 	color: $grey__dark;
-	transition: color $time__slow $ease__in-out;
+	transition: color $time__slow $ease__linear 0s,
+		fill $time__slow $ease__linear 0s;
 }
 
 a:hover {
-	color: $color__primary--light;
-	transition: color $time__slow $ease__in-out;
+	color: $color__primary;
+	transition: color $time__slow $ease__linear 0s,
+		fill $time__slow $ease__linear 0s;
 }
 
 a:active {

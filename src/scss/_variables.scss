@@ -11,7 +11,7 @@ $color__primary--dark: darken($color__primary, 32%);
 $grey__xlight: hsl(210, 14%, 72%); // For page BG
 $grey__light: saturate(darken($grey__xlight, 8%), 1%); // Underlines
 $grey__mid: desaturate(darken($grey__xlight, 20%), 5%);
-$grey__dark: saturate(darken($grey__xlight, 42%), 16%); // Text color
+$grey__dark: saturate(darken($grey__xlight, 45%), 18%); // Text color
 $grey__xdark: saturate(darken($grey__xlight, 56%), 12%);
 
 // TYPOGRAPHY
@@ -74,6 +74,7 @@ $mq-breakpoints: (
 	wide: 1200px,
 	wide--l: 1400px
 );
+
 $mq-show-breakpoints: (
 	mobile--s,
 	mobile,
@@ -88,6 +89,7 @@ $mq-show-breakpoints: (
 	wide,
 	wide--l
 );
+
 // MOTION
 // ======
 $time__quick: 80ms;

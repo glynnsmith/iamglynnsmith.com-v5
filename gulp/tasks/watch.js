@@ -38,6 +38,7 @@ gulp.task('watch', function() {
 			proxy: {
 				target: config.browsersync.proxyBuild
 			},
+			notify: false,
 			browser: ['google chrome', 'firefox developer edition', 'safari'],
 			files: ['./build/assets/css/*.css']
 		});
@@ -47,6 +48,7 @@ gulp.task('watch', function() {
 			proxy: {
 				target: config.browsersync.proxyDev
 			},
+			notify: false,
 			browser: ['google chrome'],
 			files: ['./dev/assets/css/*.css']
 		});
