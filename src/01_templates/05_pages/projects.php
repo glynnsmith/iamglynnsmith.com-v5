@@ -26,7 +26,8 @@
 </section>
 
 <?php snippet("snippet_footer") ?>
-<button class="to-top-button" id="button-top"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="button-icon"><path d="M0 0h32v8H0zm16 8L.4 23.7 6 29.3l10-10 10 10 5.7-5.6"/></svg></button>
+
+<?php snippet("snippet_back_to_top") ?>
 
 <?php snippet("snippet_js_totop") ?>
 <?php snippet("snippet_scripts_footer") ?>

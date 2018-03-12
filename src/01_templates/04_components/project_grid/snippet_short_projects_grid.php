@@ -1,11 +1,12 @@
+<!-- Projects -->
 <section class="section">
 	<header class="container section__header container--side-padding">
-		<h2 class="section__header__text">Work</h2>
-		<span class="section__header__subheader">
-			<span class="section__header__description"><?php echo page('work')->description() ?></span>
-			<span class="section__header__dash"> - </span>
-			<span class="section__header__link__wrapper">
-				<a href="<?php echo page("work")->url() ?>" class="section__header__link">View All Work</a>
+		<h2 class="section__header-text">Work</h2>
+		<span class="section__header-subheader">
+			<span class="section__header-description"><?php echo page('work')->description() ?></span>
+			<span class="section__header-dash"> - </span>
+			<span class="section__header-link-wrapper">
+				<a href="<?php echo page("work")->url() ?>" class="section__header-link">View All Work</a>
 			</span>
 		</span>
 	</header>
