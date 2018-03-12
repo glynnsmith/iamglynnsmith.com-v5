@@ -9,6 +9,16 @@
 	<meta name="description" content="<?php echo $site->description()->html() ?>">
 	<meta name="keywords" content="<?php echo $site->keywords()->html() ?>">
 
+	<style>
+		html > * {
+			opacity: 0;
+		}
+		html.wf-active > * {
+			opacity: 1;
+			transition: opacity 1.2s cubic-bezier(0, 1.000, 0.320, 1.000) 0.4s;
+		}
+	</style>
+
 	<!-- Typekit -->
 	<script>
 	  (function(d) {
