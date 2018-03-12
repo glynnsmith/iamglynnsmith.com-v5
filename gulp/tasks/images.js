@@ -15,7 +15,7 @@ const config = require('../gulp.config.json');
 
 gulp.task('images', () =>
 	gulp
-		.src(`${config.paths.src.img}**/*`)
+		.src(config.paths.src.img)
 		.pipe(
 			plumber({
 				errorHandler: function(err) {

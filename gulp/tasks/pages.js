@@ -10,12 +10,11 @@ const colors = require('ansi-colors');
 const log = require('fancy-log');
 const beeper = require('beeper');
 const changed = require('gulp-changed');
-
 const config = require('../gulp.config.json');
 
 gulp.task('pages', function() {
 	return gulp
-		.src(`${config.paths.src.php.pages}`)
+		.src(config.paths.src.php.pages)
 		.pipe(
 			plumber({
 				errorHandler: function(err) {

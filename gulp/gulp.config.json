@@ -3,38 +3,34 @@
 		"src": {
 			"root": "./src/",
 			"rootContents": "./src/root-contents/",
-
 			"php": {
 				"pages": "./src/01_templates/05_pages/*.php",
-				"components": "./src/01_templates/**/*.php"
+				"components": [
+					"./src/01_templates/**/*.php",
+					"!./src/01_templates/05_pages/*.php"
+				]
 			},
-
-			"scss": {
-				"src": "src/scss/screen.scss",
-				"pages": "./src/01_templates/05_pages/*.scss",
-				"components": "./src/01_templates/**/*.scss"
-			},
+			"scss": ["./src/scss/*.scss", "./src/01_templates/**/*.scss"],
 			"js": "./src/js/",
-			"img": "./src/img/"
+			"img": "./src/img/**/*"
 		},
 		"dev": {
-			"root": "dev/",
-			"templates": "dev/site/templates/",
-			"components": "dev/site/snippets/",
-			"css": "dev/assets/css/",
-			"js": "dev/assets/js/",
-			"img": "dev/assets/img/"
+			"root": "./dev/",
+			"templates": "./dev/site/templates/",
+			"components": "./dev/site/snippets/",
+			"css": "./dev/assets/css/",
+			"js": "./dev/assets/js/",
+			"img": "./dev/assets/img/"
 		},
 		"build": {
-			"root": "build/",
-			"templates": "build/site/templates/",
-			"components": "build/site/snippets/",
-			"css": "build/assets/css/",
-			"js": "build/assets/js/",
-			"img": "build/assets/img/"
+			"root": "./build/",
+			"templates": "./build/site/templates/",
+			"components": "./build/site/snippets/",
+			"css": "./build/assets/css/",
+			"js": "./build/assets/js/",
+			"img": "./build/assets/img/"
 		}
 	},
-
 	"concatPaths": {
 		"home": {
 			"name": "home.js",
@@ -67,9 +63,8 @@
 			"src": ["src/js/back_to_top/back_to_top.js", "src/js/nav/nav.js"]
 		}
 	},
-
 	"browsersync": {
-		"proxyDev": "localhost:3000/portfolio/dev",
-		"proxyBuild": "localhost:3000/portfolio/build"
+		"proxyBuild": "localhost:8888/portfolio/build/",
+		"proxyDev": "localhost:8888/portfolio/dev/"
 	}
 }

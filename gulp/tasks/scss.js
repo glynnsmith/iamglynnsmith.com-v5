@@ -15,14 +15,12 @@ const sassGlob = require('gulp-sass-glob');
 const sass = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
 const cleanCSS = require('gulp-clean-css');
-// const concatCSS = require('gulp-concat-css');
-const browserSync = require('browser-sync').create();
 
 const config = require('../gulp.config.json');
 
 gulp.task('scss', function() {
 	return gulp
-		.src([`${config.paths.src.scss.src}`])
+		.src(config.paths.src.scss)
 		.pipe(
 			plumber({
 				errorHandler: function(err) {
@@ -46,6 +44,5 @@ gulp.task('scss', function() {
 		.pipe(rename({ extname: '.min.css' }))
 		.pipe(mode.dev(sourcemaps.write('.')))
 		.pipe(mode.dev(gulp.dest(config.paths.dev.css)))
-		.pipe(mode.build(gulp.dest(config.paths.build.css)))
-		.pipe(browserSync.reload({ stream: true }));
+		.pipe(mode.build(gulp.dest(config.paths.build.css)));
 });

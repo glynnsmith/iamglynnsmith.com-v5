@@ -13,6 +13,7 @@ const sourcemaps = require('gulp-sourcemaps');
 const babel = require('gulp-babel');
 const concat = require('gulp-concat');
 const uglify = require('gulp-uglify');
+const changed = require('gulp-changed');
 
 const config = require('../gulp.config.json');
 
@@ -41,6 +42,8 @@ function javascript(cfg) {
 		.pipe(babel({ presets: ['es2015'] }))
 		.pipe(mode.build(uglify()))
 		.pipe(mode.dev(sourcemaps.write('.')))
+		.pipe(mode.dev(changed(config.paths.dev.js)))
+		.pipe(mode.build(changed(config.paths.build.js)))
 		.pipe(mode.dev(gulp.dest(config.paths.dev.js)))
 		.pipe(mode.build(gulp.dest(config.paths.build.js)));
 }
