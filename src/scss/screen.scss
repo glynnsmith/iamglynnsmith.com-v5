@@ -5,6 +5,9 @@
 // Base variables (needs splitting up into sensible groups)
 @import 'variables';
 
+// Vertical rythmn grid
+// @import 'baseline';
+
 // Media query mixins
 @import 'mq';
 
@@ -14,21 +17,11 @@
 // Base typography settings (old implementation - needs updating)
 @import 'typography';
 
-// Everything else?
-@import '../01_templates/**/*.scss';
-// @import 'baseline';
-// @import 'section_header';
 @import 'logos';
-// @import 'masthead';
-// @import 'hero';
-// @import 'parallax';
-// @import 'grid';
 @import 'media';
 @import 'widgets';
-// @import 'subnav';
-// @import 'pagination';
-@import 'buttons';
-// @import 'weblog';
-// @import 'returntotop';
 @import 'utility';
+
+// Import all template and component styles
+@import '../01_templates/**/*.scss';
 @import 'responsive';

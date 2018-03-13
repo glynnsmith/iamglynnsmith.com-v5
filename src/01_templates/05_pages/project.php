@@ -7,24 +7,7 @@
   <!-- Load left and right navigation -->
   <?php snippet("snippet_subnav") ?>
 
-  <!-- If there's a project hero image, load it -->
-  <?php if($image = $page->images()->find('hero.png')): ?>
-    <div class="section__project__hero">
-      <img src="<?php echo $image->url() ?>" width="100%" height="auto" alt="<?php echo $page->title()->html() ?>">
-    </div>
-    <?php else: ?>
-      <?php if($image = $page->images()->find('hero.svg')): ?>
-      <div class="section__project__hero">
-        <img src="<?php echo $image->url() ?>" width="100%" height="auto" alt="<?php echo $page->title()->html() ?>">
-      </div>
-      <?php else: ?>
-        <?php if($image = $page->images()->find('hero.jpg')): ?>
-        <div class="section__project__hero">
-          <img src="<?php echo $image->url() ?>" width="100%" height="auto" alt="<?php echo $page->title()->html() ?>">
-        </div>
-      <?php endif ?>
-    <?php endif ?>
-  <?php endif ?>
+  <?php snippet("snippet_project_hero_image") ?>
 
   <section class="section__main section__main--project clearfix">
 
@@ -36,7 +19,6 @@
         </div>
 
         <span class="widget widget--work-tags">
-        <!-- <div class="widget--item widget--work-tags"> -->
           <?php $tags = $page->tags()->split(); ?>
           <span class="widget__title">Tags:&nbsp;</span>
 
@@ -70,31 +52,8 @@
 
 <section class="section">
   <?php snippet("snippet_subnav") ?>
-  <!-- All projects - Small grid -->
-  <div class="section__header">
-    <div>
-      <h2 class="section__header__text"><?php echo page("work")->title() ?></h2>
-    </div>
-    <div>
-      <span class="section__header__subheader"><?php echo page("work")->description() ?></span>
-    </div>
-  </div>
-  <div class="grid grid--small">
-    <?php foreach($articles as $article): ?><div class="grid__item">
-      <a href="<?php echo $article->url() ?>" class="grid__item-link">
-        <div class="grid__item__text-slider">
-          <div class="grid__item__text--top">
-            <span class="grid__item__text grid__item__text-title"><strong><?php echo $article->title()->html() ?></strong></span>
-          </div>
-        </div>
 
-        <?php if($image = $article->images()->find('thumb400.png')): ?>
-          <img src="<?php echo $image->url() ?>" width="100%" height="auto" alt="<?php echo $article->title()->html() ?>" class="grid__img">
-
-        <?php endif ?>
-      </a>
-    </div><?php endforeach ?>
-  </div>
+  <?php snippet("snippet_projects_grid_small") ?>
 </section>
 
 <?php snippet("snippet_footer") ?>
