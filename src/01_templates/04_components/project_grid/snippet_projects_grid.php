@@ -1,12 +1,14 @@
-<section class="grid grid--large">
+<section class="section--wide">
+	<section class="grid grid--large">
 
-	<?php foreach($articles as $article):
-		$image_s = $article->images()->find("thumb300.png");
-		$image_m = $article->images()->find("thumb400.png");
-		$image_l = $article->images()->find("thumb600.png");
-	?>
+		<?php
+			foreach(page('work')->children()->visible() as $article):
+			$image_300 = $article->images()->find("thumb300.png");
+			$image_400 = $article->images()->find("thumb400.png");
+			$image_600 = $article->images()->find("thumb600.png");
+		?>
 
-	<a href="<?php echo $article->url() ?>" class="grid__item grid__item-link">
+		<a href="<?php echo $article->url() ?>" class="grid__item grid__item-link">
 			<div class="grid__item__text-slider">
 				<div class="grid__item__text--top">
 					<span class="grid__item__text"><strong><?php echo $article->title()->html() ?></strong></span>
@@ -16,53 +18,46 @@
 
 			<picture>
 			  <source
-			    media="(min-width: 1512px)"
-			    srcset="<?php echo $image_l->url() ?>"
-				  class="grid__img">
-			  <source
-			    media="(min-width: 1212px)"
-			    srcset="<?php echo $image_m->url() ?>"
+			    media="(min-width: 1272px)"
+			    srcset="<?php echo $image_600->url() ?>"
 				  class="grid__img">
 			  <source
 			    media="(min-width: 1200px)"
-			    srcset="<?php echo $image_s->url() ?>"
+			    srcset="<?php echo $image_400->url() ?>"
 				  class="grid__img">
 			  <source
-			    media="(min-width: 1024px)"
-			    srcset="<?php echo $image_l->url() ?>"
+			    media="(min-width: 872px)"
+			    srcset="<?php echo $image_600->url() ?>"
 				  class="grid__img">
 			  <source
-			    media="(min-width: 784px)"
-			    srcset="<?php echo $image_m->url() ?>"
+			    media="(min-width: 648px)"
+			    srcset="<?php echo $image_400->url() ?>"
 				  class="grid__img">
 			  <source
-			    media="(min-width: 717px)"
-			    srcset="<?php echo $image_m->url() ?>"
+			    media="(min-width: 580px)"
+			    srcset="<?php echo $image_300->url() ?>"
 				  class="grid__img">
 			  <source
-			    media="(min-width: 581px)"
-			    srcset="<?php echo $image_s->url() ?>"
+			    media="(min-width: 448px)"
+			    srcset="<?php echo $image_600->url() ?>"
 				  class="grid__img">
 			  <source
-			    media="(min-width: 488px)"
-			    srcset="<?php echo $image_l->url() ?>"
+			    media="(min-width: 349px)"
+			    srcset="<?php echo $image_400->url() ?>"
 				  class="grid__img">
 			  <source
-			    media="(min-width: 352px)"
-			    srcset="<?php echo $image_m->url() ?>"
-				  class="grid__img">
-			  <source
-			    media="(min-width: 16px)"
-			    srcset="<?php echo $image_s->url() ?>"
+			    media="(min-width: 1px)"
+			    srcset="<?php echo $image_300->url() ?>"
 				  class="grid__img">
 			  <img
-			    src="<?php echo $image_s->url() ?>"
-			    alt="Project thumbnail"
+			    src="<?php echo $image_300->url() ?>"
+			    alt="a cute kitten"
 				  class="grid__img">
 			</picture>
 
 			<div class="grid__img--shade"></div>
 		</a>
 
-<?php endforeach ?>
+		<?php endforeach ?>
+	</section>
 </section>

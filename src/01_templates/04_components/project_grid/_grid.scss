@@ -6,7 +6,6 @@
 .grid {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-	// grid-gap: $air;
 	grid-gap: 0;
 	margin: 0 auto;
 	margin-top: $baseline / 1.2;
@@ -24,11 +23,10 @@
 }
 
 .grid--large {
-	max-width: $width__max;
+	max-width: $width__max - 24;
 }
 
 .grid--small {
-	// Doesn't need max-width as should be contained within .section
 	grid-template-columns: repeat(4, 1fr);
 }
 

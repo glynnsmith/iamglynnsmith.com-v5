@@ -13,23 +13,22 @@
 		<?php $tags = $page->children()->visible()->pluck('tags', ',', true); ?>
 		<?php foreach($tags as $tag): ?>
 
-		<a <?php ecco($tag == $p, ' class="widget__link widget__link--active"') ?> href="<?php echo url($page->url() . '/' . url::paramsToString(['tag' => $tag])) ?>" class="widget__link">
-			<span class="widget__tag--hash">#</span><?php echo html($tag) ?>
-		</a>
+			<a <?php ecco($tag == $p, ' class="widget__link widget__link--active"') ?> href="<?php echo url($page->url() . '/' . url::paramsToString(['tag' => $tag])) ?>" class="widget__link">
+				<span class="widget__tag--hash">#</span><?php echo html($tag) ?>
+			</a>
 
-	<?php endforeach ?>
+		<?php endforeach ?>
 	</span>
 </section>
 
-<section class="section--wide">
-	<?php snippet('snippet_projects_grid') ?>
-</section>
+<?php snippet('snippet_projects_grid') ?>
 
 <?php snippet("snippet_footer") ?>
 
 <?php snippet("snippet_back_to_top") ?>
 
 <?php snippet("snippet_js_totop") ?>
+
 <?php snippet("snippet_scripts_footer") ?>
 
 </body>
